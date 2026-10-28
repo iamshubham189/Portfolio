@@ -1142,7 +1142,7 @@ function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void })
             </button>
             <a
               href="/Shubham-Sharma-Resume.pdf"
-              download
+              download="Shubham-Sharma-Resume.pdf"
               className="flex items-center gap-2.5 px-6 py-3.5 font-semibold text-sm btn-arrow border transition-all duration-200 hover:bg-white hover:-translate-y-0.5"
               style={{
                 borderColor: '#D6D0C6',
@@ -2608,7 +2608,7 @@ function About() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="/Shubham-Sharma-Resume.pdf"
-                  download
+                  download="Shubham-Sharma-Resume.pdf"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold border btn-arrow transition-colors hover:bg-white/10"
                   style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#FAF8F3', borderRadius: 8 }}
                 >
