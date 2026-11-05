@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import tapestoryImg from '@/imports/project_tapestory.jpg';
 import clickCardImg from '@/imports/project_clickcard.jpg';
 import brokrsHouseImg from '@/imports/project_brokrshouse.jpg';
 import theBrokrsImg from '@/imports/project_thebrokrs.jpg';
@@ -39,8 +40,83 @@ export interface ProjectCaseStudy {
 
 export const PROJECTS_DATA: ProjectCaseStudy[] = [
   {
-    slug: 'lifeos',
+    slug: 'tapestory-admin',
     num: '01',
+    title: 'Tapestory Admin Panel',
+    subtitle: 'Tailored for your story — Marketplace Operations & Bespoke Production Suite.',
+    projectType: 'Marketplace Admin Ecosystem · UI/UX Design & Frontend · Live Web App',
+    category: 'Bespoke Fashion Marketplace · Admin Portal',
+    desc: 'An end-to-end administration and operations console for Tapestory — managing bespoke tailoring orders, master ateliers, anatomical fit profiles, escrow settlements, and same-city express courier dispatch across 19+ integrated modules.',
+    tags: ['Admin Dashboard UX', 'Design System', 'Bespoke Operations', 'React & TypeScript'],
+    img: tapestoryImg,
+    accent: '#B69A68',
+    stageBg: '#172B24',
+    liveUrl: 'https://tapestory-azure.vercel.app',
+    role: 'Product Designer & Frontend Developer',
+    platform: 'Desktop & Responsive Web Application',
+    tools: ['Figma', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Recharts'],
+    snapshot: [
+      { label: 'Scope', value: '19+ Marketplace Modules — Orders, Ateliers, Fit Profiles, Escrow & Logistics' },
+      { label: 'Core Workflow', value: 'Measurement Verified → Workshop Tailoring → QC → Same-City Dispatch → Settlement' },
+      { label: 'Design System', value: 'Playfair Display + Inter · Deep Forest (#172B24) · Sartorial Gold (#B69A68) · Warm Ivory (#F5F0E7)' },
+      { label: 'Live Build', value: 'Interactive React 19 + TypeScript SPA (tapestory-azure.vercel.app)' },
+    ],
+    overview:
+      'Tapestory ("Clothing that tells your story") is a made-to-measure bespoke clothing marketplace connecting patrons with independent tailoring workshops and master ateliers across India. The Tapestory Admin Panel serves as the operational nerve center for marketplace staff — uniting bespoke order orchestration, vendor onboarding, anatomical fit profiles, commission escrow, dispute mediation, and same-city rider logistics in one cohesive workspace.',
+    problemHeading: 'Bespoke tailoring doesn\'t fit inside a standard e-commerce dashboard.',
+    problem:
+      'Unlike off-the-rack retail, every made-to-measure order involves custom body measurements, fabric lot verification, multi-stage workshop tailoring SLAs, fit-alteration mediation, and milestone-based atelier payouts. Managing these workflows across disconnected spreadsheets and generic admin tools creates SLA blind spots, fit disputes, and delayed settlements.',
+    designChallenge:
+      'How might we bring sartorial calm and operational precision to a 19-module marketplace admin console — so staff can track every garment from measurement capture to doorstep handover without drowning in table clutter?',
+    strategyHeading: 'Sartorial Identity · Operational Precision · Trust by Design',
+    strategyPillars: [
+      {
+        num: '01',
+        title: 'Editorial Meets Operational',
+        desc: 'Pair Tapestory\'s luxury atelier identity (Deep Forest #172B24, Sartorial Gold #B69A68, Warm Ivory #F5F0E7, Playfair Display) with high-density Inter data tables, 8px spacing foundations, and zero-friction drawers.',
+      },
+      {
+        num: '02',
+        title: 'Make Custom Fit & SLAs Visible',
+        desc: 'Surface anatomical measurement tolerances (±0.5 in), fabric swatches, and workshop SLA countdowns directly inside order drawers and Kanban production boards.',
+      },
+      {
+        num: '03',
+        title: 'Close the Loop from Escrow to Handover',
+        desc: 'Connect 3DS payment capture, tiered atelier commissions, fit-dispute escrow holds, and dual-OTP same-city express courier dispatch into one auditable flow.',
+      },
+    ],
+    solution:
+      'Designed and built a 19-module React + TypeScript administration suite starting from an atelier-inspired Super Admin login portal with 1-click demo access and 2FA, leading into an executive GMV dashboard, Table/Kanban bespoke production pipelines, anatomical fit visualizers, same-city courier dispatch, and SHA-256 security audit trails.',
+    highlights: [
+      {
+        title: 'Atelier Staff Login & RBAC Security (/admin/login & /admin/roles)',
+        desc: 'Editorial dress-form backdrop with a stitched forest-green pennant badge, 1-click Super Admin credential autofill, hardware-key/2FA flow, and a 7-role × 24-capability RBAC permission matrix.',
+      },
+      {
+        title: 'Bespoke Orders Kanban & Anatomical Fit Drawer (/admin/orders)',
+        desc: 'Dual Table/Kanban production views tracking Measurement Verified, In Workshop Tailoring, and Ready for Pickup stages — paired with an Anatomical Fit Visualizer (Bust, Waist, Shoulder tolerances) and branded QR packaging slips.',
+      },
+      {
+        title: 'Same-City Express Logistics & Dual-OTP Handover (/admin/logistics)',
+        desc: 'Hyperlocal intra-city courier dispatch for delicate bespoke garments featuring live trip telemetry, rider assignment cards, tamper-proof garment bag seals, and dual pickup/delivery OTP verification.',
+      },
+      {
+        title: 'Escrow Commissions, Fit Disputes & Executive Analytics',
+        desc: '3DS gateway ledger, tiered atelier payout settlements, measurement-variance dispute mediation with reverse logistics, omnichannel WhatsApp/Email broadcasts, and Recharts GMV/LTV cohort reporting.',
+      },
+    ],
+    outcome:
+      'Delivered a live, production-grade marketplace operations suite (tapestory-azure.vercel.app) that proves enterprise back-office software can feel as refined and intentional as the luxury bespoke brand it powers.',
+    whatsNext: [
+      { label: 'Atelier Partner Portal', text: 'Extend the design system into a dedicated workshop-facing app for master tailors to upload WIP fitting photos and update stage milestones.' },
+      { label: 'AI Fit-Variance Alerts', text: 'Flag anomalous patron measurements before fabric cutting begins by comparing submitted profiles against historical garment fit indices.' },
+      { label: 'Live Backend & Webhook Sync', text: 'Connect the deterministic client-side state layer to real-time payment gateway webhooks and courier GPS streams.' },
+    ],
+  },
+  {
+    slug: 'lifeos',
+    num: '02',
     title: 'LifeOS',
     subtitle: 'Your life, brought together.',
     category: 'UI/UX Product Design Concept · Mobile App',
@@ -90,7 +166,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'brokrs-house',
-    num: '02',
+    num: '03',
     title: 'Brokrs House',
     subtitle: 'A premium alliance. A connected broker workspace.',
     category: 'Brand Identity + Mobile Product Design',
@@ -140,7 +216,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'shyam-jagat',
-    num: '03',
+    num: '04',
     title: 'Shyam Jagat',
     subtitle: 'Connecting devotion, community, and seva in one place.',
     projectType: 'Socio-Spiritual Platform · UI/UX Design · Web Experience',
@@ -198,7 +274,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'the-brokrs',
-    num: '04',
+    num: '05',
     title: 'The Brokrs',
     subtitle: 'Investing, services & benefits. One connected experience.',
     projectType: 'Product Experience · Mobile App · India',
@@ -260,7 +336,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'clickcard',
-    num: '05',
+    num: '06',
     title: 'ClickCard',
     subtitle: 'One link. Your entire identity.',
     projectType: 'Digital Identity Platform · UI/UX Design · Web Product',
@@ -323,7 +399,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'shyam-jagat-admin',
-    num: '06',
+    num: '07',
     title: 'Shyam Jagat Admin Panel',
     subtitle: 'Devotion, with a clear direction.',
     projectType: 'Admin Ecosystem · Product Design · Web Dashboard',
@@ -380,7 +456,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'sahil-hair-expert',
-    num: '07',
+    num: '08',
     title: 'Sahil Hair Expert',
     subtitle: 'Elite Hairstyling & Treatments — Luxury Salon Booking Desk.',
     category: 'Luxury Salon Booking Website · Live Product',
@@ -431,7 +507,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'logo-design',
-    num: '08',
+    num: '09',
     title: 'Logo Design',
     subtitle: 'Logo Concept & Brand Rationale Collection.',
     category: 'Logo Design & Brand Identity Systems',
@@ -480,6 +556,27 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     ],
   },
 ];
+
+export function TapestoryVisualShowcase() {
+  const strips = [1, 2, 3, 4];
+  return (
+    <div
+      className="rounded-3xl overflow-hidden border shadow-xl space-y-0"
+      style={{ background: '#F5F0E7', borderColor: 'var(--border)' }}
+    >
+      {strips.map(n => (
+        <img
+          key={`ts-strip-${n}`}
+          src={`/case-studies/strips/ts_strip_${n}.jpg`}
+          alt={`Tapestory Admin Panel Case Study UI — Part ${n}`}
+          className="w-full h-auto block m-0 p-0 select-none"
+          decoding="sync"
+          loading="eager"
+        />
+      ))}
+    </div>
+  );
+}
 
 export function ShyamJagatVisualShowcase() {
   const mainStrips = [1, 2, 3, 4, 5, 6, 7];
@@ -813,7 +910,9 @@ export function CaseStudyPage({
           )}
 
           {/* Cover Poster or Full Uncompressed Actual UI Case Study Board */}
-          {project.slug === 'shyam-jagat' ? (
+          {project.slug === 'tapestory-admin' ? (
+            <TapestoryVisualShowcase />
+          ) : project.slug === 'shyam-jagat' ? (
             <ShyamJagatVisualShowcase />
           ) : project.slug === 'shyam-jagat-admin' ? (
             <ShyamJagatAdminVisualShowcase />

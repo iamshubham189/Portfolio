@@ -97,14 +97,14 @@ function Reveal({ children, className = '', delay = 0, dir = 'up' }: {
 
 // ─── Work Focus Donut ─────────────────────────────────────────────────────────
 
-// Derived from the 8 projects listed in the Featured Projects section:
+// Derived from the 9 projects listed in the Featured Projects section:
 // - Web Platforms (4): Brokrs House, Shyam Jagat, ClickCard, Sahil Hair Expert
 // - Mobile Apps (2): LifeOS, The Brokrs
-// - Dashboards & Brand (2): Shyam Jagat Admin Panel, Logo Design
+// - Dashboards & Brand (3): Tapestory Admin Panel, Shyam Jagat Admin Panel, Logo Design
 const donutData = [
   { label: 'Web Platforms',      shortLabel: 'Web\nPlatforms',      value: 4, color: '#C85D2A' },
   { label: 'Mobile Apps',        shortLabel: 'Mobile\nApps',        value: 2, color: '#2A6E6E' },
-  { label: 'Dashboards & Brand', shortLabel: 'Dashboards\n& Brand', value: 2, color: '#E8A33D' },
+  { label: 'Dashboards & Brand', shortLabel: 'Dashboards\n& Brand', value: 3, color: '#E8A33D' },
 ];
 
 function DonutChart({ animate }: { animate: boolean }) {
@@ -1543,7 +1543,7 @@ function CountUp({ target, decimals = 0, suffix = '' }: { target: number; decima
 
 const overviewStats = [
   {
-    target: 8, decimals: 0, suffix: '', label: 'Projects\nDesigned', color: '#C85D2A',
+    target: 9, decimals: 0, suffix: '', label: 'Projects\nDesigned', color: '#C85D2A',
     actionId: 'portfolio',
     icon: <><path d="m12 2 10 5-10 5L2 7z" /><path d="m2 17 10 5 10-5" /><path d="m2 12 10 5 10-5" /></>,
   },
