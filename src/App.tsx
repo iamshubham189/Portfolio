@@ -293,22 +293,22 @@ const projects = PROJECTS_DATA;
 
 // ─── Expertise (What I Do) ────────────────────────────────────────────────────
 
-// Content is grounded in Shubham's 8 real projects — distinct from Portfolio Overview & About.
+// Grounded in Shubham's real project work.
 const capabilities = [
   {
     id: 'uiux',
     title: 'End-to-End Product UX',
-    tagline: 'From messy problem to shippable product',
-    desc: 'Turning ambiguous product ideas into structured, intuitive journeys — balancing user psychology with clear business goals so people know exactly what to do on every screen.',
-    deliverables: ['Product Strategy', 'Journey Mapping', 'Wireframes', 'High-Fidelity UI'],
+    tagline: 'From problem to finished product',
+    desc: 'Turning complex product ideas into clear user flows and clean screens so people know exactly what to do on every step.',
+    deliverables: ['Product Strategy', 'User Flows', 'Wireframes', 'High-Fidelity UI'],
     applied: ['LifeOS', 'ClickCard', 'Brokrs House'],
     Visual: FlowVisual,
   },
   {
     id: 'mobile',
     title: 'Mobile App Ecosystems',
-    tagline: 'Thumb-friendly, habit-forming experiences',
-    desc: 'Designing native-feeling iOS & Android apps built around daily habits, quick capture, and multi-role discovery — whether it is personal finance tracking or property search on the go.',
+    tagline: 'Clean iOS & Android interfaces',
+    desc: 'Designing thumb-friendly mobile apps built around quick capture, daily habits, and easy navigation.',
     deliverables: ['iOS & Android UI', 'Micro-interactions', 'Multi-Role Flows', 'Gesture Navigation'],
     applied: ['LifeOS', 'The Brokrs', 'Brokrs House'],
     Visual: MobileVisual,
@@ -316,26 +316,26 @@ const capabilities = [
   {
     id: 'web',
     title: 'Web Platforms & Conversion',
-    tagline: 'Story-driven websites that build trust',
-    desc: 'Crafting high-converting web platforms, booking flows, and cultural portals that organize deep content libraries into fast, accessible desktop and mobile experiences.',
-    deliverables: ['Conversion Funnels', 'Booking & E-Commerce', 'Content Architecture', 'Responsive Web'],
+    tagline: 'Websites that build trust',
+    desc: 'Building responsive web platforms and booking flows that organize information clearly and load fast.',
+    deliverables: ['Conversion Funnels', 'Booking Flows', 'Content Structure', 'Responsive Web'],
     applied: ['Shyam Jagat', 'Sahil Hair Expert', 'ClickCard'],
     Visual: WebVisual,
   },
   {
     id: 'dashboard',
     title: 'Admin Panels & Data UI',
-    tagline: 'Clarity for high-density operations',
-    desc: 'Building back-office command centers where operators manage thousands of listings, bookings, and analytics without feeling overwhelmed by tables and filters.',
-    deliverables: ['Role-Based Dashboards', 'Data Visualization', 'CRM & Inventory Flows', 'Bulk Actions'],
+    tagline: 'Clarity for data-heavy operations',
+    desc: 'Creating back-office dashboards where staff can manage large inventories, orders, and permissions without clutter.',
+    deliverables: ['Role-Based Dashboards', 'Data Tables', 'Order & Inventory Flows', 'Bulk Actions'],
     applied: ['Tapestory Admin Panel', 'Shyam Jagat Admin Panel', 'Brokrs House'],
     Visual: DashboardVisual,
   },
   {
     id: 'system',
     title: 'Brand & Design Systems',
-    tagline: 'Visual identity meets scalable tokens',
-    desc: 'Rooted in my graphic design background — creating distinctive brand marks, typography scales, and reusable Figma component libraries that keep products cohesive as they grow.',
+    tagline: 'Scalable design tokens and components',
+    desc: 'Creating distinctive logos, typography scales, and modular Figma component libraries that stay cohesive as products grow.',
     deliverables: ['Logo & Brand Identity', 'Design Tokens', 'Figma Component Kits', 'Style Guides'],
     applied: ['Tapestory Admin Panel', 'Logo Design', 'LifeOS'],
     Visual: SystemVisual,
@@ -344,8 +344,8 @@ const capabilities = [
     id: 'proto',
     title: 'Code-Aware Prototyping',
     tagline: 'Designed with React & CSS in mind',
-    desc: 'Because I have built production interfaces in React and Tailwind, I design interactive prototypes and edge-case states (loading, empty, error) that developers can implement without guesswork.',
-    deliverables: ['Interactive Prototypes', 'Edge-Case States', 'Dev-Ready Specs', 'UI Build Review'],
+    desc: 'Because I write React and Tailwind, I design realistic prototypes, loading states, and specs that developers can build smoothly.',
+    deliverables: ['Interactive Prototypes', 'Empty & Error States', 'Developer Specs', 'UI Build Review'],
     applied: ['Tapestory Admin Panel', 'LifeOS', 'ClickCard'],
     Visual: PrototypeVisual,
   },
@@ -626,45 +626,45 @@ function PrototypeVisual() {
 const processSteps = [
   {
     num: '01', label: 'Empathize', icon: 'users', color: '#8A8279',
-    short: 'Talk to real users and audit where existing workflows break.',
-    long: 'Before opening Figma, I study how people currently solve the problem — whether that is brokers juggling WhatsApp leads, devotees searching temple timings, or professionals tracking daily bills.',
-    points: ['User & Stakeholder Interviews', 'Real-World Workflow Audit', 'Competitor & Gap Analysis'],
-    tagline: ['Listen', 'Observe', 'Uncover'],
+    short: 'Understand the real problem before opening Figma.',
+    long: 'I study how people currently handle the task — whether that is brokers juggling WhatsApp leads, devotees looking up temple timings, or users tracking daily expenses.',
+    points: ['User Interviews', 'Workflow Audit', 'Competitor Gaps'],
+    tagline: ['Listen', 'Observe', 'Understand'],
   },
   {
     num: '02', label: 'Define', icon: 'define', color: '#E8A33D',
-    short: 'Distill research into a sharp problem statement & success metrics.',
-    long: 'I narrow down the noise into a single core question: what is the #1 friction point we must eliminate, and how will we measure success for both the user and the business?',
-    points: ['Core Problem Framing', 'Role & Persona Mapping', 'Success Metrics Definition'],
-    tagline: ['Filter', 'Focus', 'Align'],
+    short: 'Pinpoint the core friction and define clear goals.',
+    long: 'I narrow down research into a simple question: what is confusing or slowing users down right now, and what does a successful solution look like?',
+    points: ['Core Problem Statement', 'User Personas', 'Success Metrics'],
+    tagline: ['Focus', 'Clarify', 'Align'],
   },
   {
     num: '03', label: 'Ideate', icon: 'bulb', color: '#C85D2A',
-    short: 'Map the information architecture and low-friction user journeys.',
-    long: 'I sketch multiple structural directions and map out end-to-end flows — stripping away unnecessary steps so a first-time user can reach value in the fewest possible taps.',
-    points: ['End-to-End User Flows', 'Information Architecture', 'Low-Fidelity Wireframes'],
+    short: 'Map out user journeys and clean wireframes.',
+    long: 'I sketch layouts and map out flows, removing unnecessary steps so users find value in the fewest clicks possible.',
+    points: ['User Flows', 'Information Architecture', 'Wireframes'],
     tagline: ['Sketch', 'Structure', 'Simplify'],
   },
   {
     num: '04', label: 'Design', icon: 'pen', color: '#C85D2A',
-    short: 'Craft expressive visual UI backed by reusable design tokens.',
-    long: 'Where graphic design craft meets product systems — pairing intentional typography, color psychology, and spacing with modular Figma components across light, dark, and responsive views.',
-    points: ['High-Fidelity Visual UI', 'Tokenized Component Library', 'Empty, Loading & Error States'],
-    tagline: ['Craft', 'Systemize', 'Polish'],
+    short: 'Create polished UI backed by a component system.',
+    long: 'I pair clean typography and accessible colors with modular Figma components, designing for light, dark, and mobile screens.',
+    points: ['High-Fidelity Screens', 'Figma Component System', 'Empty & Error States'],
+    tagline: ['Design', 'Systemize', 'Refine'],
   },
   {
     num: '05', label: 'Test', icon: 'flask', color: '#2A6E6E',
-    short: 'Put clickable prototypes in front of people and iterate fast.',
-    long: 'I connect screens into realistic interactive prototypes to test where users hesitate, misclick, or get confused — refining copy, contrast, and hierarchy before a single line of code is written.',
-    points: ['Interactive Figma Prototypes', 'Task-Based Usability Checks', 'Friction & Copy Refinement'],
-    tagline: ['Simulate', 'Validate', 'Refine'],
+    short: 'Build clickable prototypes and test with real users.',
+    long: 'I connect screens into interactive prototypes to spot confusion, misclicks, and copy issues before developers write a line of code.',
+    points: ['Interactive Prototypes', 'Task Usability Checks', 'Copy & Layout Refinements'],
+    tagline: ['Prototype', 'Test', 'Improve'],
   },
   {
     num: '06', label: 'Deliver', icon: 'box', color: '#C85D2A',
-    short: 'Speak the developer’s language from handoff through launch QA.',
-    long: 'Thanks to my frontend background in React and Tailwind, I hand off clean component specs, responsive breakpoints, and interaction notes — working alongside engineers until the live build feels right.',
-    points: ['Developer-Ready Specs', 'React / CSS Feasibility Sync', 'Pre-Launch Visual QA'],
-    tagline: ['Specify', 'Collaborate', 'Ship'],
+    short: 'Clean developer handoff and launch QA.',
+    long: 'Having coded in React, I provide clean component specs, responsive breakpoints, and review the live build alongside engineers.',
+    points: ['Developer-Ready Specs', 'Frontend Feasibility Sync', 'Visual QA'],
+    tagline: ['Document', 'Collaborate', 'Ship'],
   },
 ];
 
@@ -676,7 +676,7 @@ const posts = [
     date: 'Sep 2025',
     readTime: '4 min read',
     title: 'What Civil Services Preparation Taught Me About UX & Systems Thinking',
-    desc: 'Three years of studying public policy, human behavior, and complex institutions trained me to never take a surface-level problem at face value when designing digital products.',
+    desc: 'Three years of analyzing public systems and human behavior taught me to look past surface symptoms and design for how people actually think.',
     fullText: [
       'Between 2021 and 2024, I spent my days immersed in Civil Services preparation — analyzing how large public systems work, why well-intended policies fail on the ground, and how diverse citizens interact with complex institutions.',
       'When I transitioned back into tech and product design, I realized those years were my strongest UX foundation. Good product design is not about trendy gradients; it is about reading between the lines of human behavior, synthesizing massive amounts of messy information into a clear structure, and designing for the person with the least patience or technical context.',
@@ -688,7 +688,7 @@ const posts = [
     date: 'Aug 2025',
     readTime: '3 min read',
     title: 'Why Building in React Changed How I Design in Figma',
-    desc: 'Working as a Frontend Developer taught me where designs usually break during handoff — and how thinking in components, flexbox, and real data states makes UI 10× stronger.',
+    desc: 'Building production UI in React taught me where mockups usually break — and why designing for empty states and flex layouts saves weeks of rework.',
     fullText: [
       'A lot of friction between designers and engineers happens because static mockups assume ideal data: two-line titles, perfect avatars, and happy-path screens.',
       'Having built production interfaces in React and Tailwind CSS, I now design with the DOM in mind. When I set up auto-layout in Figma, I am already thinking about flex-wrap, grid breakpoints, and reusable props. More importantly, I design the uncomfortable states upfront — what happens when a broker has zero leads yet, when a network call is loading, or when a user uploads a low-contrast logo.',
@@ -700,7 +700,7 @@ const posts = [
     date: 'Jul 2025',
     readTime: '5 min read',
     title: 'Designing for Two Worlds: Consumer Emotion vs. Admin Efficiency',
-    desc: 'Lessons from designing both the public-facing experience and the back-office command center — why a temple portal and an operations dashboard need completely different rhythms.',
+    desc: 'Consumer apps need calm whitespace and simple storytelling. Admin dashboards need fast filters and high data density. Here is how I balance both.',
     fullText: [
       'Across my recent projects, I have had the chance to design both sides of the coin: serene, emotionally resonant consumer experiences (like LifeOS and the Shyam Jagat portal) and high-density operational tools (like the Shyam Jagat Admin Panel and Brokrs House broker workflows).',
       'Consumer interfaces succeed when they reduce cognitive load and evoke trust through generous whitespace, warm typography, and guided storytelling. Admin dashboards, on the other hand, succeed when they respect the operator’s muscle memory — surfacing status badges, bulk actions, and instant filters without forcing extra clicks.',
@@ -1118,7 +1118,7 @@ function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void })
               transition: 'opacity 0.8s ease 0.5s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s',
             }}
           >
-            I combine strategy, design, and user empathy to craft beautiful, functional and meaningful digital products that drive results.
+            I&apos;m a UI/UX designer with a frontend background. I design clean, simple web apps, mobile products, and dashboards.
           </p>
 
           {/* Buttons */}
@@ -1698,7 +1698,7 @@ function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: strin
                   className="text-sm sm:text-[15px] leading-relaxed max-w-[260px]"
                   style={{ color: '#6E655D', fontFamily: 'Inter' }}
                 >
-                  My UX research methods, interface design craft, frontend stack, and portfolio track record.
+                  A quick look at my design methods, frontend tools, and project track record.
                 </p>
               </div>
             </div>
@@ -2298,7 +2298,7 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
               Selected Projects &amp; <span style={{ color: 'var(--orange)' }}>UX Case Studies</span>
             </h2>
             <p className="text-sm sm:text-[15px] mt-2 max-w-2xl leading-relaxed" style={{ color: '#5E5750' }}>
-              End-to-end product design across web platforms, mobile apps, and operational dashboards — pairing visual craft with clear user flows and frontend-ready systems.
+              Real-world product design across mobile apps, web platforms, and operational dashboards.
             </p>
           </div>
 
@@ -2679,15 +2679,15 @@ const designPrinciples = [
   },
   {
     title: 'Built for Real Code',
-    desc: 'Components, states, and tokens structured the way React developers actually build.',
+    desc: 'Components, states, and tokens structured the way developers actually build.',
   },
   {
     title: 'Multi-Role Thinking',
-    desc: 'Designing both the consumer experience and the admin/broker engine behind it.',
+    desc: 'Designing both the customer journey and the back-office tools behind it.',
   },
   {
     title: 'Zero-Friction Flows',
-    desc: 'Removing unnecessary taps for first-time, non-technical, and repeat users alike.',
+    desc: 'Cutting out extra steps so people reach value in the fewest taps possible.',
   },
 ];
 
@@ -2697,28 +2697,28 @@ const journeyMilestones = [
     role: 'Graphic Design',
     tag: 'Visual Craft',
     color: '#E8A33D',
-    summary: 'Brand identity, print layouts, and an obsession with typography, grid balance, and visual storytelling.',
+    summary: 'Brand identity, typography, and visual balance.',
   },
   {
     period: '2021–2024',
     role: 'Civil Services Prep',
-    tag: 'Systems & Empathy',
+    tag: 'Systems Thinking',
     color: '#2A9D8F',
-    summary: 'Deep research, analyzing complex public systems, and understanding diverse human behavior at scale.',
+    summary: 'Studying public systems, policy, and human behavior at scale.',
   },
   {
     period: '2024–2025',
     role: 'Frontend Developer',
-    tag: 'Technical Fluency',
+    tag: 'Frontend Code',
     color: '#61DAFB',
-    summary: 'Building responsive React & Tailwind interfaces — learning how designs translate into production code.',
+    summary: 'Building responsive React and Tailwind UI for production.',
   },
   {
     period: '2025–Now',
     role: 'UI/UX Designer',
-    tag: 'Product Ownership',
+    tag: 'Product Design',
     color: '#E8601C',
-    summary: 'Leading end-to-end product design across mobile apps, B2B marketplaces, and operational dashboards.',
+    summary: 'End-to-end design for web apps, mobile products, and dashboards.',
   },
 ];
 
@@ -2745,10 +2745,10 @@ function About() {
             <Reveal delay={200}>
               <div className="space-y-3.5 mb-7 text-sm leading-relaxed" style={{ color: '#A7A097', fontFamily: 'Inter' }}>
                 <p>
-                  My path into product design wasn&apos;t a straight line — and that is my biggest advantage. I started in <strong className="text-white font-medium">Graphic Design</strong>, spent three disciplined years preparing for <strong className="text-white font-medium">Civil Services</strong> (where I learned to dissect complex systems and real human problems), and then worked as a <strong className="text-white font-medium">React Frontend Developer</strong> before moving full-time into <strong className="text-white font-medium">UI/UX Design</strong>.
+                  I came into product design through a unique path: <strong className="text-white font-medium">Graphic Design</strong> gave me visual rigor, three years preparing for <strong className="text-white font-medium">Civil Services</strong> taught me how complex systems and human behavior work, and working as a <strong className="text-white font-medium">React Frontend Developer</strong> gave me an engineering mindset.
                 </p>
                 <p>
-                  Because I have sat on both the visual side and the engineering side, I don&apos;t design screens that only look good in Dribbble shots — I design products that are intuitive for everyday people and practical for developers to ship.
+                  Because I&apos;ve worked across both design and frontend code, I don&apos;t design unrealistic mockups. I build clean, thoughtful interfaces that solve real problems and are straightforward for developers to ship.
                 </p>
               </div>
             </Reveal>
@@ -3594,14 +3594,14 @@ function Contact() {
 
             <Reveal delay={100}>
               <h2 className="font-serif font-bold mb-5 leading-[1.08]" style={{ fontSize: 'clamp(2.2rem, 4.2vw, 3.4rem)', color: '#FAF8F3' }}>
-                Let&apos;s create something<br />
-                <span style={{ color: 'var(--orange)' }}>meaningful.</span>
+                Let&apos;s work<br />
+                <span style={{ color: 'var(--orange)' }}>together.</span>
               </h2>
             </Reveal>
 
             <Reveal delay={200}>
               <p className="text-sm leading-relaxed mb-8 max-w-lg" style={{ color: '#9A9A9A' }}>
-                Whether you have a product in mind, want to collaborate on a design challenge, or simply want to say hello — reach out directly or send a quick note.
+                Have a project in mind, want to discuss a role, or just want to talk design? Send a message or reach out directly.
               </p>
             </Reveal>
 
