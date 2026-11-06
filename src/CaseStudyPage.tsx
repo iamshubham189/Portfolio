@@ -121,23 +121,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Designed a 19-screen admin dashboard featuring a simple staff login with demo access, clear order tracking in both table and board views, visual measurement cards, local delivery dispatch, and transparent tailor payouts.',
+      'A 19-screen dashboard built for marketplace staff to track custom orders, body measurements, and local deliveries in real time.',
     highlights: [
       {
-        title: 'Staff Login & Role Access (/admin/login & /admin/roles)',
-        desc: 'Simple login screen with 1-click demo buttons and custom access levels for 7 different company roles.',
+        title: 'Staff Login & Roles',
+        desc: '1-click demo access with custom permissions for 7 staff roles.',
       },
       {
-        title: 'Order Board & Measurement Cards (/admin/orders)',
-        desc: 'Track garments through tailoring stages with side-by-side customer measurement cards and printable garment tags.',
+        title: 'Custom Order Board',
+        desc: 'Kanban board tracking tailoring stages alongside customer measurements.',
       },
       {
-        title: 'Local Delivery & Driver Dispatch (/admin/logistics)',
-        desc: 'Assign city delivery riders with live status updates and two-way verification codes for secure handovers.',
+        title: 'Local Delivery Dispatch',
+        desc: 'Assign city couriers with two-way verification codes for safe handover.',
       },
       {
-        title: 'Tailor Payouts & Sales Trends (/admin/commissions)',
-        desc: 'Clear calculation tables showing tailor earnings, platform fees, and monthly sales graphs.',
+        title: 'Tailor Payouts & Sales',
+        desc: 'Clear calculation tables showing tailor earnings and sales trends.',
       },
     ],
     outcome:
@@ -222,23 +222,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Created a 30-screen mobile system with a focused Today view, effortless voice and text note capture, connected goal roadmaps, and helpful AI suggestions that always ask for confirmation.',
+      'A calm 30-screen mobile system that unites daily schedules, quick note capture, and goal tracking in one place.',
     highlights: [
       {
-        title: 'Today Screen & Urgent Alerts',
-        desc: 'Highlights urgent bills and appointments first, followed by a clean timeline of the day ahead.',
+        title: 'Today Priority View',
+        desc: 'Highlights urgent bills and appointments first, followed by the daily schedule.',
       },
       {
-        title: 'Quick Voice & Text Note Capture',
-        desc: 'Speaks or types in everyday language; the app extracts dates and details and lets you review before saving.',
+        title: 'Quick Note Capture',
+        desc: 'Type or speak naturally; review extracted details before anything is saved.',
       },
       {
-        title: 'Life Threads & 8 Life Areas',
-        desc: 'Keeps related tasks, notes, and files grouped under specific life categories like Health, Money, and Travel.',
+        title: 'Goals & Life Areas',
+        desc: 'Keeps related tasks, notes, and files grouped under 8 everyday categories.',
       },
       {
-        title: 'Smart Planning with User Review',
-        desc: 'AI drafts a suggested weekly plan or answers questions about upcoming bills, with clear Accept and Edit controls.',
+        title: 'Reviewable AI Plans',
+        desc: 'AI suggests weekly schedules with clear Accept, Edit, and Dismiss buttons.',
       },
     ],
     outcome:
@@ -323,23 +323,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Designed a 22-screen broker app that verifies broker credentials, shows live inventory and commission terms, protects registered buyer leads, and tracks payment milestones.',
+      'A 22-screen broker workspace connecting property search, buyer lead protection, and payout tracking.',
     highlights: [
       {
-        title: 'Fast Onboarding & Property Search',
-        desc: 'Quick sign-up with broker license check and filters for location, budget, and highest commission rates.',
+        title: 'Broker Sign-Up & Search',
+        desc: 'Fast license verification with property filters and clear commission tags.',
       },
       {
-        title: 'Live Tower Inventory & Payout Rates',
-        desc: 'Instant view of which apartments are available, on hold, or sold, with clear commission percentages (3.0% to 4.5%).',
+        title: 'Live Tower Inventory',
+        desc: 'Real-time flat availability and upfront commission percentage on each unit.',
       },
       {
-        title: 'Lead Pipeline & 7-Day Protection',
-        desc: 'Track clients through each sales stage and protect registered buyers for 7 days so other brokers cannot claim them.',
+        title: '7-Day Lead Protection',
+        desc: 'Protects registered buyer leads so brokers never lose credit for their deals.',
       },
       {
-        title: '48-Hour Unit Hold & Payout Ledger',
-        desc: 'Hold selected units for serious buyers for 48 hours and track approved commissions straight to your bank account.',
+        title: '48-Hour Unit Hold',
+        desc: 'Holds selected flats for serious buyers and tracks approved builder payouts.',
       },
     ],
     outcome:
@@ -424,23 +424,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Designed a warm, culturally respectful website with clear directories for temples and performers, a guided 3-click donation flow with instant receipts, and simple registration for community members.',
+      'A warm, culturally rooted website connecting verified temples, devotional artists, and charitable seva.',
     highlights: [
       {
         title: 'Verified Temple Directory',
-        desc: 'Browse temples by state and deity with confirmed darshan timings, directions, and community reviews.',
+        desc: 'Search temples by state and deity with confirmed darshan timings.',
       },
       {
-        title: 'Devotional Artists & Performers',
-        desc: 'Find bhajan singers, musicians, and dancers with audio samples, event history, and direct booking contact.',
+        title: 'Devotional Artists',
+        desc: 'Find bhajan singers and musicians with ratings and direct contact info.',
       },
       {
         title: 'Guided Seva Donations',
-        desc: 'Choose from verified causes (food distribution, medical help, cow shelters) with preset amounts and instant UPI payments.',
+        desc: 'Preset donation amounts for verified causes with instant UPI receipts.',
       },
       {
-        title: 'Role-Based Community Sign-Up',
-        desc: 'Simple step-by-step registration for artists, temple trusts, and guest houses to join and get verified.',
+        title: 'Community Sign-Up',
+        desc: 'Simple onboarding cards for temples, artists, and guest houses to join.',
       },
     ],
     outcome:
@@ -524,23 +524,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Designed a 24-screen mobile app centered around an intuitive home hub, detailed project milestone trackers, clear pricing breakdowns, and a simple digital wallet.',
+      'A 24-screen mobile app combining project investments, everyday household services, and digital wallet rewards.',
     highlights: [
       {
-        title: 'Home Hub & Category Filters',
-        desc: 'Quick access to Real Estate, Tech, Hybrid Farming, and Insurance with funding progress bars on every card.',
+        title: 'Marketplace Hub',
+        desc: 'Browse Real Estate, Tech, and Farming projects with clear funding bars.',
       },
       {
-        title: 'Project Details & Milestones',
-        desc: 'Clear visual roadmaps showing how projects progress from initial funding to final returns.',
+        title: 'Project Roadmaps',
+        desc: 'Visual timelines showing project milestones and estimated returns.',
       },
       {
-        title: 'Honest Checkout & Payment Recovery',
-        desc: 'Full price breakdown before payment, plus clear guidance and a 1-tap retry button if a card or UPI fails.',
+        title: 'Clear Checkout & Retry',
+        desc: 'Upfront fee breakdown with a friendly 1-tap retry if payments fail.',
       },
       {
-        title: 'Partner Discounts & Simple Wallet',
-        desc: 'Claim exclusive discount codes, convert reward points into bank cashback, and check identity verification status.',
+        title: 'Partner Perks & Wallet',
+        desc: 'Claim discount vouchers and convert reward points into bank cashback.',
       },
     ],
     outcome:
@@ -625,23 +625,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Designed a clean 12-screen web application featuring rapid profile setup, ready-made card templates in the Card Studio, one-tap QR sharing, and clear visitor analytics.',
+      'A clean 12-screen web application to create, customize, and share digital cards in under 3 minutes.',
     highlights: [
       {
-        title: 'All-in-One Digital Profile',
-        desc: 'Combines your resume, portfolio samples, social handles, and direct contact buttons on one screen.',
+        title: 'All-in-One Profile',
+        desc: 'Combines your resume, portfolio work, social links, and contact info on one link.',
       },
       {
         title: 'Card Studio Templates',
-        desc: 'Pick modern layouts, accent colors, and font styles that instantly update across desktop and mobile.',
+        desc: 'Ready-to-use themes and font styles that look great on any device.',
       },
       {
-        title: 'Instant QR Code Sharing',
-        desc: 'Generate a downloadable QR code or custom web link that opens seamlessly on any phone browser.',
+        title: 'Instant QR Sharing',
+        desc: 'Share via custom web link, scannable QR code, or NFC tap.',
       },
       {
-        title: 'Visitor View & Click Counters',
-        desc: 'A simple dashboard that shows how many people viewed your profile and which links they tapped the most.',
+        title: 'Visitor View Counters',
+        desc: 'Simple counters showing profile views and top link clicks.',
       },
     ],
     outcome:
@@ -725,23 +725,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Built a structured 5-screen admin portal that brings together a high-level summary dashboard, consistent content tables, a transparent donation ledger, and quick-action verification pop-ups.',
+      'A structured 5-screen admin console for staff to manage community listings, publish events, and audit seva donations.',
     highlights: [
       {
-        title: 'Platform Summary Dashboard',
-        desc: 'Live counters showing 1,248 temples, 842 artists, ₹12.45L donations, and 31 pending verifications.',
+        title: 'Summary Dashboard',
+        desc: '12 live counters showing temples, artists, donations, and pending reviews.',
       },
       {
-        title: 'Event & Blog Management Tables',
-        desc: 'Easy-to-use publishing tables to schedule devotional events, update timings, and write community announcements.',
+        title: 'Publishing Tables',
+        desc: 'Manage blog articles, temple timings, and community seva events.',
       },
       {
-        title: 'Donation & Tax Receipt Ledger',
-        desc: 'Complete records of every donation with payment modes (UPI/Bank) and instant status of 80G tax exemption receipts.',
+        title: 'Donation Audit Ledger',
+        desc: 'Full payment records with UPI status and instant 80G tax receipt tracking.',
       },
       {
-        title: 'One-Click Document Approval Pop-Up',
-        desc: 'Quickly inspect applicant identity documents and approve or reject submissions with clear reason notes.',
+        title: 'Document Review Pop-Up',
+        desc: 'Inspect applicant ID documents side-by-side for quick approvals.',
       },
     ],
     outcome:
@@ -827,23 +827,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Designed a conversion-focused dark luxury booking website featuring live salon hours, transparent service bundling, real-time total price calculation, and a smooth 3-step checkout.',
+      'A luxury booking website featuring transparent service prices, treatment bundling, and an easy 3-step checkout.',
     highlights: [
       {
-        title: 'Live Studio Status Badge',
-        desc: 'Real-time indicator showing if the salon is currently open, today\'s operating hours, and location details.',
+        title: 'Live Studio Status',
+        desc: 'Real-time indicator showing today\'s hours, open/closed status, and location.',
       },
       {
         title: '3-Step Booking Desk',
-        desc: 'Clear progress bar guiding clients through service selection, date & time slot picking, and booking confirmation.',
+        desc: 'Smooth progression: 1. Select Services, 2. Choose Time Slot, 3. Confirm.',
       },
       {
-        title: 'Service Bundling with Exact Durations',
-        desc: 'Filter between Men, Women, and Hair Treatments with clear time and price tags on every option.',
+        title: 'Multi-Service Bundling',
+        desc: 'Bundle treatments with exact prices and session durations on every card.',
       },
       {
-        title: 'Running Total Bar & WhatsApp Support',
-        desc: 'A floating summary bar that calculates the total cost and duration as services are added, plus 1-tap WhatsApp help.',
+        title: 'Running Total Bar',
+        desc: 'Live price estimator bar with direct 1-tap WhatsApp concierge support.',
       },
     ],
     outcome:
@@ -928,23 +928,23 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'Created comprehensive Brand Rationale boards for each identity, detailing the symbol breakdown, geometric grid alignment, color roles with exact hex codes, and brand values.',
+      'Curated Brand Rationale boards detailing the geometry, symbolism, and color systems behind 5 custom identities.',
     highlights: [
       {
-        title: 'Brokrs House & Nova Grid (Real Estate)',
-        desc: 'Brokrs House unites Squares (Homes) and Circles (People) in Trust Blue; Nova Grid pairs structured land-parcel gridlines with a vision spark in Champagne Gold.',
+        title: 'Brokrs House & Nova Grid',
+        desc: 'Real estate marks uniting homes, people, and land gridlines in trust blue and gold.',
       },
       {
-        title: 'ClickCard (Digital Business Card)',
-        desc: 'Layered rounded cards combined with an upward-right forward arrow in Modern Teal and Charcoal.',
+        title: 'ClickCard Mark',
+        desc: 'Layered cards with a forward arrow in digital teal representing quick connections.',
       },
       {
-        title: 'Shyam Jagat (Spiritual & Community)',
-        desc: 'Combines a protective circular aura, divine flame, graceful Hindi script, and a blessing hand in Saffron Orange and Temple Maroon.',
+        title: 'Shyam Jagat Mark',
+        desc: 'Sacred aura, divine flame, and blessing hand in saffron orange and temple maroon.',
       },
       {
-        title: 'ABAS — Heritage & Community Samaj',
-        desc: 'Integrates the Tree of Togetherness, lotus petals, connected community nodes, and a laurel wreath in Royal Maroon and Gold.',
+        title: 'ABAS Heritage Mark',
+        desc: 'Tree of togetherness with connected community nodes in royal maroon and gold.',
       },
     ],
     outcome:
@@ -1484,10 +1484,10 @@ export function CaseStudyPage({
           {/* Quick section jump pills on desktop */}
           <nav aria-label="Case study sections" className="hidden lg:flex items-center gap-1">
             {[
-              { id: 'cs-highlights', label: 'Key Highlights' },
-              { id: 'cs-overview', label: 'Overview & Problem' },
-              { id: 'cs-ux-approach', label: 'UX Approach' },
-              { id: 'cs-ui-solution', label: 'UI Solution' },
+              { id: 'cs-highlights', label: 'Highlights' },
+              { id: 'cs-overview', label: 'Overview' },
+              { id: 'cs-ux-approach', label: 'UX Strategy' },
+              { id: 'cs-ui-solution', label: 'Solutions' },
               { id: 'cs-screens', label: 'Screens' },
               { id: 'cs-outcome', label: 'Outcome' },
             ].map(s => (
@@ -1738,29 +1738,29 @@ export function CaseStudyPage({
             </div>
           )}
 
-          {/* 03. UX Approach & Information Architecture Pillars */}
+          {/* 03. UX Strategy */}
           {project.strategyPillars && project.strategyPillars.length > 0 && (
-            <div id="cs-ux-approach" className="space-y-4">
+            <div id="cs-ux-approach" className="space-y-3">
               <div>
                 <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
-                  03 · UX Approach &amp; Architecture
+                  03 · UX Strategy
                 </div>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold" style={{ color: '#111' }}>
-                  {project.strategyHeading || 'User Flows & Design Strategy'}
+                <h2 className="font-serif text-lg sm:text-xl font-bold" style={{ color: '#111' }}>
+                  {project.strategyHeading || 'Design Approach'}
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                 {project.strategyPillars.map(pil => (
                   <div
                     key={pil.num}
-                    className="p-5 rounded-2xl border"
+                    className="p-4 sm:p-5 rounded-2xl border"
                     style={{ background: '#1A1917', borderColor: 'rgba(255,255,255,0.08)', color: '#FAF8F3' }}
                   >
-                    <div className="text-xs font-mono font-bold uppercase tracking-widest mb-1.5" style={{ color: 'var(--orange)' }}>
+                    <div className="text-[11px] font-mono font-bold uppercase tracking-widest mb-1.5" style={{ color: 'var(--orange)' }}>
                       {pil.num} — {pil.title}
                     </div>
-                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#D6D1C7' }}>
+                    <p className="text-xs leading-relaxed" style={{ color: '#D6D1C7' }}>
                       {pil.desc}
                     </p>
                   </div>
@@ -1769,36 +1769,42 @@ export function CaseStudyPage({
             </div>
           )}
 
-          {/* 04. UI Solution & Key Interface Highlights */}
+          {/* 04. Key Design Solutions */}
           <div id="cs-ui-solution" className="space-y-4">
             <div
               className="p-5 sm:p-6 rounded-2xl border"
               style={{ background: '#fff', borderColor: 'var(--border)' }}
             >
-              <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
-                04 · UI Solution
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4 pb-3 border-b" style={{ borderColor: 'var(--border)' }}>
+                <div>
+                  <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
+                    04 · Design Solutions
+                  </div>
+                  <h2 className="font-serif text-lg sm:text-xl font-bold" style={{ color: '#111' }}>
+                    Key Screens &amp; Features
+                  </h2>
+                </div>
+                <p className="text-xs sm:text-sm max-w-md leading-relaxed" style={{ color: '#5E5750' }}>
+                  {project.solution}
+                </p>
               </div>
-              <h2 className="font-serif text-xl sm:text-2xl font-bold mb-2" style={{ color: '#111' }}>
-                Interface Architecture &amp; Key Screens
-              </h2>
-              <p className="text-sm sm:text-[15px] leading-relaxed mb-5" style={{ color: '#4A4540' }}>
-                {project.solution}
-              </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 {project.highlights.map((h, i) => (
                   <div
                     key={h.title}
-                    className="p-4 sm:p-5 rounded-xl border"
+                    className="p-3.5 sm:p-4 rounded-xl border flex flex-col justify-between transition-all hover:border-neutral-400"
                     style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
                   >
-                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--orange)' }}>
-                      Screen Focus 0{i + 1}
+                    <div>
+                      <div className="text-[10px] font-mono font-bold mb-1" style={{ color: 'var(--orange)' }}>
+                        0{i + 1}
+                      </div>
+                      <h3 className="font-serif text-sm sm:text-base font-bold mb-1" style={{ color: '#111' }}>
+                        {h.title}
+                      </h3>
                     </div>
-                    <h3 className="font-serif text-base sm:text-lg font-bold mb-1" style={{ color: '#111' }}>
-                      {h.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#5E5750' }}>
+                    <p className="text-xs leading-relaxed" style={{ color: '#5E5750' }}>
                       {h.desc}
                     </p>
                   </div>
