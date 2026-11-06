@@ -2366,9 +2366,25 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
                   {flagship.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm font-medium mb-4" style={{ color: '#5E5750' }}>
+                <p className="text-xs sm:text-sm font-medium mb-3.5" style={{ color: '#5E5750' }}>
                   {flagship.subtitle}
                 </p>
+
+                {/* 5 Key Project Highlights Strip */}
+                {flagship.projectHighlights && (
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 p-2.5 sm:p-3 rounded-xl border mb-4 text-center" style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}>
+                    {flagship.projectHighlights.map((hl) => (
+                      <div key={hl.label} className="p-1 [&:last-child]:col-span-2 sm:[&:last-child]:col-span-1">
+                        <div className="text-[9px] font-mono uppercase tracking-wider truncate mb-0.5" style={{ color: '#7A7068' }}>
+                          {hl.label}
+                        </div>
+                        <div className="font-serif font-bold text-sm sm:text-base leading-tight" style={{ color: '#111' }}>
+                          {hl.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 {/* Scannable UX Case Study Snapshot */}
                 <div
@@ -2512,9 +2528,25 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
                     {p.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm mb-3.5 line-clamp-2 leading-relaxed" style={{ color: '#5E5750' }}>
+                  <p className="text-xs sm:text-sm mb-3 line-clamp-2 leading-relaxed" style={{ color: '#5E5750' }}>
                     {p.desc}
                   </p>
+
+                  {/* 5 Key Project Highlights Strip */}
+                  {p.projectHighlights && (
+                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 p-2 rounded-xl border mb-3 text-center" style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}>
+                      {p.projectHighlights.map((hl) => (
+                        <div key={hl.label} className="p-0.5 [&:last-child]:col-span-2 sm:[&:last-child]:col-span-1">
+                          <div className="text-[8.5px] font-mono uppercase tracking-wider truncate mb-0.5" style={{ color: '#7A7068' }}>
+                            {hl.label}
+                          </div>
+                          <div className="font-serif font-bold text-xs sm:text-sm leading-tight" style={{ color: '#111' }}>
+                            {hl.value}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Concise Problem + UX Solution Box */}
                   <div

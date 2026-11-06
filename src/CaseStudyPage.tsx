@@ -9,6 +9,12 @@ import shyamJagatDashboardImg from '@/imports/project_shyamjagat_dashboard.jpg';
 import sahilHairExpertImg from '@/imports/project_sahilhairexpert.jpg';
 import logoDesignImg from '@/imports/project_logodesign.jpg';
 
+export interface ProjectHighlight {
+  label: string;
+  value: string;
+  desc: string;
+}
+
 export interface ProjectCaseStudy {
   slug: string;
   num: string;
@@ -26,6 +32,7 @@ export interface ProjectCaseStudy {
   platform: string;
   tools: string[];
   snapshot?: { label: string; value: string }[];
+  projectHighlights?: ProjectHighlight[];
   overview: string;
   problemHeading?: string;
   problem: string;
@@ -43,186 +50,314 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     slug: 'tapestory-admin',
     num: '01',
     title: 'Tapestory Admin Panel',
-    subtitle: 'Tailored for your story — Marketplace Operations & Bespoke Production Suite.',
-    projectType: 'Marketplace Admin Ecosystem · UI/UX Design & Frontend · Live Web App',
-    category: 'Bespoke Fashion Marketplace · Admin Portal',
-    desc: 'An end-to-end administration and operations console for Tapestory — managing bespoke tailoring orders, master ateliers, anatomical fit profiles, escrow settlements, and same-city express courier dispatch across 19+ integrated modules.',
-    tags: ['Admin Dashboard UX', 'Design System', 'Bespoke Operations', 'React & TypeScript'],
+    subtitle: 'A central dashboard for staff to manage custom tailoring orders, workshop progress, and deliveries.',
+    projectType: 'Marketplace Admin Dashboard · Product Design & Frontend · Live Web App',
+    category: 'Custom Clothing Marketplace · Admin Dashboard',
+    desc: 'An operations dashboard for the Tapestory team to track custom made-to-measure orders, review customer measurements, manage master tailors, and coordinate express city deliveries across 19 built-in screens.',
+    tags: ['Admin Dashboard', 'Order Tracking', 'Operations Design', 'React & TypeScript'],
     img: tapestoryImg,
     accent: '#B69A68',
     stageBg: '#172B24',
     liveUrl: 'https://tapestory-azure.vercel.app',
     role: 'Product Designer & Frontend Developer',
-    platform: 'Desktop & Responsive Web Application',
-    tools: ['Figma', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Recharts'],
+    platform: 'Desktop Web Application',
+    tools: ['Figma', 'React 19', 'TypeScript', 'Tailwind CSS', 'Recharts'],
     snapshot: [
-      { label: 'Scope', value: '19+ Marketplace Modules — Orders, Ateliers, Fit Profiles, Escrow & Logistics' },
-      { label: 'Core Workflow', value: 'Measurement Verified → Workshop Tailoring → QC → Same-City Dispatch → Settlement' },
-      { label: 'Design System', value: 'Playfair Display + Inter · Deep Forest (#172B24) · Sartorial Gold (#B69A68) · Warm Ivory (#F5F0E7)' },
-      { label: 'Live Build', value: 'Interactive React 19 + TypeScript SPA (tapestory-azure.vercel.app)' },
+      { label: 'Platform Scope', value: '19 Built-in Admin Pages — Orders, Tailors, Measurements & Delivery' },
+      { label: 'Main Workflow', value: 'Measurements Checked → Tailor Workshop → Quality Check → Express Delivery → Payment' },
+      { label: 'Design System', value: 'Warm Ivory, Deep Forest Green, Muted Gold & Clean Inter Typography' },
+      { label: 'Live Website', value: 'Interactive web app at tapestory-azure.vercel.app' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '5 Flows',
+        desc: 'Staff login, custom fit review, workshop tracking, express delivery, and tailor payouts.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '19 Screens',
+        desc: '19 built-in admin screens including orders, tailor management, courier tracking, and payouts.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '4 Problems',
+        desc: 'Measurements lost in spreadsheets, unknown tailoring delays, refund confusion, and manual delivery calls.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '5 Improvements',
+        desc: '1-click demo login, visual measurement cards, table & board views, OTP delivery tracking, and clear payout tables.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '7 Staff Roles',
+        desc: 'Custom permissions for Super Admin, Operations, Finance, Tailor Manager, Customer Support, Marketing, and Analytics.',
+      },
     ],
     overview:
-      'Tapestory ("Clothing that tells your story") is a made-to-measure bespoke clothing marketplace connecting patrons with independent tailoring workshops and master ateliers across India. The Tapestory Admin Panel serves as the operational nerve center for marketplace staff — uniting bespoke order orchestration, vendor onboarding, anatomical fit profiles, commission escrow, dispute mediation, and same-city rider logistics in one cohesive workspace.',
-    problemHeading: 'Bespoke tailoring doesn\'t fit inside a standard e-commerce dashboard.',
+      'Tapestory connects customers with independent tailors across India for custom made-to-measure clothing. The Tapestory Admin Panel gives company staff a single place to review customer measurements, assign orders to workshops, track local deliveries, and handle tailor payouts.',
+    problemHeading: 'Custom tailoring is difficult to track with standard e-commerce tools.',
     problem:
-      'Unlike off-the-rack retail, every made-to-measure order involves custom body measurements, fabric lot verification, multi-stage workshop tailoring SLAs, fit-alteration mediation, and milestone-based atelier payouts. Managing these workflows across disconnected spreadsheets and generic admin tools creates SLA blind spots, fit disputes, and delayed settlements.',
+      'Unlike ready-made retail, every custom tailoring order needs exact body measurements, fabric checks, multi-day workshop progress, and fit guarantees. When staff track this through phone calls and spreadsheets, orders get delayed and customer measurements get mixed up.',
     designChallenge:
-      'How might we bring sartorial calm and operational precision to a 19-module marketplace admin console — so staff can track every garment from measurement capture to doorstep handover without drowning in table clutter?',
-    strategyHeading: 'Sartorial Identity · Operational Precision · Trust by Design',
+      'How can we make a complex 19-screen dashboard so simple that staff can track every custom garment from first measurement to doorstep delivery without confusion?',
+    strategyHeading: 'Clear Orders · Visible Measurements · Fast Delivery',
     strategyPillars: [
       {
         num: '01',
-        title: 'Editorial Meets Operational',
-        desc: 'Pair Tapestory\'s luxury atelier identity (Deep Forest #172B24, Sartorial Gold #B69A68, Warm Ivory #F5F0E7, Playfair Display) with high-density Inter data tables, 8px spacing foundations, and zero-friction drawers.',
+        title: 'Calm & Structured Layout',
+        desc: 'Clean tables, clear spacing, and easy-to-read text so staff can review high volumes of orders without feeling overwhelmed.',
       },
       {
         num: '02',
-        title: 'Make Custom Fit & SLAs Visible',
-        desc: 'Surface anatomical measurement tolerances (±0.5 in), fabric swatches, and workshop SLA countdowns directly inside order drawers and Kanban production boards.',
+        title: 'Visual Fit & Progress Tracking',
+        desc: 'Customer body measurements and workshop deadlines appear right inside the order card so errors are caught early.',
       },
       {
         num: '03',
-        title: 'Close the Loop from Escrow to Handover',
-        desc: 'Connect 3DS payment capture, tiered atelier commissions, fit-dispute escrow holds, and dual-OTP same-city express courier dispatch into one auditable flow.',
+        title: 'Connected Delivery & Payouts',
+        desc: 'Delivery drivers, customer drop-off verification codes, and tailor payout calculations all connect in one clear flow.',
       },
     ],
     solution:
-      'Designed and built a 19-module React + TypeScript administration suite starting from an atelier-inspired Super Admin login portal with 1-click demo access and 2FA, leading into an executive GMV dashboard, Table/Kanban bespoke production pipelines, anatomical fit visualizers, same-city courier dispatch, and SHA-256 security audit trails.',
+      'Designed a 19-screen admin dashboard featuring a simple staff login with demo access, clear order tracking in both table and board views, visual measurement cards, local delivery dispatch, and transparent tailor payouts.',
     highlights: [
       {
-        title: 'Atelier Staff Login & RBAC Security (/admin/login & /admin/roles)',
-        desc: 'Editorial dress-form backdrop with a stitched forest-green pennant badge, 1-click Super Admin credential autofill, hardware-key/2FA flow, and a 7-role × 24-capability RBAC permission matrix.',
+        title: 'Staff Login & Role Access (/admin/login & /admin/roles)',
+        desc: 'Simple login screen with 1-click demo buttons and custom access levels for 7 different company roles.',
       },
       {
-        title: 'Bespoke Orders Kanban & Anatomical Fit Drawer (/admin/orders)',
-        desc: 'Dual Table/Kanban production views tracking Measurement Verified, In Workshop Tailoring, and Ready for Pickup stages — paired with an Anatomical Fit Visualizer (Bust, Waist, Shoulder tolerances) and branded QR packaging slips.',
+        title: 'Order Board & Measurement Cards (/admin/orders)',
+        desc: 'Track garments through tailoring stages with side-by-side customer measurement cards and printable garment tags.',
       },
       {
-        title: 'Same-City Express Logistics & Dual-OTP Handover (/admin/logistics)',
-        desc: 'Hyperlocal intra-city courier dispatch for delicate bespoke garments featuring live trip telemetry, rider assignment cards, tamper-proof garment bag seals, and dual pickup/delivery OTP verification.',
+        title: 'Local Delivery & Driver Dispatch (/admin/logistics)',
+        desc: 'Assign city delivery riders with live status updates and two-way verification codes for secure handovers.',
       },
       {
-        title: 'Escrow Commissions, Fit Disputes & Executive Analytics',
-        desc: '3DS gateway ledger, tiered atelier payout settlements, measurement-variance dispute mediation with reverse logistics, omnichannel WhatsApp/Email broadcasts, and Recharts GMV/LTV cohort reporting.',
+        title: 'Tailor Payouts & Sales Trends (/admin/commissions)',
+        desc: 'Clear calculation tables showing tailor earnings, platform fees, and monthly sales graphs.',
       },
     ],
     outcome:
-      'Delivered a live, production-grade marketplace operations suite (tapestory-azure.vercel.app) that proves enterprise back-office software can feel as refined and intentional as the luxury bespoke brand it powers.',
+      'A fully functional, live admin dashboard (tapestory-azure.vercel.app) that makes managing complex custom tailoring simple, clear, and easy to run.',
     whatsNext: [
-      { label: 'Atelier Partner Portal', text: 'Extend the design system into a dedicated workshop-facing app for master tailors to upload WIP fitting photos and update stage milestones.' },
-      { label: 'AI Fit-Variance Alerts', text: 'Flag anomalous patron measurements before fabric cutting begins by comparing submitted profiles against historical garment fit indices.' },
-      { label: 'Live Backend & Webhook Sync', text: 'Connect the deterministic client-side state layer to real-time payment gateway webhooks and courier GPS streams.' },
+      { label: 'Tailor Mobile App', text: 'Create a simple mobile version for master tailors to upload progress photos from their workshop.' },
+      { label: 'Measurement Alerts', text: 'Highlight unusual customer measurements automatically so tailors can double-check before cutting fabric.' },
+      { label: 'Live Delivery Map', text: 'Add a live map view to watch courier riders on their way to customer doorsteps.' },
     ],
   },
   {
     slug: 'lifeos',
     num: '02',
     title: 'LifeOS',
-    subtitle: 'Your life, brought together.',
-    category: 'UI/UX Product Design Concept · Mobile App',
-    desc: 'A calmer way to hold the everyday — an AI-assisted personal life organizer connecting schedules, priorities, daily captures, and longer-term responsibilities in one place.',
-    tags: ['Product Thinking', 'Interface Design', 'Connected Journeys', 'AI-Assisted UX'],
+    subtitle: 'A calmer way to organize your daily life.',
+    category: 'Personal Organizer App · Mobile UI/UX Concept',
+    desc: 'An AI-assisted personal organizer that brings your daily schedules, priority tasks, quick notes, and long-term goals together into one peaceful mobile experience.',
+    tags: ['Mobile App Design', 'Daily Planning', 'Goal Tracking', 'Helpful AI'],
     img: lifeOsImg,
     accent: '#2E5A50',
     stageBg: '#0C281F',
     role: 'Product & UI/UX Designer',
     platform: 'iOS & Android Mobile App',
     projectType: 'UI/UX Product Design Concept · Mobile App',
-    tools: ['Figma', 'Product Architecture', 'Design System', 'AI Interaction Design'],
+    tools: ['Figma', 'Information Architecture', 'Design System', 'AI Interaction Design'],
     snapshot: [
-      { label: 'Format', value: 'Mobile Product Concept (iOS & Android)' },
-      { label: 'Design Focus', value: 'Information hierarchy, connected flows, human control.' },
-      { label: 'Experience', value: 'Today · Life · Capture · Calendar · Profile' },
-      { label: 'Visual System', value: 'Instrument Sans · Forest Green (#2E5A50) · Warm Off-White (#FAF9F5)' },
+      { label: 'Format', value: 'Mobile App for iOS & Android' },
+      { label: 'Main Focus', value: 'Simple organization, connected goals, and user control' },
+      { label: 'Core Sections', value: 'Today · Life · Quick Note · Calendar · Profile' },
+      { label: 'Visual Style', value: 'Forest Green, Warm Off-White, and clean modern typography' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '6 Flows',
+        desc: 'Onboarding setup, daily priority view, quick voice & text notes, goal tracking, AI weekly plan, and life areas.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '30 Screens',
+        desc: '30 mobile screens including onboarding steps, daily timeline, note review, goal roadmaps, and category dashboards.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Important details scattered across 12 apps, urgent tasks lost in noise, and AI tools acting without user permission.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: '"Needs Attention" top alert bar, review screen before saving notes, goal-linked tasks, and Accept / Edit / Dismiss buttons for AI.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '8 Life Areas',
+        desc: 'Organized into Money, Health, Work, Travel, Vehicle, Personal, Entertainment, and Documents across 5 main tabs.',
+      },
     ],
     overview:
-      'LifeOS is an AI-assisted personal life organizer that turns scattered information into context, and context into a reviewable next step — exploring a single, calm home for schedules, priorities, daily captures, and longer-term responsibilities.',
-    problemHeading: 'Life is connected. Our tools rarely are.',
+      'LifeOS is a mobile concept for personal organization. Instead of using separate apps for reminders, bills, travel tickets, and fitness goals, LifeOS organizes them into one simple, stress-free space.',
+    problemHeading: 'Our daily lives are connected, but our apps keep everything separated.',
     problem:
-      'An appointment, a document, and a reminder may belong to the same responsibility yet live apart across 12 different apps — while urgent admin and meaningful goals compete for attention in the same day.',
+      'An upcoming doctor visit, health reports, and prescription reminders all belong to the same topic, yet live in three different apps. People end up stressed switching between calendars, notes, and task lists, often missing urgent bills or renewals.',
     designChallenge:
-      'How might one space make life feel less fragmented — without taking control away?',
-    solution:
-      'Designed a 5-pillar mobile system (Today, Life, Capture, Calendar, Profile) that prioritizes urgent items first, groups goals into context-rich Life Threads, and keeps every AI suggestion explicitly reviewable.',
-    strategyHeading: 'Clarity · Continuity · Agency',
+      'How can one simple mobile app help people manage daily tasks and future goals without feeling overwhelmed or losing control?',
+    strategyHeading: 'Urgent First · Connected Context · User in Control',
     strategyPillars: [
-      { num: '01', title: 'Show What Matters Now', desc: 'Separate time-sensitive responsibilities ("3 Things Need Your Attention") from the rest of the day\'s timeline.' },
-      { num: '02', title: 'Keep the Context Together', desc: 'Connect goals to tasks, documents, and schedules through Life Threads and 8 Life Categories rather than separate apps.' },
-      { num: '03', title: 'Assist, Then Ask', desc: 'Make AI output reviewable with visible Confirm, Edit, and Dismiss controls — AI that helps, never takes over.' },
+      {
+        num: '01',
+        title: 'Show Urgent Items First',
+        desc: 'Highlight urgent tasks and bills right at the top of the Today screen before the general timeline.',
+      },
+      {
+        num: '02',
+        title: 'Connect Tasks to Real Goals',
+        desc: 'Group tasks, files, and reminders under clear goals like "Half Marathon" or "Family Trip" instead of isolated checklists.',
+      },
+      {
+        num: '03',
+        title: 'AI That Suggests, Never Dictates',
+        desc: 'Always let users review, edit, or dismiss AI suggestions with clear buttons before anything is saved.',
+      },
     ],
+    solution:
+      'Created a 30-screen mobile system with a focused Today view, effortless voice and text note capture, connected goal roadmaps, and helpful AI suggestions that always ask for confirmation.',
     highlights: [
-      { title: 'Today Dashboard & Priority Attention', desc: 'Surfaces urgent bills and renewals before the day\'s timeline, paired with optional LifeOS Assist suggestions.' },
-      { title: 'Natural-Language Capture & Confirmation', desc: 'Accepts everyday voice or text (including Hinglish like "Mummy ka doctor appointment next Wednesday hai") and previews structured fields before saving.' },
-      { title: 'Life Threads & 8 Life Categories', desc: 'Connects big goals (MBA Application, Half Marathon, Mumbai Trip) and 8 life areas (Money, Health, Work, Travel, Vehicle, Personal, Entertainment, Documents) with tasks and files.' },
-      { title: 'Conversational AI & Smart Planning', desc: 'Answers questions about upcoming bills (₹53,449 due), proposes weekend plans, and turns task lists into reviewable weekly schedules.' },
+      {
+        title: 'Today Screen & Urgent Alerts',
+        desc: 'Highlights urgent bills and appointments first, followed by a clean timeline of the day ahead.',
+      },
+      {
+        title: 'Quick Voice & Text Note Capture',
+        desc: 'Speaks or types in everyday language; the app extracts dates and details and lets you review before saving.',
+      },
+      {
+        title: 'Life Threads & 8 Life Areas',
+        desc: 'Keeps related tasks, notes, and files grouped under specific life categories like Health, Money, and Travel.',
+      },
+      {
+        title: 'Smart Planning with User Review',
+        desc: 'AI drafts a suggested weekly plan or answers questions about upcoming bills, with clear Accept and Edit controls.',
+      },
     ],
     outcome:
-      'Less to hold in your head, more room for life — bringing together a focused Today view, context-rich Life Threads, natural-language capture, and reviewable AI assistance while keeping the person in charge.',
+      'A mobile design that takes the mental stress out of daily planning, giving people one calm place for their priorities while keeping them fully in charge.',
     whatsNext: [
-      { label: 'Findability', text: 'Validate whether people can predict if an item belongs in a Category, a Life Thread, or the Calendar.' },
-      { label: 'Interpretation & Recovery', text: 'Test how clearly multilingual captures communicate uncertainty and how easily users edit a mistaken event.' },
-      { label: 'Attention & Trust', text: 'Evaluate which prompts feel helpful rather than intrusive and verify that permission and data controls are clear.' },
+      { label: 'User Testing', text: 'Test how quickly new users find items across categories and threads.' },
+      { label: 'Voice Note Accuracy', text: 'Test how well voice notes handle mixed languages and everyday phrasing.' },
+      { label: 'Notification Settings', text: 'Give users simple controls to choose which reminders they want to receive.' },
     ],
   },
   {
     slug: 'brokrs-house',
     num: '03',
     title: 'Brokrs House',
-    subtitle: 'A premium alliance. A connected broker workspace.',
-    category: 'Brand Identity + Mobile Product Design',
-    desc: 'A premium real-estate platform connecting builders/developers, brokers, and buyers — bringing property discovery, pipeline visibility, deal protection, and payout tracking into a connected broker workspace.',
-    tags: ['Brand Identity', 'Mobile Product Design', 'Real Estate Ecosystem', 'Broker Workspace'],
+    subtitle: 'A connected workspace for real estate brokers.',
+    category: 'Real Estate Platform · Mobile Product Design',
+    desc: 'A mobile app that helps real estate brokers find verified builder properties, protect their buyer leads, and track commission earnings from start to payout.',
+    tags: ['Real Estate App', 'Lead Management', 'Commission Tracking', 'Broker Tools'],
     img: brokrsHouseImg,
     accent: '#C9A84C',
     stageBg: '#FEFDF9',
     role: 'Product & Brand Designer',
     platform: 'iOS & Android Mobile App',
-    projectType: 'Brand Identity + Mobile Product Design · Selected Broker Experience',
+    projectType: 'Brand Identity & Mobile App Design',
     tools: ['Figma', 'Brand Identity', 'Design System', 'Prototyping'],
     snapshot: [
-      { label: 'Objective', value: 'Connect property discovery, lead ownership, and commission visibility in one broker workspace.' },
-      { label: 'Ecosystem', value: 'Builder / Developer · Broker (Case-Study Focus) · Buyer.' },
-      { label: 'Core Flow', value: 'Enter → Discover → Manage → Protect → Earn.' },
-      { label: 'Scope', value: 'Mobile Product Design + Brand Identity (#0A1628 Navy, #C9A84C Gold).' },
+      { label: 'Platform Scope', value: 'Mobile workspace for brokers with builder and buyer connections' },
+      { label: 'Core Steps', value: 'Sign Up → Find Property → Register Buyer → Hold Unit → Get Paid' },
+      { label: 'Key Features', value: 'Verified listings, 48-hr unit hold, 7-day lead lock & payout tracker' },
+      { label: 'Visual Style', value: 'Navy Blue, Warm Gold & crisp, scannable cards' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '5 Flows',
+        desc: 'Broker sign-up & RERA verification, property search, unit & commission check, lead tracking, and unit hold to payout.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '22 Screens',
+        desc: '22 screens covering onboarding, property search, live unit availability, lead stages, and payment history.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '4 Problems',
+        desc: 'Scattered builder project PDFs, forgotten buyer follow-ups, hidden commission rates, and brokers losing credit for their leads.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: 'Commission percentage tags on every card, live tower unit availability, 48-hour unit hold timer, and 7-day buyer claim protection.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '3 Platform Roles',
+        desc: 'Focused on Brokers as the primary user, with connected workflows for Builders/Developers and Buyers.',
+      },
     ],
     overview:
-      'BROKRS HOUSE is a premium real-estate platform connecting builders/developers, brokers, and buyers — bringing property discovery, pipeline visibility, deal protection, and payout tracking into a connected broker workspace.',
-    problemHeading: 'The deal moves forward. The context should too.',
+      'Brokrs House is a mobile app created for real estate brokers in India. It brings together verified builder projects, client lead tracking, unit booking holds, and commission payouts into one easy-to-use mobile workspace.',
+    problemHeading: 'Brokers lose deals and commissions because information is scattered.',
     problem:
-      'Fragmented project information, scattered follow-ups, unclear commission structures, and uncertain lead ownership create friction across a broker\'s working day.',
+      'Brokers usually juggle project brochures on WhatsApp, keep client notes in diaries, and struggle to know which apartment units are actually available. Worst of all, they often worry whether builders will honor their buyer registration and pay commissions on time.',
     designChallenge:
-      'How might we make each next action clearer across discovery, lead registration, deal protection, and payouts without losing the commercial context of the deal?',
-    solution:
-      'Designed an end-to-end broker experience — from RERA-verified onboarding and live unit/commission discovery to smart buyer matching, 48-hour unit holds, 7-day buyer claim protection, and transparent builder payout tracking.',
-    strategyHeading: 'Discover · Protect · Earn',
+      'How might we give brokers a single tool to discover properties, protect their registered buyers, and see their exact commission payouts with total confidence?',
+    strategyHeading: 'Find Easily · Protect Leads · Track Payouts',
     strategyPillars: [
-      { num: '01', title: 'Discover with Context', desc: 'Bring projects, live unit inventory, and tiered commission terms into the same decision.' },
-      { num: '02', title: 'Keep the Pipeline Visible', desc: 'Connect registered leads with pipeline stages, client requirements, and scheduled follow-ups.' },
-      { num: '03', title: 'Make Ownership Explicit', desc: 'Surface buyer claims, 48-hour unit holds, deal protection rules, and direct builder payout tracking.' },
+      {
+        num: '01',
+        title: 'Property Details in One Glance',
+        desc: 'Show price ranges, tower unit availability, and exact broker commission percentages right on the property card.',
+      },
+      {
+        num: '02',
+        title: 'Simple Buyer Pipeline',
+        desc: 'Organize buyer leads by stage (interested, site visit scheduled, negotiating) with quick follow-up reminders.',
+      },
+      {
+        num: '03',
+        title: 'Deal Protection & Payout Records',
+        desc: 'Lock in registered buyers for 7 days, hold units for 48 hours, and track builder payouts directly to the bank.',
+      },
     ],
+    solution:
+      'Designed a 22-screen broker app that verifies broker credentials, shows live inventory and commission terms, protects registered buyer leads, and tracks payment milestones.',
     highlights: [
-      { title: 'RERA Onboarding & Property Discovery', desc: 'Role-aware onboarding with RERA verification and commission-tagged project browsing (3.0%–4.5% Comm).' },
-      { title: 'Unit Inventory & Commission Tiers', desc: 'Real-time tower/unit availability (Available, Hold, Booked) paired with volume incentive tiers.' },
-      { title: 'Lead CRM, Smart Matches & Deal Protection', desc: 'AI-driven Smart Matches, 48-hr unit holds, and 7-day buyer claim locks with duplicate-claim blocking.' },
-      { title: 'Alliance Earnings & Payout Records', desc: 'Separates Total Realized Commission (₹12,45,000), Pending Verification, Approved Payouts, and Paid to Bank dispatches.' },
+      {
+        title: 'Fast Onboarding & Property Search',
+        desc: 'Quick sign-up with broker license check and filters for location, budget, and highest commission rates.',
+      },
+      {
+        title: 'Live Tower Inventory & Payout Rates',
+        desc: 'Instant view of which apartments are available, on hold, or sold, with clear commission percentages (3.0% to 4.5%).',
+      },
+      {
+        title: 'Lead Pipeline & 7-Day Protection',
+        desc: 'Track clients through each sales stage and protect registered buyers for 7 days so other brokers cannot claim them.',
+      },
+      {
+        title: '48-Hour Unit Hold & Payout Ledger',
+        desc: 'Hold selected units for serious buyers for 48 hours and track approved commissions straight to your bank account.',
+      },
     ],
     outcome:
-      'Clarity is the intention — connecting project context, client progress, deal ownership, and commission payouts into one continuous broker journey.',
+      'A clear, dependable mobile workspace that saves brokers hours of phone calls and gives them complete confidence in their earnings.',
     whatsNext: [
-      { label: 'Onboarding Clarity', text: 'Validate OTP entry, role selection, and RERA verification flow with brokers.' },
-      { label: 'Decision Confidence', text: 'Test how quickly brokers interpret unit availability and tiered commission terms.' },
-      { label: 'Workflow Continuity', text: 'Evaluate lead registration, buyer claim protection, and payout status comprehension.' },
+      { label: 'Broker Feedback', text: 'Interview active brokers to test how smoothly the license check works during sign-up.' },
+      { label: 'Inventory Sync', text: 'Ensure tower unit availability updates instantaneously when a builder locks a flat.' },
+      { label: 'Commission Reminders', text: 'Add instant push notifications when a builder approves a milestone payout.' },
     ],
   },
   {
     slug: 'shyam-jagat',
     num: '04',
     title: 'Shyam Jagat',
-    subtitle: 'Connecting devotion, community, and seva in one place.',
-    projectType: 'Socio-Spiritual Platform · UI/UX Design · Web Experience',
-    category: 'Socio-Spiritual Web Platform · UI/UX Case Study',
-    desc: 'A socio-spiritual web platform uniting temple discovery, devotional artists, transparent seva contributions, and role-based community registration.',
-    tags: ['UI/UX Design', 'Web Platform', 'Information Architecture', 'Design System'],
+    subtitle: 'Connecting devotion, temples, and seva in one simple place.',
+    category: 'Community & Devotion Website · UI/UX Design',
+    desc: 'A community web platform that helps devotees discover verified temples across India, find devotional singers and musicians, make verified donations, and join community activities.',
+    tags: ['Web Design', 'Community Platform', 'Temple Directory', 'Easy Donations'],
     img: shyamJagatImg,
     accent: '#D95B16',
     stageBg: '#F4EDE2',
@@ -231,181 +366,300 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     platform: 'Desktop & Responsive Web',
     tools: ['Figma', 'UI/UX Design', 'Design System'],
     snapshot: [
-      { label: 'Objective', value: 'Unite temple discovery, devotional artists, seva, and community roles.' },
-      { label: 'Audience', value: 'Devotees, Artists, Temples, Dharmashalas & Volunteers.' },
-      { label: 'Core Flow', value: 'Discover → Participate → Contribute.' },
-      { label: 'Role', value: 'End-to-end UI/UX & Visual Design.' },
+      { label: 'Website Type', value: 'Responsive web platform for desktop and mobile' },
+      { label: 'Audience', value: 'Devotees, devotional artists, temple committees & volunteers' },
+      { label: 'Main Journey', value: 'Find Temples → Watch & Listen → Donate to Seva → Join Community' },
+      { label: 'Live Link', value: 'ssj-three.vercel.app' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '3 Flows',
+        desc: 'Temple & artist discovery, guided Seva donation, and community role registration.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '8 Web Views',
+        desc: '8 responsive website pages including home, temple search, artist listings, donation desk, and registration.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Inaccurate temple timings on the internet, difficulty finding genuine bhajan artists, and no transparent donation options.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: 'State and deity search filters, verified community badges, preset UPI donation amounts, and simple role sign-up cards.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '6 Community Roles',
+        desc: 'Devotees, Bhajan Singers, Folk Dancers, Musicians, Temples, and Pilgrim Guest Houses (Dharmashalas).',
+      },
     ],
     overview:
-      'Shree Shyam Jagat is a socio-spiritual platform inspired by Baba Shyam (`सहयोग · सेवा · समर्पण`) that connects devotees with verified temples across India, devotional artists, charitable seva drives, and community registration.',
-    problemHeading: 'Many needs. One journey.',
+      'Shree Shyam Jagat is a socio-spiritual website that brings devotees together with verified temples across India, devotional artists, charitable causes (Seva), and community sign-ups.',
+    problemHeading: 'Devotees struggle to find verified temple details and trustworthy causes.',
     problem:
-      'Devotees looking for temples, darshan timings, devotional artists, and ways to contribute to seva often face scattered, unverified information with no clear starting point.',
+      'When planning a temple visit or family prayer gathering, devotees often find outdated timings and contact numbers online. At the same time, people want to support meaningful charity like feeding the needy or temple maintenance, but worry about donation transparency.',
     designChallenge:
-      'How might we connect temple discovery, role-based joining, and charitable seva without making participation feel complicated?',
+      'How can we create a welcoming, easy-to-use website that helps anyone find verified temples, book devotional artists, and donate with complete confidence?',
     strategyHeading: 'Discover · Contribute · Belong',
     strategyPillars: [
       {
         num: '01',
-        title: 'Discover',
-        desc: 'Search verified temples and devotional artists by state, deity, and category.',
+        title: 'Fast Temple & Artist Search',
+        desc: 'Simple filters by state, city, and deity so families can quickly find verified temples and devotional performers.',
       },
       {
         num: '02',
-        title: 'Contribute (Seva)',
-        desc: 'Turn intention into seva with preset offerings, clear causes, and UPI/80G support.',
+        title: 'Clear & Trustworthy Giving',
+        desc: 'Preset donation amounts, clear descriptions of charitable causes, and instant UPI payment receipts.',
       },
       {
         num: '03',
-        title: 'Participate',
-        desc: 'Join the ecosystem through role-based registration for Artists, Temples, and Dharmashalas.',
+        title: 'Welcoming Community Roles',
+        desc: 'Easy sign-up cards allowing singers, temples, and guest houses to list their services and get verified.',
       },
     ],
     solution:
-      'Designed a warm, culturally rooted web interface with searchable temple and artist directories, a guided donation flow, and role-based onboarding.',
+      'Designed a warm, culturally respectful website with clear directories for temples and performers, a guided 3-click donation flow with instant receipts, and simple registration for community members.',
     highlights: [
-      { title: 'Temple & Artist Directories', desc: 'Location and deity filters with verified ratings for temples and bhajan artists.' },
-      { title: 'Guided Seva Offering', desc: 'Preset amounts (₹501–₹11,000), 8 seva causes (Annadan, Education, Medical), and UPI checkout.' },
-      { title: 'Role-Based Registration', desc: 'Dedicated onboarding cards for Artist, Dancer, Musician, Temple, Dharmashala, and Products.' },
-      { title: 'Cultural Visual Language', desc: 'Sacred saffron (#D95B16), temple maroon (#5B1914), and warm parchment surfaces.' },
+      {
+        title: 'Verified Temple Directory',
+        desc: 'Browse temples by state and deity with confirmed darshan timings, directions, and community reviews.',
+      },
+      {
+        title: 'Devotional Artists & Performers',
+        desc: 'Find bhajan singers, musicians, and dancers with audio samples, event history, and direct booking contact.',
+      },
+      {
+        title: 'Guided Seva Donations',
+        desc: 'Choose from verified causes (food distribution, medical help, cow shelters) with preset amounts and instant UPI payments.',
+      },
+      {
+        title: 'Role-Based Community Sign-Up',
+        desc: 'Simple step-by-step registration for artists, temple trusts, and guest houses to join and get verified.',
+      },
     ],
     outcome:
-      'Shyam Jagat brings discovery, participation, and charitable giving into a connected digital space that honors devotional tradition.',
+      'A warm, trustworthy website (ssj-three.vercel.app) that makes spiritual discovery and charitable giving accessible and clear for people of all age groups.',
+    whatsNext: [
+      { label: 'Audio Previews', text: 'Add a compact audio player so visitors can listen to devotional bhajans directly on artist cards.' },
+      { label: 'Festival Calendar', text: 'Create an interactive calendar showing upcoming auspicious dates and temple kirtans.' },
+      { label: 'Direct Messaging', text: 'Let event organizers message verified artists directly for family satsang bookings.' },
+    ],
   },
   {
     slug: 'the-brokrs',
     num: '05',
     title: 'The Brokrs',
-    subtitle: 'Investing, services & benefits. One connected experience.',
-    projectType: 'Product Experience · Mobile App · India',
-    category: 'Multi-Industry Investment & Services App',
-    desc: 'THE BROKRS brings investment discovery, everyday services, member offers, and wallet management into a single mobile experience.',
-    tags: ['Mobile App Design', 'Marketplace UX', 'Fintech & Wallet', 'Design System'],
+    subtitle: 'Investments, everyday services, and rewards in one connected app.',
+    category: 'Multi-Service Investment App · Mobile UI/UX Design',
+    desc: 'A mobile application that unites project investments, daily household services, partner deals, and digital wallet rewards into one straightforward experience.',
+    tags: ['Mobile App Design', 'Investments', 'Services Marketplace', 'Wallet & Rewards'],
     img: theBrokrsImg,
     accent: '#E09214',
     stageBg: '#FEFDF9',
     role: 'UI/UX & Product Designer',
     platform: 'iOS & Android Mobile App',
-    tools: ['Figma', 'Experience Mapping', 'Mobile UI'],
+    tools: ['Figma', 'Experience Mapping', 'Mobile UI Design'],
     snapshot: [
-      { label: 'Explore', value: 'Real estate, technology, hybrid farming & everyday services.' },
-      { label: 'Participate', value: 'Service detail, investment selection & payment confirmation.' },
-      { label: 'Manage', value: 'Project roadmaps, wallet balances, rewards & KYC status.' },
-      { label: 'Role', value: 'Product Experience & Mobile UI Design.' },
+      { label: 'Platform Scope', value: 'Mobile app for iOS and Android' },
+      { label: 'Key Areas', value: 'Real Estate, Technology, Farming & Daily Services' },
+      { label: 'Main Journey', value: 'Browse Projects → Review Details → Secure Checkout → Track Progress' },
+      { label: 'Visual Style', value: 'Navy Blue, Amber Gold & clean data cards' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '5 Flows',
+        desc: 'Account sign-in, project & service discovery, checkout & payment retry, partner discounts, and wallet with KYC.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '24 Screens',
+        desc: '24 screens including home feed, service marketplace, project roadmaps, payment flows, rewards, and KYC status.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Investments and everyday services separated across apps, confusing payment failure screens, and mixed-up cash vs. reward balances.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: '5-step visual project roadmap, transparent tax and fee breakdown before paying, simple retry screen for failed bank payments, and separate wallet cash vs reward point cards.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '4 Service Sectors',
+        desc: 'Real Estate, Technology Projects, Hybrid Farming, and Everyday Services like Insurance, Loans, and Travel.',
+      },
     ],
     overview:
-      'THE BROKRS brings investment discovery (Real Estate, Technology, Hybrid Farming), everyday services (Insurance, Loans, Travel, Grocery), partner benefits, and wallet management into one connected mobile app.',
-    problemHeading: 'Many opportunities. Too many disconnected decisions.',
+      'THE BROKRS is a mobile platform that brings together modern investment opportunities (in real estate, tech projects, and hybrid farming) alongside everyday services like insurance, loans, and partner discounts.',
+    problemHeading: 'Managing investments and services across separate apps creates confusion.',
     problem:
-      'When investment discovery, everyday services, member rewards, and money management live apart, users have to piece together what is available, what they own, and what needs attention.',
+      'Users often have to use one app to invest, another to pay for services, and a third to track rewards. When payments fail or fees are hidden, users lose trust and abandon their transactions.',
     designChallenge:
-      'How might we connect investment discovery, partner benefits, and portfolio tracking in one app while keeping every financial decision clear and distinct?',
-    strategyHeading: 'Orient · Reveal · Track',
+      'How can we combine multiple investment sectors and daily services in one mobile app while keeping every financial detail simple, clear, and reassuring?',
+    strategyHeading: 'Clear Choices · Honest Numbers · Easy Tracking',
     strategyPillars: [
       {
         num: '01',
-        title: 'Orient Before Asking',
-        desc: 'Introduce investment scope and member value before moving into mobile OTP or email sign-in.',
+        title: 'Transparent Project Roadmaps',
+        desc: 'Show real project milestones, expected timelines, and clear earnings estimates before anyone invests.',
       },
       {
         num: '02',
-        title: 'Reveal Useful Context',
-        desc: 'Pair service marketplace filters with verified provider info, funding progress, and cultivation roadmaps.',
+        title: 'Friction-Free Checkout & Recovery',
+        desc: 'Show exact taxes and fees upfront, and provide friendly, one-tap retry options if a bank payment fails.',
       },
       {
         num: '03',
-        title: 'Make Status Visible',
-        desc: 'Clearly separate processing, confirmation, and recovery states across payments, rewards, and KYC.',
+        title: 'Separate Cash & Reward Points',
+        desc: 'Clearly distinguish available wallet cash from earned reward points to prevent withdrawal confusion.',
       },
     ],
     solution:
-      'Anchored the experience around a shared Home hub that connects the Service Marketplace, Running Projects, Checkout & Recovery, Partner Offers, Rewards Redemption, and My Wallet.',
+      'Designed a 24-screen mobile app centered around an intuitive home hub, detailed project milestone trackers, clear pricing breakdowns, and a simple digital wallet.',
     highlights: [
-      { title: 'Home Hub & Service Marketplace', desc: 'Unified access to Real Estate, IT, Hybrid Farming, and Insurance with category filters and funding bars.' },
-      { title: 'Project Detail & Cultivation Roadmap', desc: 'Pairs financial returns (₹25,000 invested → ₹27,500 value) with a 5-stage Saffron Cultivation roadmap.' },
-      { title: 'Checkout & Failure Recovery', desc: 'Transparent GST/fee breakdown, processing guidance, reward points, and bank-decline retry flows.' },
-      { title: 'Partner Perks, Rewards & Wallet/KYC', desc: 'Time-bound partner codes, points-to-cashback bank transfers, ₹1.25L wallet view, and document-level KYC.' },
+      {
+        title: 'Home Hub & Category Filters',
+        desc: 'Quick access to Real Estate, Tech, Hybrid Farming, and Insurance with funding progress bars on every card.',
+      },
+      {
+        title: 'Project Details & Milestones',
+        desc: 'Clear visual roadmaps showing how projects progress from initial funding to final returns.',
+      },
+      {
+        title: 'Honest Checkout & Payment Recovery',
+        desc: 'Full price breakdown before payment, plus clear guidance and a 1-tap retry button if a card or UPI fails.',
+      },
+      {
+        title: 'Partner Discounts & Simple Wallet',
+        desc: 'Claim exclusive discount codes, convert reward points into bank cashback, and check identity verification status.',
+      },
     ],
     outcome:
-      'By pairing consistent navy-and-amber hierarchy with explicit state communication, THE BROKRS makes complex multi-sector investing and member benefits easy to navigate.',
+      'A reliable, straightforward mobile experience that makes exploring diverse investments and daily services feel clear, accessible, and stress-free.',
     whatsNext: [
-      { label: 'Findability', text: 'Test how quickly members locate specific services and explain the next step.' },
-      { label: 'Payment Clarity', text: 'Validate user comprehension across processing, success, and retry states.' },
-      { label: 'Balance & KYC Continuity', text: 'Verify clarity between portfolio value, available cash, reward points, and pending KYC items.' },
+      { label: 'Payment Success Testing', text: 'Test how easily users recover from bank network timeouts during UPI checkout.' },
+      { label: 'Savings Calculator', text: 'Add an interactive tool to let users see projected returns before investing.' },
+      { label: 'Referral Rewards', text: 'Design a simple invite-a-friend card that rewards both users with bonus points.' },
     ],
   },
   {
     slug: 'clickcard',
     num: '06',
     title: 'ClickCard',
-    subtitle: 'One link. Your entire identity.',
-    projectType: 'Digital Identity Platform · UI/UX Design · Web Product',
-    category: 'Digital Identity Platform · Web Product',
-    desc: 'ClickCard brings professional profiles, social links, contact details, and portfolios into one shareable destination.',
-    tags: ['Product Design', 'Web Design', 'Responsive UX', 'Visual Design'],
+    subtitle: 'One single link for your entire digital identity.',
+    category: 'Digital Business Card · Web Product Design',
+    desc: 'A modern web platform that lets professionals, creators, and students combine their social profiles, portfolio work, resumes, and contact info into a single shareable card.',
+    tags: ['Product Design', 'Digital Business Card', 'Link in Bio', 'Instant Sharing'],
     img: clickCardImg,
     accent: '#009E88',
     stageBg: '#FDFEF9',
     liveUrl: 'https://clickcard-2.vercel.app/',
     role: 'UI/UX Designer',
-    platform: 'Web (Responsive)',
+    platform: 'Responsive Web Application',
     tools: ['Figma', 'UI Design', 'Prototyping'],
     snapshot: [
-      { label: 'Objective', value: 'Make digital identity easy to create, share, and track.' },
-      { label: 'Audience', value: 'Students, professionals, creators & businesses.' },
-      { label: 'Core Flow', value: 'Create → Customize → Share → Track.' },
-      { label: 'Role', value: 'UI/UX & Product Design.' },
+      { label: 'Platform Scope', value: 'Responsive web application for desktop and mobile' },
+      { label: 'Target Audience', value: 'Working professionals, freelancers, students & small businesses' },
+      { label: 'Core Steps', value: 'Create Profile → Pick Design → Share Link or QR → View Stats' },
+      { label: 'Live Link', value: 'clickcard-2.vercel.app' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '4 Flows',
+        desc: 'Sign up, profile & social link setup, card template styling, and QR code sharing with view tracking.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '12 Screens',
+        desc: '12 screens across landing page, feature preview, Card Studio editor, mobile card views, QR modal, and analytics.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Sharing multiple separate links for LinkedIn and portfolios, paper cards getting lost or outdated, and zero insight into profile views.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: 'All personal links in one place, ready-to-use Card Studio card designs, instant QR code sharing, and simple view & click counter badges.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '4 User Types',
+        desc: 'Tailored options for Students, Working Professionals, Content Creators, and Small Business Owners.',
+      },
     ],
     overview:
-      'ClickCard is a digital identity platform that brings professional profiles, social links, portfolios, and contact details together into one shareable destination — replacing scattered links and printed business cards.',
-    problemHeading: 'Fragmented digital identity',
+      'ClickCard is a digital business card platform that brings your resume, portfolio links, social media profiles, and contact details together into one clean link and QR code, replacing paper cards that get thrown away.',
+    problemHeading: 'Paper business cards get lost, and sharing multiple web links is frustrating.',
     problem:
-      'People maintain separate links across LinkedIn, portfolios, resumes, and social platforms, creating friction when sharing their identity quickly and keeping details updated.',
+      'Whenever you meet someone new, sharing separate links for your LinkedIn, portfolio, GitHub, and phone number is clumsy. Paper cards quickly become outdated whenever your number or job title changes.',
     designChallenge:
-      'How might we make digital identity easier to create, share, and manage through one simple experience?',
-    strategyHeading: 'Create · Share · Grow',
+      'How might we create a digital card that anyone can set up in under 3 minutes, customize to match their personal style, and share with a single tap?',
+    strategyHeading: 'Create · Customize · Share · Measure',
     strategyPillars: [
       {
         num: '01',
-        title: 'Create',
-        desc: 'Build a personalized digital business card and profile in minutes.',
+        title: '3-Minute Setup',
+        desc: 'Add your photo, job title, and social links with simple form fields and real-time live preview.',
       },
       {
         num: '02',
-        title: 'Share',
-        desc: 'Connect instantly via a single custom link, QR code, or NFC tap.',
+        title: 'Instant QR & Link Sharing',
+        desc: 'Share your card instantly using a custom short link, a scannable QR code, or an NFC card tap.',
       },
       {
         num: '03',
-        title: 'Track',
-        desc: 'Measure profile visits, link clicks, and QR scans with clear analytics.',
+        title: 'Simple Visit Tracking',
+        desc: 'See how many people viewed your card and clicked your links with easy-to-read counters.',
       },
     ],
     solution:
-      'Designed a clean, identity-first web experience centered around three actions — Create, Share, and Track — uniting profile setup, Card Studio templates, and engagement analytics.',
+      'Designed a clean 12-screen web application featuring rapid profile setup, ready-made card templates in the Card Studio, one-tap QR sharing, and clear visitor analytics.',
     highlights: [
-      { title: 'Unified Digital Profile', desc: 'Social links, portfolio work, resume, and contact details in one shareable link.' },
-      { title: 'Card Studio Templates', desc: 'Customizable branded cards and resumes that stay synced with profile data.' },
-      { title: 'Instant QR & Link Sharing', desc: 'Frictionless sharing across mobile, desktop, QR codes, and NFC cards.' },
-      { title: 'Engagement Analytics', desc: 'At-a-glance insights into profile views, link taps, and audience reach.' },
+      {
+        title: 'All-in-One Digital Profile',
+        desc: 'Combines your resume, portfolio samples, social handles, and direct contact buttons on one screen.',
+      },
+      {
+        title: 'Card Studio Templates',
+        desc: 'Pick modern layouts, accent colors, and font styles that instantly update across desktop and mobile.',
+      },
+      {
+        title: 'Instant QR Code Sharing',
+        desc: 'Generate a downloadable QR code or custom web link that opens seamlessly on any phone browser.',
+      },
+      {
+        title: 'Visitor View & Click Counters',
+        desc: 'A simple dashboard that shows how many people viewed your profile and which links they tapped the most.',
+      },
     ],
     outcome:
-      'ClickCard brings digital identity, sharing, and engagement tracking into one cohesive product experience.',
+      'A clean, modern platform (clickcard-2.vercel.app) that makes sharing your professional identity fast, memorable, and environmentally friendly.',
     whatsNext: [
-      { label: 'Personalization', text: 'Create a more tailored experience for students, creators, and businesses.' },
-      { label: 'Feature Discovery', text: 'Make key customization and studio features easier to discover.' },
-      { label: 'Seamless Onboarding', text: 'Simplify handle claiming and publishing for first-time users.' },
+      { label: 'Company Team Cards', text: 'Allow small businesses to create branded digital cards for their entire team with central control.' },
+      { label: 'Direct Contact Save (.vcf)', text: 'Add a 1-tap button allowing recipients to save your details directly into their phone contacts.' },
+      { label: 'Custom Domain Links', text: 'Let users connect their personal domain name to their ClickCard page.' },
     ],
   },
   {
     slug: 'shyam-jagat-admin',
     num: '07',
     title: 'Shyam Jagat Admin Panel',
-    subtitle: 'Devotion, with a clear direction.',
-    projectType: 'Admin Ecosystem · Product Design · Web Dashboard',
-    category: 'Admin Ecosystem & Operations Dashboard',
-    desc: 'One administration platform for the people, places, and everyday operations of the Shyam Jagat devotional ecosystem.',
-    tags: ['Dashboard Design', 'Admin Panel', 'Design System', 'Operations UX'],
+    subtitle: 'A clear operations dashboard for managing the community.',
+    category: 'Community Admin Portal · Dashboard UI/UX Design',
+    desc: 'An operations dashboard that helps platform administrators manage temples, devotional artists, community events, seva donations, and member verifications in one place.',
+    tags: ['Dashboard UX', 'Admin Console', 'Table Design', 'Document Verification'],
     img: shyamJagatDashboardImg,
     accent: '#C85D2A',
     stageBg: '#F3E6D8',
@@ -413,106 +667,201 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     platform: 'Desktop Web Admin Portal',
     tools: ['Figma', 'Dashboard UX', 'Design System'],
     snapshot: [
-      { label: 'Objective', value: 'Manage 16+ devotional ecosystem modules from one clear workspace.' },
-      { label: 'Users', value: 'Platform Admins, Content Editors & Verification Reviewers.' },
-      { label: 'Core Flow', value: 'Overview KPIs → Publish & Coordinate → Audit & Verify.' },
-      { label: 'Role', value: 'Product Design & Admin UI System.' },
+      { label: 'Platform Scope', value: 'Desktop web portal for administrative staff' },
+      { label: 'Users', value: 'Platform administrators, content managers & verification reviewers' },
+      { label: 'Key Tasks', value: 'Monitor Platform → Publish Content → Verify Applications → Audit Donations' },
+      { label: 'Design System', value: 'Deep Burgundy, Warm Parchment & structured data tables' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '4 Flows',
+        desc: 'Dashboard overview check, blog & seva event publishing, donation audit with 80G tax receipts, and registration approvals.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '5 Admin Views',
+        desc: '5 high-density screens including platform summary, event publishing table, content manager, donation ledger, and approval modal.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Managing 16 community sections manually, slow checking of applicant ID documents, and messy donation spreadsheets.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: '12 live summary cards on the home screen, consistent search and filters on every table, one-click 80G receipt status, and a pop-up document reviewer.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '16 Admin Modules',
+        desc: 'Temples, Artists, Guest Houses (Dharmashalas), Organizations, Communities, Donations, Events, Blogs, Users, and Verifications.',
+      },
     ],
     overview:
-      'The Shyam Jagat Admin Panel is the operational hub behind the platform — managing temples, artists, dharmashalas, organisations, and communities alongside blog posts, events, donations, and registration approvals.',
-    problemHeading: 'Many responsibilities. One place to begin.',
+      'The Shyam Jagat Admin Panel is the management workspace behind the Shyam Jagat community platform. It allows staff to approve new temple listings, review artist profiles, verify ID documents, publish events, and audit seva donations.',
+    problemHeading: 'Managing hundreds of temples, artists, and donations across spreadsheets causes errors.',
     problem:
-      'Overseeing 16+ community modules — from temple listings and seva donations to artist verifications — makes daily priorities, ownership, and next actions hard to track without a unified system.',
+      'With more than 1,200 temples and 800 artists joining the platform, staff were overwhelmed trying to verify identity documents, track donor receipts, and coordinate community events through manual spreadsheets.',
     designChallenge:
-      'How might we keep the wider ecosystem visible while giving each administrative task a clear, familiar place to happen?',
-    strategyHeading: 'Overview · Coordinate · Verify',
+      'How can we organize 16 different community sections into one simple dashboard so staff can verify listings and audit donations in seconds?',
+    strategyHeading: 'Overview First · Familiar Tables · Fast Review',
     strategyPillars: [
       {
         num: '01',
-        title: 'Overview First',
-        desc: '12 real-time ecosystem KPIs, 12-month donation trends, and a live activity log on one screen.',
+        title: 'Instant Platform Overview',
+        desc: 'Show 12 key numbers right on the home screen so staff immediately know what needs attention.',
       },
       {
         num: '02',
-        title: 'Familiar Structure',
-        desc: 'Persistent 16-module maroon sidebar paired with consistent search, filter, and table patterns.',
+        title: 'Consistent Table Layouts',
+        desc: 'Use the same familiar search, filter, and action buttons across all tables so staff never feel lost.',
       },
       {
         num: '03',
-        title: 'Review with Context',
-        desc: 'In-place registration approval modals with applicant details, Aadhaar/accreditation PDFs, and notes.',
+        title: 'Side-by-Side Document Review',
+        desc: 'View submitted ID proofs and certificates directly inside an approval pop-up without downloading files.',
       },
     ],
     solution:
-      'Built a structured admin command center uniting ecosystem KPIs, Sacred Knowledge & Event publishing tables, a Dharmik Donations & Seva Audit ledger, and contextual registration review.',
+      'Built a structured 5-screen admin portal that brings together a high-level summary dashboard, consistent content tables, a transparent donation ledger, and quick-action verification pop-ups.',
     highlights: [
-      { title: 'Devotional Ecosystem Overview', desc: 'Tracks 1,248 temples, 842 artists, ₹12.45L donations, 54,230 users, and 31 pending verifications.' },
-      { title: 'Publish & Coordinate Tables', desc: 'Side-by-side management for Blog & Sacred Knowledge posts and Devotional Seva Events.' },
-      { title: 'Dharmik Donations & Seva Audit', desc: 'Full ledger visibility into donor amounts, UPI/Bank modes, seva purposes, and 80G receipt states.' },
-      { title: 'Contextual Registration Modal', desc: 'Focused review modal to inspect documents and approve/reject artist and temple registrations.' },
+      {
+        title: 'Platform Summary Dashboard',
+        desc: 'Live counters showing 1,248 temples, 842 artists, ₹12.45L donations, and 31 pending verifications.',
+      },
+      {
+        title: 'Event & Blog Management Tables',
+        desc: 'Easy-to-use publishing tables to schedule devotional events, update timings, and write community announcements.',
+      },
+      {
+        title: 'Donation & Tax Receipt Ledger',
+        desc: 'Complete records of every donation with payment modes (UPI/Bank) and instant status of 80G tax exemption receipts.',
+      },
+      {
+        title: 'One-Click Document Approval Pop-Up',
+        desc: 'Quickly inspect applicant identity documents and approve or reject submissions with clear reason notes.',
+      },
     ],
     outcome:
-      'Warm parchment neutrals, burgundy anchors, and saffron actions keep daily administration calm, structured, and rooted in the platform’s identity.',
+      'A structured, calm admin dashboard that reduced verification backlogs and gave staff full visibility over daily community operations.',
+    whatsNext: [
+      { label: 'Bulk Document Approval', text: 'Allow reviewers to approve multiple verified temple renewal documents at once.' },
+      { label: 'Automated 80G Receipts', text: 'Generate and email official 80G tax receipts to donors automatically upon payment.' },
+      { label: 'Staff Activity Log', text: 'Track which admin approved or edited each listing for better team accountability.' },
+    ],
   },
   {
     slug: 'sahil-hair-expert',
     num: '08',
     title: 'Sahil Hair Expert',
-    subtitle: 'Elite Hairstyling & Treatments — Luxury Salon Booking Desk.',
-    category: 'Luxury Salon Booking Website · Live Product',
-    desc: 'Reserve your session instantly with a master artisan team — set services, bundle treatments, choose dates, and schedule confirmation in a dark-luxury booking experience.',
-    tags: ['UI/UX Design', 'Booking Desk UX', 'Luxury Web Design', 'Live Product'],
+    subtitle: 'A smooth 3-step online booking desk for a luxury salon.',
+    category: 'Salon Booking Website · Live Web Product',
+    desc: 'A luxury hair and grooming salon booking website where clients can explore treatments, see clear prices and session times, bundle multiple services, and reserve their visit online.',
+    tags: ['Salon Booking', 'Transparent Pricing', '3-Step Flow', 'Mobile Web'],
     img: sahilHairExpertImg,
     accent: '#C59B27',
     stageBg: '#0B0B0B',
     liveUrl: 'https://www.sahilhairexpert.com/',
     role: 'UI/UX Designer',
     platform: 'Responsive Web Application',
-    projectType: 'Luxury Salon Booking Website · Live Product',
+    projectType: 'Luxury Salon Booking Website · Live Web Product',
     tools: ['Figma', 'Booking Flow UX', 'Visual Identity', 'Responsive Web'],
     snapshot: [
-      { label: 'Brand', value: 'Sahil Hair Expert · Luxury Hairstyling & Grooming Studio' },
-      { label: 'Core Flow', value: '1. Select Luxury Services → 2. Time Slot → 3. Your Info' },
-      { label: 'Service Categories', value: 'Men · Women · Hair Treatments · Individual Grooming' },
-      { label: 'Visual Language', value: 'Obsidian Dark (#0B0B0B) · Champagne Gold (#D4AF37) · Editorial Serif' },
+      { label: 'Website Type', value: 'Responsive booking website for mobile and desktop' },
+      { label: 'Salon Brand', value: 'Sahil Hair Expert · Luxury Hairstyling & Grooming Studio' },
+      { label: 'Booking Flow', value: '1. Select Services → 2. Choose Time Slot → 3. Enter Your Details' },
+      { label: 'Live Website', value: 'sahilhairexpert.com' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '3 Flows',
+        desc: '1. Pick services and treatments, 2. Select appointment date and time slot, 3. Enter contact info and confirm.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '6 Web Views',
+        desc: '6 responsive views including salon hero with live status, 3-step booking desk, category filters, live total bar, gallery, and concierge.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Clients having to call to ask for service prices, hidden treatment durations, and difficulty bundling multiple services.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Improvements',
+        desc: 'Live "Open / Closed" badge at the top, exact price and duration on every card, 1-tap "+ Add Service" bundling, and a live running total price bar.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '4 Service Categories',
+        desc: 'Men\'s Grooming, Women\'s Styling, Hair & Scalp Treatments, and Individual Grooming Packages.',
+      },
     ],
     overview:
-      'Sahil Hair Expert is a live luxury salon booking website — enabling clients to explore grooming and hair treatments, bundle multiple services with transparent pricing and duration, and reserve appointments online.',
-    problemHeading: 'Luxury grooming shouldn\'t rely on phone-tag or unclear pricing.',
+      'Sahil Hair Expert is a live salon booking website that makes scheduling luxury hair styling and grooming appointments effortless. Clients can explore services, see exact prices and durations upfront, and book appointments in three quick steps.',
+    problemHeading: 'Booking salon appointments over phone calls is slow and unclear.',
     problem:
-      'Salon clients often face scattered service menus, hidden treatment durations, and back-and-forth calls or messages just to bundle multiple services and check studio availability.',
+      'Most salon websites only show vague price lists with no treatment times, forcing clients to call or message to find out how long a service takes, how much it costs, and when slots are available.',
     designChallenge:
-      'How might we turn a multi-service salon appointment into an effortless, transparent 3-step self-serve booking desk that reflects the studio\'s luxury craft?',
-    solution:
-      'Designed an interactive Booking Desk that pairs live studio status with a 3-step reservation flow (Services → Time Slot → Your Info), category filters, and real-time estimated totals.',
-    strategyHeading: 'Trust · Transparency · Effortless Booking',
+      'How can we create a self-service booking experience that shows upfront prices and durations, lets clients bundle services easily, and reflects the salon\'s luxury brand?',
+    strategyHeading: 'Upfront Pricing · Clear Timing · 3 Simple Steps',
     strategyPillars: [
-      { num: '01', title: 'Establish Instant Studio Trust', desc: 'Surface the studio identity card and live Today Status (Open · Closes 9:30 PM) right above the booking desk.' },
-      { num: '02', title: 'Make Pricing & Duration Explicit', desc: 'Display exact price (₹250–₹12,000) and session duration (45 min–300 min) on every card with one-tap "+ Add Service" bundling.' },
-      { num: '03', title: 'Guide the Reservation in 3 Steps', desc: 'Keep the user anchored with a clear step bar, live selected counter, running Estimated Total, and direct WhatsApp concierge support.' },
+      {
+        num: '01',
+        title: 'Live Studio Status & Trust',
+        desc: 'Display clear opening hours (Open · Closes 9:30 PM) and studio photos right at the top of the page.',
+      },
+      {
+        num: '02',
+        title: 'Transparent Prices & Minutes',
+        desc: 'Show exact prices (₹250 to ₹12,000) and service duration (45 min to 300 min) with a 1-tap "+ Add Service" button.',
+      },
+      {
+        num: '03',
+        title: 'Guided 3-Step Reservation',
+        desc: 'Guide clients step-by-step with a running total price bar and a direct WhatsApp concierge button for special requests.',
+      },
     ],
+    solution:
+      'Designed a conversion-focused dark luxury booking website featuring live salon hours, transparent service bundling, real-time total price calculation, and a smooth 3-step checkout.',
     highlights: [
-      { title: 'Live Studio Status & Identity Card', desc: 'Displays real-time operating status (Open • Closes 9:30 PM IST), social links, and studio overview above the fold.' },
-      { title: 'Guided 3-Step Booking Desk', desc: 'Structured progression from 1. Services to 2. Time Slot and 3. Your Info with a persistent Selected counter.' },
-      { title: 'Multi-Category Service Bundling', desc: 'Instant filtering across Men, Women, Hair Treatments, and Individual Grooming with clear duration and ₹ pricing.' },
-      { title: 'Live Estimated Total & WhatsApp Concierge', desc: 'Calculates total cost and selected service count in real time before advancing to date/time selection.' },
+      {
+        title: 'Live Studio Status Badge',
+        desc: 'Real-time indicator showing if the salon is currently open, today\'s operating hours, and location details.',
+      },
+      {
+        title: '3-Step Booking Desk',
+        desc: 'Clear progress bar guiding clients through service selection, date & time slot picking, and booking confirmation.',
+      },
+      {
+        title: 'Service Bundling with Exact Durations',
+        desc: 'Filter between Men, Women, and Hair Treatments with clear time and price tags on every option.',
+      },
+      {
+        title: 'Running Total Bar & WhatsApp Support',
+        desc: 'A floating summary bar that calculates the total cost and duration as services are added, plus 1-tap WhatsApp help.',
+      },
     ],
     outcome:
-      'Delivered a live, conversion-focused luxury booking desk (sahilhairexpert.com) that elevates the studio\'s digital brand while making multi-service appointment scheduling fast and transparent.',
+      'A live, high-converting booking website (sahilhairexpert.com) that eliminated phone-tag, made pricing completely transparent, and increased direct online reservations.',
     whatsNext: [
-      { label: 'Specialist Selection', text: 'Allow clients to preview stylist portfolios when picking their preferred master artisan.' },
-      { label: 'Delhi Studio Expansion', text: 'Scale the booking desk to support multi-branch switching as the upcoming Delhi studio launches.' },
-      { label: 'Shop & Academy Integration', text: 'Connect the Shop and Academy inquiries into the same unified client profile.' },
+      { label: 'Stylist Selection', text: 'Allow clients to pick their preferred master stylist and preview their portfolio photos.' },
+      { label: 'Multiple Studio Branches', text: 'Add a branch selector as the upcoming Delhi studio opens its doors.' },
+      { label: 'SMS Appointment Reminders', text: 'Send clients automated calendar invites and SMS reminders 2 hours before their appointment.' },
     ],
   },
   {
     slug: 'logo-design',
     num: '09',
     title: 'Logo Design',
-    subtitle: 'Logo Concept & Brand Rationale Collection.',
-    category: 'Logo Design & Brand Identity Systems',
-    desc: 'A curated collection of custom logo marks and brand rationale systems — breaking down geometry, symbolism, typography, and color palettes across Brokrs House, ClickCard, Shyam Jagat, ABAS, and Nova Grid.',
-    tags: ['Logo Design', 'Brand Identity', 'Symbol Breakdown', 'Color Systems'],
+    subtitle: 'Strategic logo concepts and brand identity systems.',
+    category: 'Brand Identity & Logo Design Collection',
+    desc: 'A collection of 5 custom brand logos and rationale boards showing how simple geometric shapes, purposeful colors, and clear metaphors create memorable brand identities.',
+    tags: ['Logo Design', 'Brand Identity', 'Symbol Design', 'Color Systems'],
     img: logoDesignImg,
     accent: '#C48F45',
     stageBg: '#18130E',
@@ -521,38 +870,89 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     projectType: 'Logo Concept & Brand Rationale Collection (5 Brands)',
     tools: ['Adobe Illustrator', 'Figma', 'Grid Systems', 'Typography'],
     snapshot: [
-      { label: 'Collection', value: '5 Brand Identity Systems — Brokrs House · ClickCard · Shyam Jagat · ABAS · Nova Grid' },
-      { label: 'Deliverables', value: 'Symbol Breakdown · Anatomical Callouts · Color Palette · Brand Essence' },
-      { label: 'Sectors', value: 'Real Estate · Digital Networking · Spiritual Devotion · Community Heritage' },
-      { label: 'Approach', value: 'Concept-driven symbolism paired with timeless typography and scalable vector marks.' },
+      { label: 'Collection Scope', value: '5 Brand Identities — Brokrs House, ClickCard, Shyam Jagat, ABAS & Nova Grid' },
+      { label: 'Deliverables', value: 'Symbol breakdown, grid construction, color palettes & typography' },
+      { label: 'Industry Sectors', value: 'Real Estate, Digital Identity, Spiritual Devotion & Heritage' },
+      { label: 'Design Approach', value: 'Meaningful visual symbols paired with clean, scalable marks' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '5 Brand Stories',
+        desc: '5 visual brand narratives explaining how each identity mark was conceived, constructed, and used.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '5 Identity Boards',
+        desc: '5 detailed presentation boards created for Brokrs House, ClickCard, Shyam Jagat, ABAS, and Nova Grid.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '3 Problems',
+        desc: 'Generic logos that lack meaning, logos that don\'t scale well from app icons to print, and brands without clear color rules.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '4 Visual Improvements',
+        desc: 'Simple geometric symbol equations (e.g., House + People = Connected Broker), strict color palettes with hex codes, clear minimum size guidelines, and readable typography pairings.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '5 Industry Sectors',
+        desc: 'Real Estate, Digital Identity, Spiritual Devotion, Cultural Heritage, and Land Development.',
+      },
     ],
     overview:
-      'A collection of five logo concept and brand rationale boards demonstrating how strategic visual metaphors, geometric construction, and purposeful color systems translate core brand values into memorable identity marks.',
-    problemHeading: 'A strong mark needs meaning, not just decoration.',
+      'A showcase of five logo designs and brand identity boards. Each project breaks down how simple geometric shapes, cultural symbols, and color palettes were chosen to give each brand an unforgettable, trustworthy identity.',
+    problemHeading: 'A memorable brand needs real meaning, not just decoration.',
     problem:
-      'Brands across real estate, technology, spirituality, and community organizations each speak to very different audiences — requiring symbols that communicate trust and purpose at a single glance.',
+      'Many brands use generic template logos that fail to tell a story or explain what the company does. Without clear rules for colors, spacing, and minimum sizes, logos look messy when printed on business cards or resized into small mobile app icons.',
     designChallenge:
-      'How might we distill each brand\'s story into a clear geometric or cultural symbol, backed by an explicit color system and typography that scales across digital and physical touchpoints?',
-    solution:
-      'Developed structured Brand Rationale boards for every identity — breaking down the core symbol equation, anatomical design callouts, psychological color roles, and brand essence.',
-    strategyHeading: 'Symbolism · Structure · Brand Essence',
+      'How might we distill each brand\'s core purpose into a simple, iconic symbol backed by clear colors and typography that looks sharp anywhere?',
+    strategyHeading: 'Symbolism · Geometry · Color Purpose',
     strategyPillars: [
-      { num: '01', title: 'Deconstruct the Visual Metaphor', desc: 'Build each mark from clear symbolic primitives — such as Square (Homes) + Circle (People) for Brokrs House or Layered Cards + Forward Arrow for ClickCard.' },
-      { num: '02', title: 'Pair Form with Purposeful Color', desc: 'Anchor every identity in a defined palette — from Trust Blue (#0A8FDC) and Digital Teal (#35B5A6) to Devotional Saffron, Heritage Gold, and Champagne Gold.' },
-      { num: '03', title: 'Articulate the Brand Essence', desc: 'Connect visual choices directly to each brand\'s voice so stakeholders and users immediately understand what the mark stands for.' },
+      {
+        num: '01',
+        title: 'Meaningful Visual Equations',
+        desc: 'Build every logo from simple symbolic ideas, like Square (Homes) + Circle (People) for Brokrs House, or Layered Cards + Arrow for ClickCard.',
+      },
+      {
+        num: '02',
+        title: 'Purposeful Color Palettes',
+        desc: 'Select colors that communicate trust and emotion, from Trust Blue and Digital Teal to Devotional Saffron and Heritage Gold.',
+      },
+      {
+        num: '03',
+        title: 'Scalable Vector Marks',
+        desc: 'Ensure every mark remains crisp and legible whether displayed as a 24px favicon or printed on a large billboard.',
+      },
     ],
+    solution:
+      'Created comprehensive Brand Rationale boards for each identity, detailing the symbol breakdown, geometric grid alignment, color roles with exact hex codes, and brand values.',
     highlights: [
-      { title: 'Brokrs House & Nova Grid (Real Estate)', desc: 'Brokrs House unites Squares (Homes) + Circles (People) in #0A8FDC/#023C7A ("People. Properties. Possibilities."); Nova Grid pairs structured land-parcel lines with a spark star in Champagne Gold & Deep Espresso ("Built on vision. Designed for growth.").' },
-      { title: 'ClickCard (Digital Business Card)', desc: 'Overlapping rounded squares (Layered Cards) + an up-right Forward Arrow in Teal (#35B5A6) and Charcoal (#2E2E2E) — connecting people in one click.' },
-      { title: 'Shyam Jagat (Spiritual & Devotional)', desc: 'Combines a Circular Aura, Divine Flame, Graceful Script, and Protective Hand in Saffron Orange, Deep Maroon, and Soft Ivory ("Rooted in devotion. Guided by grace.").' },
-      { title: 'ABAS — Akhil Bhartiya Aggarwal Samaj', desc: 'Integrates the Tree of Togetherness, Lotus Elements, People Network root nodes, and Laurel wreath in Maroon, Gold, Navy, and Ivory ("Rooted in Heritage. United for a Brighter Tomorrow.").' },
+      {
+        title: 'Brokrs House & Nova Grid (Real Estate)',
+        desc: 'Brokrs House unites Squares (Homes) and Circles (People) in Trust Blue; Nova Grid pairs structured land-parcel gridlines with a vision spark in Champagne Gold.',
+      },
+      {
+        title: 'ClickCard (Digital Business Card)',
+        desc: 'Layered rounded cards combined with an upward-right forward arrow in Modern Teal and Charcoal.',
+      },
+      {
+        title: 'Shyam Jagat (Spiritual & Community)',
+        desc: 'Combines a protective circular aura, divine flame, graceful Hindi script, and a blessing hand in Saffron Orange and Temple Maroon.',
+      },
+      {
+        title: 'ABAS — Heritage & Community Samaj',
+        desc: 'Integrates the Tree of Togetherness, lotus petals, connected community nodes, and a laurel wreath in Royal Maroon and Gold.',
+      },
     ],
     outcome:
-      'Created five distinct, rationale-backed brand identity systems where every line, curve, and swatch serves a clear narrative and functional purpose.',
+      'Five distinct, rationale-backed brand identity marks where every line, shape, and color serves a clear and purposeful story.',
     whatsNext: [
-      { label: 'Cross-Media Application', text: 'Extend each identity across app icons, signage, stationery, and social templates.' },
-      { label: 'Motion & Micro-Branding', text: 'Translate the modular symbol breakdowns into smooth logo reveal animations for digital products.' },
-      { label: 'Brand Guideline Playbooks', text: 'Package spacing rules, minimum sizes, and color contrast ratios for engineering and print teams.' },
+      { label: 'Brand Asset Files', text: 'Package high-resolution SVG, PNG, and vector PDF files formatted for light and dark backgrounds.' },
+      { label: 'Logo Reveal Animation', text: 'Design simple, smooth motion graphics showing how the geometric shapes build into each logo mark.' },
+      { label: 'Brand Guidelines Document', text: 'Create one-page PDF cheat sheets detailing clear space rules, prohibited uses, and official typography.' },
     ],
   },
 ];
@@ -1084,6 +1484,7 @@ export function CaseStudyPage({
           {/* Quick section jump pills on desktop */}
           <nav aria-label="Case study sections" className="hidden lg:flex items-center gap-1">
             {[
+              { id: 'cs-highlights', label: 'Key Highlights' },
               { id: 'cs-overview', label: 'Overview & Problem' },
               { id: 'cs-ux-approach', label: 'UX Approach' },
               { id: 'cs-ui-solution', label: 'UI Solution' },
@@ -1215,6 +1616,55 @@ export function CaseStudyPage({
               </div>
             </div>
           </div>
+
+          {/* ── 5 Key Project Highlights (Clean Minimal 5-Card Layout) ── */}
+          {project.projectHighlights && project.projectHighlights.length > 0 && (
+            <div id="cs-highlights" className="mb-4">
+              <div className="flex items-center justify-between gap-2 mb-2.5 px-0.5">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="text-[10px] font-mono uppercase tracking-widest font-bold px-2 py-0.5 rounded"
+                    style={{ background: 'var(--orange-light)', color: 'var(--orange)' }}
+                  >
+                    Project Highlights
+                  </span>
+                  <span className="text-xs font-semibold" style={{ color: '#111' }}>
+                    5 Core Metrics
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono" style={{ color: '#7A7068' }}>
+                  At a Glance
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-3.5">
+                {project.projectHighlights.map((hl, i) => (
+                  <div
+                    key={hl.label}
+                    className="p-3.5 sm:p-4 rounded-2xl border flex flex-col justify-between transition-all hover:border-neutral-400 hover:shadow-sm"
+                    style={{ background: '#fff', borderColor: 'var(--border)' }}
+                  >
+                    <div>
+                      <div className="flex items-start justify-between gap-1 mb-1.5 min-h-[28px]">
+                        <span className="text-[10px] font-mono uppercase tracking-wider font-semibold leading-snug" style={{ color: '#7A7068' }}>
+                          {hl.label}
+                        </span>
+                        <span className="text-[10px] font-mono font-bold shrink-0 ml-1 mt-0.5" style={{ color: 'var(--orange)' }}>
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <div className="font-serif text-lg sm:text-xl md:text-[22px] font-bold leading-tight mb-2" style={{ color: '#111' }}>
+                        {hl.value}
+                      </div>
+                    </div>
+                    <p className="text-[11px] sm:text-xs leading-relaxed" style={{ color: '#5E5750' }}>
+                      {hl.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* 4-Column Project Snapshot Strip */}
           {project.snapshot && project.snapshot.length > 0 && (
