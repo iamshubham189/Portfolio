@@ -2218,6 +2218,45 @@ function matchesFilter(slug: string, filter: ProjectFilter): boolean {
   return true;
 }
 
+function parseHighlight(hl: { label: string; value: string; desc?: string }) {
+  const numMatch = hl.value.match(/^(\d+)/);
+  const num = numMatch ? numMatch[1] : hl.value;
+
+  let label = 'Metric';
+  const lowerLabel = hl.label.toLowerCase();
+  const lowerVal = hl.value.toLowerCase();
+
+  if (lowerLabel.includes('flow')) label = 'Flows';
+  else if (lowerLabel.includes('screen') || lowerVal.includes('view') || lowerVal.includes('screen')) {
+    label = lowerVal.includes('view') ? 'Views' : 'Screens';
+  } else if (lowerLabel.includes('pain') || lowerLabel.includes('problem') || lowerVal.includes('problem')) {
+    label = 'Problems';
+  } else if (lowerLabel.includes('improve') || lowerVal.includes('improve')) {
+    label = 'Fixes';
+  } else if (
+    lowerLabel.includes('coverage') ||
+    lowerVal.includes('role') ||
+    lowerVal.includes('sector') ||
+    lowerVal.includes('area') ||
+    lowerVal.includes('type') ||
+    lowerVal.includes('module') ||
+    lowerVal.includes('story') ||
+    lowerVal.includes('board') ||
+    lowerVal.includes('categor')
+  ) {
+    if (lowerVal.includes('area')) label = 'Areas';
+    else if (lowerVal.includes('sector')) label = 'Sectors';
+    else if (lowerVal.includes('module')) label = 'Modules';
+    else if (lowerVal.includes('story') || lowerVal.includes('stories')) label = 'Stories';
+    else if (lowerVal.includes('board')) label = 'Boards';
+    else if (lowerVal.includes('type')) label = 'Types';
+    else if (lowerVal.includes('categor')) label = 'Categories';
+    else label = 'Roles';
+  }
+
+  return { num, label, full: `${hl.label}: ${hl.value}${hl.desc ? ` — ${hl.desc}` : ''}` };
+}
+
 function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string) => void }) {
   const [filter, setFilter] = useState<ProjectFilter>('all');
 
@@ -2308,13 +2347,13 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
           >
             {/* Left / Top Visual Stage */}
             <div
-              className="lg:col-span-7 relative overflow-hidden aspect-[16/11] lg:aspect-auto lg:min-h-[420px]"
+              className="lg:col-span-7 relative overflow-hidden aspect-[16/11] lg:aspect-auto lg:min-h-[420px] flex items-center justify-center p-2 sm:p-4"
               style={{ background: flagship.stageBg }}
             >
               <img
                 src={flagship.img}
                 alt={`${flagship.title} — ${flagship.category}`}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                 loading="eager"
               />
               <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 pointer-events-none">
@@ -2372,17 +2411,23 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
 
                 {/* 5 Key Project Highlights Strip */}
                 {flagship.projectHighlights && (
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 p-2.5 sm:p-3 rounded-xl border mb-4 text-center" style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}>
-                    {flagship.projectHighlights.map((hl) => (
-                      <div key={hl.label} className="p-1 [&:last-child]:col-span-2 sm:[&:last-child]:col-span-1">
-                        <div className="text-[9px] font-mono uppercase tracking-wider truncate mb-0.5" style={{ color: '#7A7068' }}>
-                          {hl.label}
+                  <div
+                    className="grid grid-cols-5 divide-x rounded-xl border mb-4 text-center py-2"
+                    style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
+                  >
+                    {flagship.projectHighlights.map((hl) => {
+                      const stat = parseHighlight(hl);
+                      return (
+                        <div key={hl.label} className="px-1" title={stat.full}>
+                          <div className="font-serif font-bold text-sm sm:text-base leading-none" style={{ color: '#111' }}>
+                            {stat.num}
+                          </div>
+                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-[#7A7068] mt-1 leading-tight truncate">
+                            {stat.label}
+                          </div>
                         </div>
-                        <div className="font-serif font-bold text-sm sm:text-base leading-tight" style={{ color: '#111' }}>
-                          {hl.value}
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
 
@@ -2468,15 +2513,15 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
               }}
             >
               <div>
-                {/* Consistent 16:10 Image Stage */}
+                {/* Clean Image Stage that never cuts project content */}
                 <div
-                  className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                  className="relative w-full aspect-[4/3] overflow-hidden border-b flex items-center justify-center p-2 sm:p-3"
                   style={{ background: p.stageBg, borderColor: 'var(--border)' }}
                 >
                   <img
                     src={p.img}
                     alt={`${p.title} — ${p.category}`}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                   {/* Top Badges */}
@@ -2534,17 +2579,23 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
 
                   {/* 5 Key Project Highlights Strip */}
                   {p.projectHighlights && (
-                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 p-2 rounded-xl border mb-3 text-center" style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}>
-                      {p.projectHighlights.map((hl) => (
-                        <div key={hl.label} className="p-0.5 [&:last-child]:col-span-2 sm:[&:last-child]:col-span-1">
-                          <div className="text-[8.5px] font-mono uppercase tracking-wider truncate mb-0.5" style={{ color: '#7A7068' }}>
-                            {hl.label}
+                    <div
+                      className="grid grid-cols-5 divide-x rounded-xl border mb-3 text-center py-2"
+                      style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
+                    >
+                      {p.projectHighlights.map((hl) => {
+                        const stat = parseHighlight(hl);
+                        return (
+                          <div key={hl.label} className="px-1" title={stat.full}>
+                            <div className="font-serif font-bold text-xs sm:text-sm leading-none" style={{ color: '#111' }}>
+                              {stat.num}
+                            </div>
+                            <div className="text-[8.5px] sm:text-[9.5px] font-mono uppercase tracking-wider text-[#7A7068] mt-1 leading-tight truncate">
+                              {stat.label}
+                            </div>
                           </div>
-                          <div className="font-serif font-bold text-xs sm:text-sm leading-tight" style={{ color: '#111' }}>
-                            {hl.value}
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   )}
 
@@ -3956,6 +4007,13 @@ export default function App() {
       setCaseStudySlug(parseCaseStudySlug(window.location.hash));
     };
     window.addEventListener('hashchange', onHashChange);
+
+    // Support direct anchor jumps on load
+    if (window.location.hash && !window.location.hash.startsWith('#/case-study/')) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView({ block: 'start' });
+    }
+
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
@@ -3983,6 +4041,16 @@ export default function App() {
         onBack={closeCaseStudy}
         onSelectProject={openCaseStudy}
       />
+    );
+  }
+
+  const isPortfolioView = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('view') === 'portfolio';
+
+  if (isPortfolioView) {
+    return (
+      <div className="min-h-screen p-4 sm:p-8" style={{ background: 'var(--ivory)' }}>
+        <FeaturedProjects onOpenCaseStudy={openCaseStudy} />
+      </div>
     );
   }
 
