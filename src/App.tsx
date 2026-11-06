@@ -2308,13 +2308,13 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
           >
             {/* Left / Top Visual Stage */}
             <div
-              className="lg:col-span-7 relative overflow-hidden aspect-[16/11] lg:aspect-auto lg:min-h-[420px] flex items-center justify-center p-2 sm:p-4"
+              className="lg:col-span-7 relative overflow-hidden aspect-[16/11] lg:aspect-auto lg:min-h-[420px]"
               style={{ background: flagship.stageBg }}
             >
               <img
                 src={flagship.img}
                 alt={`${flagship.title} — ${flagship.category}`}
-                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 loading="eager"
               />
               <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 pointer-events-none">
@@ -2452,15 +2452,15 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
               }}
             >
               <div>
-                {/* Clean Image Stage that never cuts project content */}
+                {/* Complete Edge-to-Edge Image Stage */}
                 <div
-                  className="relative w-full aspect-[4/3] overflow-hidden border-b flex items-center justify-center p-2 sm:p-3"
+                  className="relative w-full aspect-[4/3] overflow-hidden border-b"
                   style={{ background: p.stageBg, borderColor: 'var(--border)' }}
                 >
                   <img
                     src={p.img}
                     alt={`${p.title} — ${p.category}`}
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
                   {/* Top Badges */}

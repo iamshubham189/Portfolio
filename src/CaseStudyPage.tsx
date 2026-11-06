@@ -1866,7 +1866,7 @@ export function CaseStudyPage({
               }}
             >
               <img
-                src={project.slug === 'clickcard' ? '/case-studies/clickcard_cover.jpg' : project.img}
+                src={project.img}
                 alt={project.title}
                 className="w-full h-auto block m-0 p-0 select-none"
               />
