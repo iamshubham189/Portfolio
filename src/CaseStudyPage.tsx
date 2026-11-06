@@ -558,22 +558,316 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
 ];
 
 export function TapestoryVisualShowcase() {
-  const strips = [1, 2, 3, 4];
+  const swatches = [
+    {
+      name: 'Warm Ivory',
+      hex: '#F5F0E7',
+      token: 'background/ivory',
+      bg: '#F5F0E7',
+      text: '#29251F',
+      sub: '#5E5750',
+      border: '#D6CCBC',
+    },
+    {
+      name: 'Deep Forest Green',
+      hex: '#172B24',
+      token: 'brand/primary',
+      bg: '#172B24',
+      text: '#F5F0E7',
+      sub: 'rgba(245,240,231,0.78)',
+      border: '#172B24',
+    },
+    {
+      name: 'Muted Gold',
+      hex: '#B69A68',
+      token: 'brand/accent',
+      bg: '#B69A68',
+      text: '#29251F',
+      sub: 'rgba(41,37,31,0.82)',
+      border: '#A68A58',
+    },
+    {
+      name: 'Charcoal',
+      hex: '#29251F',
+      token: 'text/primary',
+      bg: '#29251F',
+      text: '#F5F0E7',
+      sub: 'rgba(245,240,231,0.78)',
+      border: '#29251F',
+    },
+    {
+      name: 'White',
+      hex: '#FFFFFF',
+      token: 'surface/white',
+      bg: '#FFFFFF',
+      text: '#29251F',
+      sub: '#5E5750',
+      border: '#DDD4C6',
+    },
+    {
+      name: 'Soft Beige',
+      hex: '#E9E0D3',
+      token: 'surface/beige',
+      bg: '#E9E0D3',
+      text: '#29251F',
+      sub: '#5E5750',
+      border: '#D2C7B7',
+    },
+  ];
+
+  const screens = [
+    {
+      tag: '01 / EXECUTIVE COMMAND CENTER',
+      title: 'Marketplace Revenue, SLA Attention Queue & 30-Day Telemetry',
+      route: '/admin',
+      src: '/case-studies/strips/ts_screen_dashboard.png',
+      alt: 'Tapestory Admin Panel — Executive Marketplace Dashboard (2880px Retina)',
+    },
+    {
+      tag: '02 / BESPOKE ORDER ORCHESTRATION',
+      title: 'Orders Ledger, Status Pipeline & Multi-Vendor Filtering',
+      route: '/admin/orders',
+      src: '/case-studies/strips/ts_screen_orders.png',
+      alt: 'Tapestory Admin Panel — Orders & Bespoke Fulfillment Pipeline (2880px Retina)',
+    },
+    {
+      tag: '03 / HYPERLOCAL CITY LOGISTICS',
+      title: 'Same-City Express Courier Dispatch, Pickup OTP & Live Rider ETA',
+      route: '/admin/logistics',
+      src: '/case-studies/strips/ts_screen_logistics.png',
+      alt: 'Tapestory Admin Panel — City Logistics & Deliveries (2880px Retina)',
+    },
+  ];
+
   return (
     <div
-      className="rounded-3xl overflow-hidden border shadow-xl space-y-0"
+      className="rounded-3xl overflow-hidden border shadow-xl"
       style={{ background: '#F5F0E7', borderColor: 'var(--border)' }}
     >
-      {strips.map(n => (
+      {/* ── Top Hero Screen: Staff Authentication Portal (2880x1800 Retina PNG) ── */}
+      <div className="w-full overflow-hidden border-b" style={{ borderColor: 'rgba(41,37,31,0.1)' }}>
         <img
-          key={`ts-strip-${n}`}
-          src={`/case-studies/strips/ts_strip_${n}.jpg`}
-          alt={`Tapestory Admin Panel Case Study UI — Part ${n}`}
+          src="/case-studies/strips/ts_screen_login.png"
+          alt="Tapestory Admin Portal — Staff Authentication & Quick Demo Access (2880px Retina)"
           className="w-full h-auto block m-0 p-0 select-none"
           decoding="sync"
           loading="eager"
         />
-      ))}
+      </div>
+
+      {/* ── Vector-Crisp Design System Foundations (Zero Pixelation, 100% Aligned Grid) ── */}
+      <div
+        className="px-6 sm:px-10 md:px-14 py-10 sm:py-14 border-b"
+        style={{ background: '#F5F0E7', borderColor: 'rgba(41,37,31,0.1)' }}
+      >
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
+          <div>
+            <h3
+              className="font-serif text-2xl sm:text-3xl md:text-[38px] font-normal tracking-tight leading-tight"
+              style={{ color: '#29251F' }}
+            >
+              Tapestory — UI Components
+            </h3>
+            <p className="text-xs sm:text-sm mt-2" style={{ color: '#5E5750' }}>
+              An inclusive made-to-measure system. Native components · Editable properties · Visual states only · 8px foundation
+            </p>
+          </div>
+          <span
+            className="text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border self-start sm:self-auto shrink-0"
+            style={{ color: '#172B24', borderColor: 'rgba(23,43,36,0.2)', background: 'rgba(23,43,36,0.05)' }}
+          >
+            Design System v1.0
+          </span>
+        </div>
+
+        {/* 00 / FOUNDATIONS — Perfectly Aligned 6-Column Swatch Grid */}
+        <div className="mb-10">
+          <div
+            className="text-xs sm:text-[13px] font-semibold uppercase tracking-[0.08em] mb-4"
+            style={{ color: '#29251F' }}
+          >
+            00 / FOUNDATIONS
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
+            {swatches.map(s => (
+              <div
+                key={s.name}
+                className="rounded-lg p-4 sm:p-5 flex flex-col justify-end min-h-[124px] sm:min-h-[138px] transition-transform duration-200 hover:-translate-y-0.5"
+                style={{
+                  background: s.bg,
+                  border: `1px solid ${s.border}`,
+                  boxShadow: '0 2px 8px rgba(41,37,31,0.04)',
+                }}
+              >
+                <div className="text-xs sm:text-[13px] font-semibold leading-snug" style={{ color: s.text }}>
+                  {s.name}
+                </div>
+                <div className="text-[11px] font-mono mt-0.5" style={{ color: s.sub }}>
+                  {s.hex}
+                </div>
+                <div className="text-[11px] font-mono opacity-85" style={{ color: s.sub }}>
+                  {s.token}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Typography Scale + Layout Tokens */}
+        <div
+          className="pt-8 border-t grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+          style={{ borderColor: 'rgba(41,37,31,0.1)' }}
+        >
+          <div className="lg:col-span-8 space-y-3.5">
+            <div
+              className="text-xs sm:text-[13px] font-medium tracking-wide mb-2"
+              style={{ color: '#4A433B' }}
+            >
+              Typography / Playfair Display + Inter
+            </div>
+            <div
+              className="font-serif text-2xl sm:text-4xl md:text-[44px] leading-[1.15] tracking-tight"
+              style={{ color: '#29251F' }}
+            >
+              Display / Custom Clothing Made for Everyone
+            </div>
+            <div
+              className="font-serif text-lg sm:text-2xl md:text-[26px] leading-snug"
+              style={{ color: '#29251F' }}
+            >
+              Heading / Your style. Your story.
+            </div>
+            <div
+              className="font-serif italic text-base sm:text-xl"
+              style={{ color: '#4A433B' }}
+            >
+              Editorial accent / Made for you
+            </div>
+            <div className="text-xs sm:text-sm pt-1" style={{ color: '#29251F' }}>
+              Body / Beautifully personal, perfectly yours.
+            </div>
+            <div
+              className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.14em]"
+              style={{ color: '#5E5750' }}
+            >
+              Label / PREMIUM FABRICS
+            </div>
+          </div>
+
+          <div
+            className="lg:col-span-4 rounded-xl p-5 space-y-3.5 border"
+            style={{ background: '#EFE8DC', borderColor: '#DCD2C2' }}
+          >
+            <div className="text-[11px] font-mono uppercase tracking-widest font-bold" style={{ color: '#172B24' }}>
+              Spatial &amp; Grid Tokens
+            </div>
+            <div className="text-xs leading-relaxed" style={{ color: '#29251F' }}>
+              <span className="font-semibold block mb-0.5">Spacing Scale (8px Base)</span>
+              <span className="font-mono text-[11px]" style={{ color: '#5E5750' }}>
+                0 · 8 · 16 · 24 · 32 · 40 · 48 · 56 · 64 · 72 · 80 · 96 · 120
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-3 pt-2 border-t" style={{ borderColor: 'rgba(41,37,31,0.1)' }}>
+              <div className="text-xs" style={{ color: '#29251F' }}>
+                <span className="font-semibold block mb-0.5">Radius</span>
+                <span className="font-mono text-[11px]" style={{ color: '#5E5750' }}>0 · 2 · 4 · 8 · 12px</span>
+              </div>
+              <div className="text-xs" style={{ color: '#29251F' }}>
+                <span className="font-semibold block mb-0.5">Iconography</span>
+                <span className="font-mono text-[11px]" style={{ color: '#5E5750' }}>12 · 16 · 20 · 24 · 32px</span>
+              </div>
+            </div>
+            <div className="text-xs pt-2 border-t" style={{ color: '#29251F', borderColor: 'rgba(41,37,31,0.1)' }}>
+              <span className="font-semibold block mb-0.5">Desktop Grid Architecture</span>
+              <span className="font-mono text-[11px]" style={{ color: '#5E5750' }}>
+                1440px frame · 256px sidebar · 12 columns · 24px gutters
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── High-Resolution 2x Retina Production Screens (2880px Wide) ── */}
+      <div className="px-6 sm:px-10 md:px-14 py-10 sm:py-14 space-y-12" style={{ background: '#F5F0E7' }}>
+        {screens.map(s => (
+          <div key={s.route} className="space-y-4">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <div className="text-[11px] font-mono font-bold uppercase tracking-widest" style={{ color: '#172B24' }}>
+                  {s.tag}
+                </div>
+                <h4 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mt-0.5" style={{ color: '#29251F' }}>
+                  {s.title}
+                </h4>
+              </div>
+              <span
+                className="text-[11px] font-mono px-2.5 py-1 rounded border"
+                style={{ background: '#EFE8DC', borderColor: '#D6CCBC', color: '#4A433B' }}
+              >
+                {s.route}
+              </span>
+            </div>
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#FFFFFF' }}
+            >
+              <img
+                src={s.src}
+                alt={s.alt}
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="eager"
+              />
+            </div>
+          </div>
+        ))}
+
+        {/* Side-by-Side Atelier Onboarding & Commission Settlement Screens */}
+        <div className="space-y-4 pt-2">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <div className="text-[11px] font-mono font-bold uppercase tracking-widest" style={{ color: '#172B24' }}>
+                04 / ATELIER ONBOARDING &amp; ESCROW SETTLEMENTS
+              </div>
+              <h4 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mt-0.5" style={{ color: '#29251F' }}>
+                Vendor KYC Verification Queue &amp; Automated Commission Disbursements
+              </h4>
+            </div>
+            <span
+              className="text-[11px] font-mono px-2.5 py-1 rounded border"
+              style={{ background: '#EFE8DC', borderColor: '#D6CCBC', color: '#4A433B' }}
+            >
+              /admin/vendors · /admin/commissions
+            </span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#FFFFFF' }}
+            >
+              <img
+                src="/case-studies/strips/ts_screen_vendors.png"
+                alt="Tapestory Admin Panel — Vendor Ateliers & Application Queue (2880px Retina)"
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="lazy"
+              />
+            </div>
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#FFFFFF' }}
+            >
+              <img
+                src="/case-studies/strips/ts_screen_commissions.png"
+                alt="Tapestory Admin Panel — Commissions & Escrow Payouts (2880px Retina)"
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
