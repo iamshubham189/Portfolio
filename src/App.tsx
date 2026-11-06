@@ -2218,45 +2218,6 @@ function matchesFilter(slug: string, filter: ProjectFilter): boolean {
   return true;
 }
 
-function parseHighlight(hl: { label: string; value: string; desc?: string }) {
-  const numMatch = hl.value.match(/^(\d+)/);
-  const num = numMatch ? numMatch[1] : hl.value;
-
-  let label = 'Metric';
-  const lowerLabel = hl.label.toLowerCase();
-  const lowerVal = hl.value.toLowerCase();
-
-  if (lowerLabel.includes('flow')) label = 'Flows';
-  else if (lowerLabel.includes('screen') || lowerVal.includes('view') || lowerVal.includes('screen')) {
-    label = lowerVal.includes('view') ? 'Views' : 'Screens';
-  } else if (lowerLabel.includes('pain') || lowerLabel.includes('problem') || lowerVal.includes('problem')) {
-    label = 'Problems';
-  } else if (lowerLabel.includes('improve') || lowerVal.includes('improve')) {
-    label = 'Fixes';
-  } else if (
-    lowerLabel.includes('coverage') ||
-    lowerVal.includes('role') ||
-    lowerVal.includes('sector') ||
-    lowerVal.includes('area') ||
-    lowerVal.includes('type') ||
-    lowerVal.includes('module') ||
-    lowerVal.includes('story') ||
-    lowerVal.includes('board') ||
-    lowerVal.includes('categor')
-  ) {
-    if (lowerVal.includes('area')) label = 'Areas';
-    else if (lowerVal.includes('sector')) label = 'Sectors';
-    else if (lowerVal.includes('module')) label = 'Modules';
-    else if (lowerVal.includes('story') || lowerVal.includes('stories')) label = 'Stories';
-    else if (lowerVal.includes('board')) label = 'Boards';
-    else if (lowerVal.includes('type')) label = 'Types';
-    else if (lowerVal.includes('categor')) label = 'Categories';
-    else label = 'Roles';
-  }
-
-  return { num, label, full: `${hl.label}: ${hl.value}${hl.desc ? ` — ${hl.desc}` : ''}` };
-}
-
 function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string) => void }) {
   const [filter, setFilter] = useState<ProjectFilter>('all');
 
@@ -2409,28 +2370,6 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
                   {flagship.subtitle}
                 </p>
 
-                {/* 5 Key Project Highlights Strip */}
-                {flagship.projectHighlights && (
-                  <div
-                    className="grid grid-cols-5 divide-x rounded-xl border mb-4 text-center py-2"
-                    style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
-                  >
-                    {flagship.projectHighlights.map((hl) => {
-                      const stat = parseHighlight(hl);
-                      return (
-                        <div key={hl.label} className="px-1" title={stat.full}>
-                          <div className="font-serif font-bold text-sm sm:text-base leading-none" style={{ color: '#111' }}>
-                            {stat.num}
-                          </div>
-                          <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-[#7A7068] mt-1 leading-tight truncate">
-                            {stat.label}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-
                 {/* Scannable UX Case Study Snapshot */}
                 <div
                   className="p-3.5 sm:p-4 rounded-xl border space-y-2.5 mb-4"
@@ -2446,11 +2385,11 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
                   </div>
                   <div className="pt-2 border-t text-xs leading-relaxed" style={{ borderColor: 'var(--border)', color: '#4A4540' }}>
                     <strong className="font-semibold" style={{ color: '#111' }}>Problem: </strong>
-                    <span className="line-clamp-2">{flagship.problem}</span>
+                    <span>{flagship.problem}</span>
                   </div>
                   <div className="text-xs leading-relaxed" style={{ color: '#4A4540' }}>
                     <strong className="font-semibold" style={{ color: '#111' }}>UX &amp; UI Solution: </strong>
-                    <span className="line-clamp-2">{flagship.solution}</span>
+                    <span>{flagship.solution}</span>
                   </div>
                 </div>
 
@@ -2573,44 +2512,22 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
                     {p.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm mb-3 line-clamp-2 leading-relaxed" style={{ color: '#5E5750' }}>
+                  <p className="text-xs sm:text-sm mb-3.5 leading-relaxed" style={{ color: '#5E5750' }}>
                     {p.desc}
                   </p>
 
-                  {/* 5 Key Project Highlights Strip */}
-                  {p.projectHighlights && (
-                    <div
-                      className="grid grid-cols-5 divide-x rounded-xl border mb-3 text-center py-2"
-                      style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
-                    >
-                      {p.projectHighlights.map((hl) => {
-                        const stat = parseHighlight(hl);
-                        return (
-                          <div key={hl.label} className="px-1" title={stat.full}>
-                            <div className="font-serif font-bold text-xs sm:text-sm leading-none" style={{ color: '#111' }}>
-                              {stat.num}
-                            </div>
-                            <div className="text-[8.5px] sm:text-[9.5px] font-mono uppercase tracking-wider text-[#7A7068] mt-1 leading-tight truncate">
-                              {stat.label}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-
                   {/* Concise Problem + UX Solution Box */}
                   <div
-                    className="p-3.5 rounded-xl border space-y-1.5 mb-4 text-xs leading-relaxed"
+                    className="p-3.5 rounded-xl border space-y-2 mb-4 text-xs leading-relaxed"
                     style={{ background: '#FAF8F3', borderColor: 'var(--border)', color: '#4A4540' }}
                   >
-                    <div className="line-clamp-2">
+                    <div>
                       <strong className="font-semibold" style={{ color: '#111' }}>Problem: </strong>
-                      {p.problem}
+                      <span>{p.problem}</span>
                     </div>
-                    <div className="line-clamp-2">
-                      <strong className="font-semibold" style={{ color: '#111' }}>UX Solution: </strong>
-                      {p.solution}
+                    <div>
+                      <strong className="font-semibold" style={{ color: '#111' }}>UX &amp; UI Solution: </strong>
+                      <span>{p.solution}</span>
                     </div>
                   </div>
 

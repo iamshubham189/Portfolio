@@ -99,7 +99,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       'Tapestory connects customers with independent tailors for custom made-to-measure clothing. The admin panel gives staff a single place to review customer measurements, assign orders to workshops, track deliveries, and manage tailor payouts.',
     problemHeading: 'Custom orders got delayed and lost in spreadsheets.',
     problem:
-      'Every custom garment requires exact measurements, multi-day workshop progress, and delivery handoffs. Tracking this through phone calls and spreadsheets caused order delays and sizing errors.',
+      'Tracking custom orders and body measurements in spreadsheets caused workshop delays and sizing errors.',
     designChallenge:
       'How might we design a 19-screen dashboard so staff can track every custom order from first measurement to delivery without confusion?',
     strategyHeading: 'Structured Tables · Visible Measurements · Fast Delivery',
@@ -121,7 +121,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       },
     ],
     solution:
-      'A 19-screen dashboard for staff to review measurements, track workshop progress, and assign city deliveries in real time.',
+      'A central dashboard for staff to review measurements, track workshop progress, and dispatch local deliveries in real time.',
     highlights: [
       {
         title: 'Staff Login & Roles',
@@ -301,7 +301,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
       'Brokrs House is a mobile workspace for real estate brokers in India. It connects brokers with verified builder properties, client lead tracking, unit booking holds, and milestone commission payouts.',
     problemHeading: 'Brokers lose deals and commissions to scattered information.',
     problem:
-      'Brokers juggle project brochures on WhatsApp, keep client notes in paper diaries, and struggle to verify unit availability or guarantee that builders will pay their commissions on time.',
+      'Brokers juggle project brochures on WhatsApp with no live unit availability or guarantee of timely commission payouts.',
     designChallenge:
       'How might we give brokers a dependable tool to discover properties, protect their buyer leads, and track payouts with confidence?',
     strategyHeading: 'Quick Search · Lead Protection · Payout Tracking',
