@@ -41,12 +41,16 @@ function useCounter(target: number, inView: boolean, duration = 1800) {
 function useActiveSection() {
   const [active, setActive] = useState('home');
   useEffect(() => {
-    const sections = ['home','skills','portfolio','about','expertise','process','blog','contact'];
+    const sections = ['home', 'portfolio', 'about', 'process', 'skills', 'expertise', 'contact'];
     const obs = new IntersectionObserver(
       (entries) => {
-        entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            setActive(e.target.id === 'expertise' ? 'skills' : e.target.id);
+          }
+        });
       },
-      { rootMargin: '-40% 0px -55% 0px' }
+      { rootMargin: '-35% 0px -55% 0px' }
     );
     sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
     return () => obs.disconnect();
@@ -324,7 +328,7 @@ const capabilities = [
     tagline: 'Clarity for high-density operations',
     desc: 'Building back-office command centers where operators manage thousands of listings, bookings, and analytics without feeling overwhelmed by tables and filters.',
     deliverables: ['Role-Based Dashboards', 'Data Visualization', 'CRM & Inventory Flows', 'Bulk Actions'],
-    applied: ['Shyam Jagat Admin Panel', 'Brokrs House'],
+    applied: ['Tapestory Admin Panel', 'Shyam Jagat Admin Panel', 'Brokrs House'],
     Visual: DashboardVisual,
   },
   {
@@ -333,7 +337,7 @@ const capabilities = [
     tagline: 'Visual identity meets scalable tokens',
     desc: 'Rooted in my graphic design background — creating distinctive brand marks, typography scales, and reusable Figma component libraries that keep products cohesive as they grow.',
     deliverables: ['Logo & Brand Identity', 'Design Tokens', 'Figma Component Kits', 'Style Guides'],
-    applied: ['Logo Design', 'LifeOS', 'The Brokrs'],
+    applied: ['Tapestory Admin Panel', 'Logo Design', 'LifeOS'],
     Visual: SystemVisual,
   },
   {
@@ -342,7 +346,7 @@ const capabilities = [
     tagline: 'Designed with React & CSS in mind',
     desc: 'Because I have built production interfaces in React and Tailwind, I design interactive prototypes and edge-case states (loading, empty, error) that developers can implement without guesswork.',
     deliverables: ['Interactive Prototypes', 'Edge-Case States', 'Dev-Ready Specs', 'UI Build Review'],
-    applied: ['LifeOS', 'ClickCard', 'Sahil Hair Expert'],
+    applied: ['Tapestory Admin Panel', 'LifeOS', 'ClickCard'],
     Visual: PrototypeVisual,
   },
 ];
@@ -724,12 +728,10 @@ const tools = [
 
 const navLinks = [
   { href: '#home',      label: 'Home' },
-  { href: '#skills',    label: 'Skills' },
-  { href: '#portfolio', label: 'Portfolio' },
+  { href: '#portfolio', label: 'Work' },
   { href: '#about',     label: 'About' },
-  { href: '#expertise', label: 'Expertise' },
   { href: '#process',   label: 'Process' },
-  { href: '#blog',      label: 'Blog' },
+  { href: '#skills',    label: 'Skills & Tools' },
   { href: '#contact',   label: 'Contact' },
 ];
 
@@ -1668,12 +1670,12 @@ function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: strin
             <div>
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-3">
-                <span className="text-[11px] font-semibold tracking-[0.22em] uppercase" style={{ color: '#8C8278' }}>
-                  Portfolio
+                <span className="text-[11px] font-mono font-bold tracking-[0.2em] uppercase" style={{ color: 'var(--orange)' }}>
+                  04 · Skills &amp; Tools
                 </span>
-                <span className="w-20 h-px" style={{ background: '#D5CEC4' }} />
-                <span className="text-[11px] font-medium tracking-[0.18em]" style={{ color: '#9E9489' }}>
-                  02
+                <span className="w-16 h-px" style={{ background: '#D5CEC4' }} />
+                <span className="text-[11px] font-mono tracking-[0.12em]" style={{ color: '#9E9489' }}>
+                  Overview &amp; Stack
                 </span>
               </div>
 
@@ -1681,22 +1683,22 @@ function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: strin
                 <h2
                   className="font-serif font-bold uppercase tracking-tight"
                   style={{
-                    fontSize: 'clamp(2.2rem, 4.2vw, 3.35rem)',
+                    fontSize: 'clamp(2.1rem, 4vw, 3.25rem)',
                     lineHeight: 0.98,
                   }}
                 >
-                  <span className="block" style={{ color: '#111' }}>Portfolio</span>
-                  <span className="block mt-1" style={{ color: 'var(--orange)' }}>Overview</span>
+                  <span className="block" style={{ color: '#111' }}>Skills, Tools</span>
+                  <span className="block mt-1" style={{ color: 'var(--orange)' }}>&amp; Overview</span>
                 </h2>
 
                 {/* Vertical divider */}
                 <div className="hidden sm:block w-px h-16 shrink-0" style={{ background: '#D6CFC5' }} />
 
                 <p
-                  className="text-sm sm:text-[15px] leading-relaxed max-w-[240px]"
+                  className="text-sm sm:text-[15px] leading-relaxed max-w-[260px]"
                   style={{ color: '#6E655D', fontFamily: 'Inter' }}
                 >
-                  A snapshot of my work, experience, and the products I&apos;ve designed.
+                  My UX research methods, interface design craft, frontend stack, and portfolio track record.
                 </p>
               </div>
             </div>
@@ -2121,6 +2123,67 @@ function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: strin
             </div>
           </Reveal>
         </div>
+
+        {/* ── Structured 4-Pillar Skills & Tools Matrix (From Resume) ── */}
+        <Reveal delay={280} className="mt-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                num: '01',
+                title: 'Research & UX',
+                items: ['User Research', 'User Flows', 'Information Architecture', 'Wireframing', 'Interactive Prototyping', 'Usability Testing', 'Heuristic Evaluation'],
+              },
+              {
+                num: '02',
+                title: 'UI & Product Systems',
+                items: ['Visual & Interaction Design', 'Design Systems & Tokens', 'Responsive Web & Mobile UI', 'Editorial Typography', 'Accessibility (WCAG)', 'Developer Handoff'],
+              },
+              {
+                num: '03',
+                title: 'Design & AI Tools',
+                items: ['Figma & FigJam', 'Adobe Illustrator', 'Adobe Photoshop', 'Sketch & Adobe XD', 'Notion & Canva', 'AI-Assisted UX (Claude & ChatGPT)'],
+              },
+              {
+                num: '04',
+                title: 'Frontend Fluency',
+                items: ['React 19', 'TypeScript & JavaScript', 'Tailwind CSS', 'shadcn/ui', 'HTML5 & CSS3', 'Git, GitHub & Vercel'],
+              },
+            ].map(col => (
+              <div
+                key={col.num}
+                style={card}
+                className="p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-widest" style={{ color: 'var(--orange)' }}>
+                      {col.num}
+                    </span>
+                    <span className="w-2 h-2 rounded-full" style={{ background: '#E2D9CC' }} />
+                  </div>
+                  <h3 className="font-serif text-lg font-bold mb-3" style={{ color: '#111' }}>
+                    {col.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {col.items.map(skill => (
+                      <span
+                        key={skill}
+                        className="text-[11.5px] font-medium px-2.5 py-1 rounded-lg border"
+                        style={{
+                          background: '#fff',
+                          borderColor: 'rgba(17,17,17,0.08)',
+                          color: '#3A3530',
+                        }}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -2137,360 +2200,387 @@ function StatCountDark({ target, suffix }: { target: number; suffix: string }) {
   );
 }
 
-// ─── Featured Projects (Interactive Coverflow Carousel) ───────────────────────
+// ─── Selected Projects / Work (Mobile-First Editorial Grid) ──────────────────
+
+type ProjectFilter = 'all' | 'web' | 'mobile' | 'brand';
+
+function matchesFilter(slug: string, filter: ProjectFilter): boolean {
+  if (filter === 'all') return true;
+  if (filter === 'web') {
+    return ['tapestory-admin', 'shyam-jagat', 'clickcard', 'shyam-jagat-admin', 'sahil-hair-expert'].includes(slug);
+  }
+  if (filter === 'mobile') {
+    return ['lifeos', 'brokrs-house', 'the-brokrs'].includes(slug);
+  }
+  if (filter === 'brand') {
+    return ['logo-design', 'brokrs-house', 'clickcard'].includes(slug);
+  }
+  return true;
+}
 
 function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string) => void }) {
-  const n = projects.length;
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const [dragX, setDragX] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const startXRef = useRef<number | null>(null);
-  const didDragRef = useRef(false);
-  const wheelLockRef = useRef(false);
-  const { ref: secRef, inView } = useInView(0.25);
+  const [filter, setFilter] = useState<ProjectFilter>('all');
 
-  const go = useCallback((idx: number) => {
-    setActive(((idx % n) + n) % n);
-  }, [n]);
+  const filterTabs: { id: ProjectFilter; label: string; count: number }[] = [
+    { id: 'all',    label: 'All Work',         count: projects.length },
+    { id: 'web',    label: 'Web & Dashboards', count: 5 },
+    { id: 'mobile', label: 'Mobile Apps',      count: 3 },
+    { id: 'brand',  label: 'Brand & Identity', count: 3 },
+  ];
 
-  const stepBy = useCallback((delta: number) => {
-    setActive(a => ((a + delta) % n + n) % n);
-  }, [n]);
-
-  // Auto-advance when in viewport and not hovered/dragging
-  useEffect(() => {
-    if (!inView || paused || dragging) return;
-    const timer = setInterval(() => {
-      stepBy(1);
-    }, 5200);
-    return () => clearInterval(timer);
-  }, [inView, paused, dragging, stepBy]);
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (e.button !== 0 && e.pointerType === 'mouse') return;
-    const target = e.target as HTMLElement;
-    if (target.closest('a, button')) return;
-    startXRef.current = e.clientX;
-    didDragRef.current = false;
-    setDragging(true);
-    try {
-      e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {
-      // ignore
-    }
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!dragging || startXRef.current === null) return;
-    const dx = e.clientX - startXRef.current;
-    if (Math.abs(dx) > 6) didDragRef.current = true;
-    setDragX(dx);
-  };
-
-  const endDrag = () => {
-    if (!dragging) return;
-    if (Math.abs(dragX) > 38) {
-      stepBy(dragX < 0 ? 1 : -1);
-    }
-    setDragging(false);
-    setDragX(0);
-    startXRef.current = null;
-  };
-
-  // Trackpad two-finger horizontal swipe
-  const onWheel = (e: React.WheelEvent) => {
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 20) {
-      if (wheelLockRef.current) return;
-      wheelLockRef.current = true;
-      stepBy(e.deltaX > 0 ? 1 : -1);
-      setTimeout(() => {
-        wheelLockRef.current = false;
-      }, 600);
-    }
-  };
-
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); stepBy(1); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); stepBy(-1); }
-  };
-
-  const EASE_SMOOTH = 'cubic-bezier(0.22, 1, 0.36, 1)';
+  const visibleProjects = projects.filter(p => matchesFilter(p.slug, filter));
+  const flagship = filter === 'all' ? visibleProjects[0] : null;
+  const gridItems = filter === 'all' ? visibleProjects.slice(1) : visibleProjects;
 
   return (
     <section
       id="portfolio"
-      ref={secRef as React.Ref<HTMLElement>}
-      className="py-24 overflow-hidden select-none"
+      className="py-14 sm:py-20 md:py-24 overflow-hidden"
       style={{ background: 'var(--ivory)', borderTop: '1px solid var(--border)' }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => { setPaused(false); endDrag(); }}
-      onKeyDown={onKeyDown}
-      onWheel={onWheel}
-      tabIndex={0}
-      aria-label="Featured Projects Coverflow Carousel"
+      aria-label="Selected Projects and UX Case Studies"
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
-        {/* ── Header ── */}
-        <Reveal className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2" style={{ color: '#111' }}>Featured Projects</h2>
-          <p className="text-sm" style={{ color: '#7A7068', fontFamily: 'Inter' }}>
-            Swipe, click a side card, or use the arrows below to explore selected case studies.
-          </p>
-        </Reveal>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        {/* ── Section Header & Filter Pills ── */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 sm:mb-12">
+          <div>
+            <div className="flex items-center gap-3 mb-2.5">
+              <span className="text-[11px] font-mono font-bold tracking-[0.2em] uppercase" style={{ color: 'var(--orange)' }}>
+                01 · Selected Work
+              </span>
+              <span className="w-12 h-px" style={{ background: 'var(--border-strong)' }} />
+              <span className="text-[11px] font-mono" style={{ color: '#7A7068' }}>
+                {projects.length} Case Studies
+              </span>
+            </div>
+            <h2
+              className="font-serif font-bold leading-[1.08]"
+              style={{ fontSize: 'clamp(1.85rem, 3.8vw, 2.9rem)', color: '#111' }}
+            >
+              Selected Projects &amp; <span style={{ color: 'var(--orange)' }}>UX Case Studies</span>
+            </h2>
+            <p className="text-sm sm:text-[15px] mt-2 max-w-2xl leading-relaxed" style={{ color: '#5E5750' }}>
+              End-to-end product design across web platforms, mobile apps, and operational dashboards — pairing visual craft with clear user flows and frontend-ready systems.
+            </p>
+          </div>
 
-        {/* ── Coverflow Stage ── */}
-        <div
-          className="relative mx-auto w-full h-[460px] sm:h-[440px] md:h-[380px] flex items-center justify-center"
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-          style={{ touchAction: 'pan-y', cursor: dragging ? 'grabbing' : 'grab' }}
-        >
-          {projects.map((p, i) => {
-            // Signed circular offset rel in [-3..+4] for n=8
-            let rel = i - active;
-            if (rel > n / 2) rel -= n;
-            else if (rel < -n / 2) rel += n;
-
-            const isCenter = rel === 0;
-            const absRel = Math.abs(rel);
-            const isVisibleSide = absRel === 1 || absRel === 2;
-            const isHidden = absRel >= 3;
-
-            // Compute horizontal offset (px) and explicit pixel dimensions so CSS interpolates smoothly
-            let xOffset = 0;
-            let cardW = 680;
-            let cardH = 370;
-            let imgW = 330;
-            let zIdx = 30;
-            let opacity = 1;
-
-            if (rel === 0) {
-              xOffset = dragging ? dragX * 0.35 : 0;
-              cardW = 680;
-              cardH = 370;
-              imgW = 330;
-              zIdx = 30;
-              opacity = 1;
-            } else if (absRel === 1) {
-              xOffset = (rel < 0 ? -406 : 406) + (dragging ? dragX * 0.18 : 0);
-              cardW = 96;
-              cardH = 285;
-              imgW = 96;
-              zIdx = 20;
-              opacity = 1;
-            } else if (absRel === 2) {
-              xOffset = (rel < 0 ? -506 : 506) + (dragging ? dragX * 0.1 : 0);
-              cardW = 72;
-              cardH = 210;
-              imgW = 72;
-              zIdx = 10;
-              opacity = 0.85;
-            } else {
-              xOffset = rel < 0 ? -585 : 585;
-              cardW = 56;
-              cardH = 150;
-              imgW = 56;
-              zIdx = 1;
-              opacity = 0;
-            }
-
-            return (
-              <div
-                key={p.slug}
-                onClick={() => {
-                  if (!didDragRef.current && !isCenter && isVisibleSide) {
-                    go(i);
-                  }
-                }}
-                className={`absolute left-1/2 top-1/2 ${
-                  isCenter
-                    ? 'max-md:!w-full max-md:!h-[450px]'
-                    : 'hidden lg:block cursor-pointer'
-                }`}
-                style={{
-                  width: cardW,
-                  height: cardH,
-                  transform: `translate3d(calc(-50% + ${xOffset}px), -50%, 0)`,
-                  zIndex: zIdx,
-                  opacity,
-                  pointerEvents: isHidden ? 'none' : 'auto',
-                  willChange: 'transform, width, height, opacity',
-                  transition: dragging
-                    ? 'none'
-                    : `transform 0.65s ${EASE_SMOOTH}, width 0.65s ${EASE_SMOOTH}, height 0.65s ${EASE_SMOOTH}, opacity 0.5s ${EASE_SMOOTH}`,
-                }}
-              >
-                <article
-                  className="relative w-full h-full overflow-hidden flex flex-col md:flex-row"
-                  style={{
-                    background: '#fff',
-                    borderRadius: isCenter ? 24 : 20,
-                    border: isCenter ? '1px solid rgba(17,17,17,0.08)' : 'none',
-                    boxShadow: isCenter
-                      ? '0 24px 60px rgba(17,17,17,0.12)'
-                      : '0 12px 28px rgba(17,17,17,0.10)',
-                    transition: `border-radius 0.65s ${EASE_SMOOTH}, box-shadow 0.65s ${EASE_SMOOTH}`,
-                  }}
-                >
-                  {/* ── Left Side (or Full Side Strip): Edge-to-Edge Image ── */}
-                  <div
-                    className="relative shrink-0 max-md:!w-full h-[200px] md:h-full overflow-hidden flex items-center justify-center"
-                    style={{
-                      width: imgW,
-                      background: p.stageBg,
-                      transition: dragging ? 'none' : `width 0.65s ${EASE_SMOOTH}`,
-                    }}
-                  >
-                    <img
-                      src={p.img}
-                      alt={`${p.title} — ${p.category}`}
-                      draggable={false}
-                      className={`w-full h-full object-cover pointer-events-none transition-transform duration-500 ${
-                        isCenter ? '' : 'hover:scale-105'
-                      }`}
-                    />
-                    {/* Subtle dim overlay on outer side cards */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: '#000',
-                        opacity: isCenter ? 0 : absRel === 2 ? 0.18 : 0.05,
-                        transition: `opacity 0.5s ${EASE_SMOOTH}`,
-                      }}
-                    />
-                  </div>
-
-                  {/* ── Right Side: Persistent Text Panel (Fixed 350px width on desktop so text never reflows) ── */}
-                  <div
-                    className="w-full md:w-[350px] shrink-0 h-[250px] md:h-full p-5 md:p-6 flex flex-col justify-between"
-                    style={{
-                      opacity: isCenter ? 1 : 0,
-                      transform: isCenter ? 'translate3d(0,0,0)' : 'translate3d(14px,0,0)',
-                      pointerEvents: isCenter ? 'auto' : 'none',
-                      transition: dragging
-                        ? 'none'
-                        : `opacity 0.45s ${EASE_SMOOTH} ${isCenter ? '0.12s' : '0s'}, transform 0.55s ${EASE_SMOOTH}`,
-                    }}
-                  >
-                    <div>
-                      <div
-                        className="text-[11px] font-semibold tracking-wider uppercase mb-1.5"
-                        style={{ color: p.accent }}
-                      >
-                        {p.category}
-                      </div>
-
-                      <h3
-                        className="font-serif text-xl md:text-2xl font-bold leading-snug mb-2"
-                        style={{ color: '#111' }}
-                      >
-                        {p.title}
-                      </h3>
-
-                      <p
-                        className="text-xs md:text-[13px] leading-relaxed line-clamp-3 md:line-clamp-4"
-                        style={{ color: '#5E5750' }}
-                      >
-                        {p.desc}
-                      </p>
-
-                      <div className="flex flex-wrap gap-1.5 mt-3.5">
-                        {p.tags.map(tag => (
-                          <span
-                            key={tag}
-                            className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full"
-                            style={{
-                              background: 'var(--ivory)',
-                              color: '#7A7068',
-                              border: '1px solid var(--border)',
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="pt-2 flex flex-wrap items-center gap-2.5">
-                      {p.liveUrl && (
-                        <a
-                          href={p.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={e => {
-                            if (didDragRef.current) e.preventDefault();
-                            e.stopPropagation();
-                          }}
-                          className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold btn-arrow border transition-all duration-300 hover:bg-black/5"
-                          style={{ borderColor: 'var(--border-strong)', color: '#111', background: '#fff' }}
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Live Website <span className="arrow">↗</span>
-                        </a>
-                      )}
-                      <button
-                        type="button"
-                        onClick={e => {
-                          e.stopPropagation();
-                          if (!didDragRef.current) onOpenCaseStudy(p.slug);
-                        }}
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold btn-arrow cursor-pointer transition-all duration-300 hover:brightness-110 hover:shadow-md"
-                        style={{ background: '#111', color: '#FAF8F3' }}
-                      >
-                        View Case Study <span className="arrow">→</span>
-                      </button>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* ── Bottom Controls: Backward Arrow + Dots + Forward Arrow ── */}
-        <div className="mt-8 flex items-center justify-center gap-5">
-          <button
-            type="button"
-            onClick={() => stepBy(-1)}
-            aria-label="Previous project"
-            className="w-11 h-11 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-200 hover:border-black hover:-translate-x-0.5 active:scale-95"
-            style={{ borderColor: 'var(--border-strong)', color: '#111', background: '#fff' }}
-          >
-            ←
-          </button>
-
-          <div className="flex items-center gap-2">
-            {projects.map((p, i) => {
-              const isOn = i === active;
+          {/* Mobile-First Scrollable Filter Bar */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 shrink-0">
+            {filterTabs.map(tab => {
+              const active = filter === tab.id;
               return (
                 <button
-                  key={p.title}
+                  key={tab.id}
                   type="button"
-                  onClick={() => go(i)}
-                  aria-label={`Slide ${i + 1}: ${p.title}`}
-                  className="h-2 rounded-full cursor-pointer"
+                  onClick={() => setFilter(tab.id)}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0"
                   style={{
-                    width: isOn ? 28 : 8,
-                    background: isOn ? 'var(--orange)' : 'rgba(17,17,17,0.18)',
-                    transition: `all 0.45s ${EASE_SMOOTH}`,
+                    background: active ? '#111' : '#fff',
+                    color: active ? '#FAF8F3' : '#4A4540',
+                    border: active ? '1px solid #111' : '1px solid var(--border)',
                   }}
-                />
+                >
+                  <span>{tab.label}</span>
+                  <span
+                    className="text-[10px] font-mono px-1.5 py-0.5 rounded-full"
+                    style={{
+                      background: active ? 'rgba(255,255,255,0.16)' : '#F3EEE6',
+                      color: active ? '#FAF8F3' : '#7A7068',
+                    }}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
               );
             })}
           </div>
+        </div>
 
-          <button
-            type="button"
-            onClick={() => stepBy(1)}
-            aria-label="Next project"
-            className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:translate-x-0.5 hover:shadow-lg active:scale-95"
-            style={{ background: '#111', color: '#FAF8F3' }}
+        {/* ── Flagship Project Card (#01 Tapestory Admin Panel when viewing All Work) ── */}
+        {flagship && (
+          <article
+            onClick={() => onOpenCaseStudy(flagship.slug)}
+            className="group mb-7 sm:mb-10 rounded-2xl sm:rounded-3xl overflow-hidden border transition-all duration-300 hover:shadow-xl cursor-pointer grid grid-cols-1 lg:grid-cols-12"
+            style={{
+              background: '#fff',
+              borderColor: 'var(--border)',
+              boxShadow: '0 14px 40px -12px rgba(17,17,17,0.08)',
+            }}
           >
-            →
-          </button>
+            {/* Left / Top Visual Stage */}
+            <div
+              className="lg:col-span-7 relative overflow-hidden aspect-[16/11] lg:aspect-auto lg:min-h-[420px]"
+              style={{ background: flagship.stageBg }}
+            >
+              <img
+                src={flagship.img}
+                alt={`${flagship.title} — ${flagship.category}`}
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                loading="eager"
+              />
+              <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 pointer-events-none">
+                <span
+                  className="text-[11px] font-mono font-bold px-3 py-1 rounded-full"
+                  style={{
+                    background: 'rgba(17,17,17,0.82)',
+                    color: '#FAF8F3',
+                    backdropFilter: 'blur(8px)',
+                  }}
+                >
+                  {flagship.num} · FEATURED CASE STUDY
+                </span>
+                {flagship.liveUrl && (
+                  <span
+                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1 rounded-full"
+                    style={{
+                      background: 'rgba(255,255,255,0.94)',
+                      color: '#111',
+                      backdropFilter: 'blur(8px)',
+                    }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Live Product
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Right / Bottom Content & UX Summary */}
+            <div className="lg:col-span-5 p-5 sm:p-7 md:p-8 flex flex-col justify-between">
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <span
+                    className="text-[11px] font-semibold uppercase tracking-wider"
+                    style={{ color: flagship.accent }}
+                  >
+                    {flagship.category}
+                  </span>
+                  <span className="text-[11px] font-mono" style={{ color: '#7A7068' }}>
+                    {flagship.platform}
+                  </span>
+                </div>
+
+                <h3
+                  className="font-serif text-2xl sm:text-3xl font-bold leading-tight mb-1.5 group-hover:text-[#C85D2A] transition-colors"
+                  style={{ color: '#111' }}
+                >
+                  {flagship.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm font-medium mb-4" style={{ color: '#5E5750' }}>
+                  {flagship.subtitle}
+                </p>
+
+                {/* Scannable UX Case Study Snapshot */}
+                <div
+                  className="p-3.5 sm:p-4 rounded-xl border space-y-2.5 mb-4"
+                  style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
+                >
+                  <div className="flex items-baseline justify-between gap-2 text-xs">
+                    <span className="font-mono text-[10px] uppercase tracking-wider font-bold" style={{ color: 'var(--orange)' }}>
+                      My Role
+                    </span>
+                    <span className="font-semibold text-right" style={{ color: '#111' }}>
+                      {flagship.role}
+                    </span>
+                  </div>
+                  <div className="pt-2 border-t text-xs leading-relaxed" style={{ borderColor: 'var(--border)', color: '#4A4540' }}>
+                    <strong className="font-semibold" style={{ color: '#111' }}>Problem: </strong>
+                    <span className="line-clamp-2">{flagship.problem}</span>
+                  </div>
+                  <div className="text-xs leading-relaxed" style={{ color: '#4A4540' }}>
+                    <strong className="font-semibold" style={{ color: '#111' }}>UX &amp; UI Solution: </strong>
+                    <span className="line-clamp-2">{flagship.solution}</span>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {flagship.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="text-[11px] font-medium px-2.5 py-1 rounded-full border"
+                      style={{ background: '#fff', borderColor: 'var(--border)', color: '#5E5750' }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="pt-3 border-t flex flex-wrap items-center gap-2.5" style={{ borderColor: 'var(--border)' }}>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.stopPropagation();
+                    onOpenCaseStudy(flagship.slug);
+                  }}
+                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold btn-arrow cursor-pointer transition-all hover:opacity-95"
+                  style={{ background: '#111', color: '#FAF8F3' }}
+                >
+                  Read UX Case Study <span className="arrow">→</span>
+                </button>
+                {flagship.liveUrl && (
+                  <a
+                    href={flagship.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border transition-colors hover:bg-black/5"
+                    style={{ borderColor: 'var(--border-strong)', color: '#111', background: '#fff' }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Live Website ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        )}
+
+        {/* ── Consistent 2-Column Responsive Grid for All Projects ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+          {gridItems.map(p => (
+            <article
+              key={p.slug}
+              onClick={() => onOpenCaseStudy(p.slug)}
+              className="group rounded-2xl overflow-hidden border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+              style={{
+                background: '#fff',
+                borderColor: 'var(--border)',
+                boxShadow: '0 10px 30px -14px rgba(17,17,17,0.07)',
+              }}
+            >
+              <div>
+                {/* Consistent 16:10 Image Stage */}
+                <div
+                  className="relative w-full aspect-[16/10] overflow-hidden border-b"
+                  style={{ background: p.stageBg, borderColor: 'var(--border)' }}
+                >
+                  <img
+                    src={p.img}
+                    alt={`${p.title} — ${p.category}`}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                  {/* Top Badges */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
+                    <span
+                      className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full"
+                      style={{
+                        background: 'rgba(17,17,17,0.8)',
+                        color: '#FAF8F3',
+                        backdropFilter: 'blur(6px)',
+                      }}
+                    >
+                      {p.num}
+                    </span>
+                    {p.liveUrl && (
+                      <span
+                        className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full"
+                        style={{
+                          background: 'rgba(255,255,255,0.94)',
+                          color: '#111',
+                          backdropFilter: 'blur(6px)',
+                        }}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Live
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-5 sm:p-6 pb-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                    <span
+                      className="text-[11px] font-semibold uppercase tracking-wider"
+                      style={{ color: p.accent }}
+                    >
+                      {p.category}
+                    </span>
+                    <span className="text-[11px] font-mono" style={{ color: '#7A7068' }}>
+                      {p.role}
+                    </span>
+                  </div>
+
+                  <h3
+                    className="font-serif text-xl sm:text-2xl font-bold leading-snug mb-1 group-hover:text-[#C85D2A] transition-colors"
+                    style={{ color: '#111' }}
+                  >
+                    {p.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm mb-3.5 line-clamp-2 leading-relaxed" style={{ color: '#5E5750' }}>
+                    {p.desc}
+                  </p>
+
+                  {/* Concise Problem + UX Solution Box */}
+                  <div
+                    className="p-3.5 rounded-xl border space-y-1.5 mb-4 text-xs leading-relaxed"
+                    style={{ background: '#FAF8F3', borderColor: 'var(--border)', color: '#4A4540' }}
+                  >
+                    <div className="line-clamp-2">
+                      <strong className="font-semibold" style={{ color: '#111' }}>Problem: </strong>
+                      {p.problem}
+                    </div>
+                    <div className="line-clamp-2">
+                      <strong className="font-semibold" style={{ color: '#111' }}>UX Solution: </strong>
+                      {p.solution}
+                    </div>
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tags.slice(0, 4).map(tag => (
+                      <span
+                        key={tag}
+                        className="text-[10.5px] font-medium px-2.5 py-0.5 rounded-full border"
+                        style={{ background: '#fff', borderColor: 'var(--border)', color: '#5E5750' }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Footer Actions */}
+              <div className="px-5 sm:px-6 py-4 mt-2 border-t flex flex-wrap items-center justify-between gap-2.5" style={{ borderColor: 'var(--border)' }}>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.stopPropagation();
+                    onOpenCaseStudy(p.slug);
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold btn-arrow cursor-pointer"
+                  style={{ color: '#111' }}
+                >
+                  <span>Read UX Case Study</span>
+                  <span className="arrow" style={{ color: 'var(--orange)' }}>→</span>
+                </button>
+
+                {p.liveUrl ? (
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors hover:bg-black/5"
+                    style={{ borderColor: 'var(--border-strong)', color: '#111', background: '#fff' }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Live Site ↗
+                  </a>
+                ) : (
+                  <span className="text-[11px] font-mono" style={{ color: '#8C8278' }}>
+                    {p.platform}
+                  </span>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -3725,15 +3815,22 @@ function Footer() {
           <div>
             <div className="text-xs tracking-widest uppercase font-semibold mb-4" style={{ color: '#7A7068' }}>Quick Links</div>
             <ul className="space-y-2">
-              {['home','skills','portfolio','about','expertise','process','blog','contact'].map(l => (
-                <li key={l}>
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'portfolio', label: 'Selected Work' },
+                { id: 'about', label: 'About Me' },
+                { id: 'process', label: 'Design Process' },
+                { id: 'skills', label: 'Skills & Tools' },
+                { id: 'contact', label: 'Contact' },
+              ].map(l => (
+                <li key={l.id}>
                   <a
-                    href={`#${l}`}
-                    onClick={e => { e.preventDefault(); scrollTo(l); }}
-                    className="text-sm capitalize transition-colors hover:text-orange-400"
+                    href={`#${l.id}`}
+                    onClick={e => { e.preventDefault(); scrollTo(l.id); }}
+                    className="text-sm transition-colors hover:text-orange-400"
                     style={{ color: '#9A9A9A' }}
                   >
-                    {l}
+                    {l.label}
                   </a>
                 </li>
               ))}
@@ -3858,14 +3955,14 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--ivory)' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: 'var(--ivory)' }}>
       <Navbar />
       <Hero onOpenCaseStudy={openCaseStudy} />
-      <PortfolioOverview onOpenCaseStudy={openCaseStudy} />
       <FeaturedProjects onOpenCaseStudy={openCaseStudy} />
       <About />
-      <Expertise />
       <Process />
+      <PortfolioOverview onOpenCaseStudy={openCaseStudy} />
+      <Expertise />
       <Blog />
       <Contact />
       <Footer />

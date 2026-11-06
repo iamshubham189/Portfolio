@@ -762,65 +762,88 @@ export function CaseStudyPage({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [project.slug]);
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <div className="min-h-screen" style={{ background: 'var(--ivory)', color: '#111' }}>
-      {/* ── Sticky Top Navigation Bar ── */}
+    <div className="min-h-screen overflow-x-hidden" style={{ background: 'var(--ivory)', color: '#111' }}>
+      {/* ── Sticky Top Navigation Bar (Mobile-First) ── */}
       <header
         className="sticky top-0 z-50 border-b"
         style={{
-          background: 'rgba(250,248,243,0.9)',
+          background: 'rgba(250,248,243,0.92)',
           backdropFilter: 'blur(12px)',
           borderColor: 'var(--border)',
         }}
       >
-        <div className="max-w-7xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
           <button
             type="button"
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-sm font-semibold px-3.5 py-2 rounded-lg cursor-pointer transition-colors hover:bg-black/5"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 py-2 rounded-lg cursor-pointer transition-colors hover:bg-black/5 shrink-0"
             style={{ color: '#111' }}
           >
-            <span>←</span> Back to Portfolio
+            <span>←</span> <span>All Projects</span>
           </button>
 
-          <div className="hidden sm:flex items-center gap-2 text-xs font-mono" style={{ color: '#7A7068' }}>
-            <span className="font-semibold" style={{ color: '#111' }}>{project.title}</span>
-          </div>
+          {/* Quick section jump pills on desktop */}
+          <nav aria-label="Case study sections" className="hidden lg:flex items-center gap-1">
+            {[
+              { id: 'cs-overview', label: 'Overview & Problem' },
+              { id: 'cs-ux-approach', label: 'UX Approach' },
+              { id: 'cs-ui-solution', label: 'UI Solution' },
+              { id: 'cs-screens', label: 'Screens' },
+              { id: 'cs-outcome', label: 'Outcome' },
+            ].map(s => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => scrollToSection(s.id)}
+                className="text-xs font-medium px-3 py-1.5 rounded-md transition-colors hover:bg-black/5 cursor-pointer"
+                style={{ color: '#5E5750' }}
+              >
+                {s.label}
+              </button>
+            ))}
+          </nav>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 shrink-0">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold border transition-colors hover:bg-black/5"
+                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold border transition-colors hover:bg-black/5"
                 style={{ borderColor: 'var(--border-strong)', color: '#111', background: '#fff' }}
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Live Website ↗
+                <span>Live Site</span> <span>↗</span>
               </a>
             )}
             <button
               type="button"
               onClick={() => onSelectProject(nextProj.slug)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold cursor-pointer transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold cursor-pointer transition-opacity hover:opacity-90"
               style={{ background: '#111', color: '#FAF8F3' }}
             >
-              Next: {nextProj.title} →
+              <span className="hidden sm:inline">Next:</span>
+              <span className="max-w-[110px] sm:max-w-none truncate">{nextProj.title}</span>
+              <span>→</span>
             </button>
           </div>
         </div>
       </header>
 
-      {/* ── Hero & Visual Showcase ── */}
-      <section className="pt-10 pb-14 md:pt-14 md:pb-16">
-        <div className="max-w-6xl mx-auto px-5 md:px-8">
-          <div className="flex flex-wrap items-center gap-2.5 mb-3">
+      {/* ── Case Study Hero & Role Metadata ── */}
+      <section className="pt-8 pb-8 sm:pt-12 sm:pb-12 border-b" style={{ borderColor: 'var(--border)' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
             <span
-              className="text-xs font-mono font-bold px-2.5 py-1 rounded-full"
+              className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-full"
               style={{ background: 'var(--orange-light)', color: 'var(--orange)' }}
             >
-              UI/UX CASE STUDY
+              CASE STUDY {project.num} / {String(PROJECTS_DATA.length).padStart(2, '0')}
             </span>
             <span className="text-xs font-semibold tracking-wider uppercase" style={{ color: project.accent }}>
               {project.category}
@@ -829,24 +852,24 @@ export function CaseStudyPage({
 
           <h1
             className="font-serif font-bold leading-[1.08] mb-2.5"
-            style={{ fontSize: 'clamp(2rem, 4.2vw, 3.4rem)', color: '#111' }}
+            style={{ fontSize: 'clamp(1.85rem, 4.2vw, 3.25rem)', color: '#111' }}
           >
             {project.title}
           </h1>
 
           {project.subtitle && (
-            <p className="font-serif text-lg md:text-2xl max-w-3xl leading-snug mb-5" style={{ color: '#2A2A2A' }}>
+            <p className="font-serif text-base sm:text-xl md:text-2xl max-w-3xl leading-snug mb-5" style={{ color: '#3A3530' }}>
               {project.subtitle}
             </p>
           )}
 
           {/* Tags & Live Link Row */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-7">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {project.tags.map(t => (
                 <span
                   key={t}
-                  className="text-xs font-semibold px-3 py-1 rounded-full border"
+                  className="text-[11px] sm:text-xs font-medium px-3 py-1 rounded-full border"
                   style={{ background: '#fff', borderColor: 'var(--border)', color: '#5E5750' }}
                 >
                   {t}
@@ -863,53 +886,211 @@ export function CaseStudyPage({
                 style={{ background: '#fff', borderColor: 'var(--border-strong)', color: '#111' }}
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                Live website: <span className="underline" style={{ color: 'var(--orange)' }}>{project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span> ↗
+                Live Product: <span className="underline" style={{ color: 'var(--orange)' }}>{project.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span> ↗
               </a>
             )}
           </div>
 
-          {/* Concise 4-Column Snapshot Strip */}
-          {project.snapshot && project.snapshot.length > 0 ? (
+          {/* My Role, Platform & Tools Bar */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 sm:p-5 rounded-2xl border mb-4"
+            style={{ background: '#fff', borderColor: 'var(--border)' }}
+          >
+            <div>
+              <div className="text-[10px] font-mono uppercase tracking-widest font-semibold mb-1" style={{ color: 'var(--orange)' }}>
+                My Role
+              </div>
+              <div className="text-sm font-semibold" style={{ color: '#111' }}>
+                {project.role}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] font-mono uppercase tracking-widest font-semibold mb-1" style={{ color: 'var(--orange)' }}>
+                Platform & Format
+              </div>
+              <div className="text-sm font-semibold" style={{ color: '#111' }}>
+                {project.platform}
+              </div>
+            </div>
+            <div>
+              <div className="text-[10px] font-mono uppercase tracking-widest font-semibold mb-1" style={{ color: 'var(--orange)' }}>
+                Tools & Stack
+              </div>
+              <div className="text-sm font-semibold" style={{ color: '#111' }}>
+                {project.tools.join(' · ')}
+              </div>
+            </div>
+          </div>
+
+          {/* 4-Column Project Snapshot Strip */}
+          {project.snapshot && project.snapshot.length > 0 && (
             <div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-5 rounded-2xl mb-8 border"
-              style={{ background: '#fff', borderColor: 'var(--border)' }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-5 rounded-2xl border"
+              style={{ background: '#F7F4EC', borderColor: 'var(--border)' }}
             >
               {project.snapshot.map(item => (
                 <div key={item.label}>
-                  <div className="text-[11px] uppercase tracking-widest font-semibold mb-1" style={{ color: 'var(--orange)' }}>
+                  <div className="text-[10px] font-mono uppercase tracking-widest font-semibold mb-1" style={{ color: '#7A7068' }}>
                     {item.label}
                   </div>
-                  <div className="text-sm font-medium leading-snug" style={{ color: '#111' }}>
+                  <div className="text-xs sm:text-sm font-medium leading-snug" style={{ color: '#111' }}>
                     {item.value}
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
+          )}
+        </div>
+      </section>
+
+      {/* ── Structured UX Case Study Breakdown (Overview, Problem, UX Approach, UI Solution) ── */}
+      <section id="cs-overview" className="py-10 sm:py-14" style={{ background: '#F3EEE6' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 space-y-8 sm:space-y-10">
+          {/* 01. Overview & 02. The Problem */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             <div
-              className="grid grid-cols-2 md:grid-cols-4 gap-5 p-5 rounded-2xl mb-8 border"
+              className="p-5 sm:p-6 rounded-2xl border"
               style={{ background: '#fff', borderColor: 'var(--border)' }}
             >
-              <div>
-                <div className="text-[11px] uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>Project</div>
-                <div className="text-sm font-semibold" style={{ color: '#111' }}>{project.projectType || project.category}</div>
+              <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1.5" style={{ color: 'var(--orange)' }}>
+                01 · Overview
               </div>
-              <div>
-                <div className="text-[11px] uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>Role</div>
-                <div className="text-sm font-semibold" style={{ color: '#111' }}>{project.role}</div>
+              <h2 className="font-serif text-lg sm:text-xl font-bold mb-2" style={{ color: '#111' }}>
+                What is {project.title}?
+              </h2>
+              <p className="text-sm sm:text-[15px] leading-relaxed" style={{ color: '#4A4540' }}>
+                {project.overview}
+              </p>
+            </div>
+
+            <div
+              className="p-5 sm:p-6 rounded-2xl border"
+              style={{ background: '#fff', borderColor: 'var(--border)' }}
+            >
+              <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1.5" style={{ color: 'var(--orange)' }}>
+                02 · The Problem
               </div>
-              <div>
-                <div className="text-[11px] uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>Platform</div>
-                <div className="text-sm font-semibold" style={{ color: '#111' }}>{project.platform}</div>
+              <h2 className="font-serif text-lg sm:text-xl font-bold mb-2" style={{ color: '#111' }}>
+                {project.problemHeading || 'User & Operational Friction'}
+              </h2>
+              <p className="text-sm sm:text-[15px] leading-relaxed" style={{ color: '#4A4540' }}>
+                {project.problem}
+              </p>
+            </div>
+          </div>
+
+          {/* Design Challenge Callout */}
+          {project.designChallenge && (
+            <div
+              className="p-5 sm:p-6 rounded-2xl border-l-4"
+              style={{ background: '#fff', borderColor: 'var(--orange)' }}
+            >
+              <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
+                Core UX Question
               </div>
+              <p className="font-serif text-base sm:text-lg md:text-xl font-bold leading-snug" style={{ color: '#111' }}>
+                &ldquo;{project.designChallenge}&rdquo;
+              </p>
+            </div>
+          )}
+
+          {/* 03. UX Approach & Information Architecture Pillars */}
+          {project.strategyPillars && project.strategyPillars.length > 0 && (
+            <div id="cs-ux-approach" className="space-y-4">
               <div>
-                <div className="text-[11px] uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>Tools</div>
-                <div className="text-sm font-semibold" style={{ color: '#111' }}>{project.tools.join(', ')}</div>
+                <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
+                  03 · UX Approach &amp; Architecture
+                </div>
+                <h2 className="font-serif text-xl sm:text-2xl font-bold" style={{ color: '#111' }}>
+                  {project.strategyHeading || 'User Flows & Design Strategy'}
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {project.strategyPillars.map(pil => (
+                  <div
+                    key={pil.num}
+                    className="p-5 rounded-2xl border"
+                    style={{ background: '#1A1917', borderColor: 'rgba(255,255,255,0.08)', color: '#FAF8F3' }}
+                  >
+                    <div className="text-xs font-mono font-bold uppercase tracking-widest mb-1.5" style={{ color: 'var(--orange)' }}>
+                      {pil.num} — {pil.title}
+                    </div>
+                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#D6D1C7' }}>
+                      {pil.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           )}
 
-          {/* Cover Poster or Full Uncompressed Actual UI Case Study Board */}
+          {/* 04. UI Solution & Key Interface Highlights */}
+          <div id="cs-ui-solution" className="space-y-4">
+            <div
+              className="p-5 sm:p-6 rounded-2xl border"
+              style={{ background: '#fff', borderColor: 'var(--border)' }}
+            >
+              <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
+                04 · UI Solution
+              </div>
+              <h2 className="font-serif text-xl sm:text-2xl font-bold mb-2" style={{ color: '#111' }}>
+                Interface Architecture &amp; Key Screens
+              </h2>
+              <p className="text-sm sm:text-[15px] leading-relaxed mb-5" style={{ color: '#4A4540' }}>
+                {project.solution}
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                {project.highlights.map((h, i) => (
+                  <div
+                    key={h.title}
+                    className="p-4 sm:p-5 rounded-xl border"
+                    style={{ background: '#FAF8F3', borderColor: 'var(--border)' }}
+                  >
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--orange)' }}>
+                      Screen Focus 0{i + 1}
+                    </div>
+                    <h3 className="font-serif text-base sm:text-lg font-bold mb-1" style={{ color: '#111' }}>
+                      {h.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#5E5750' }}>
+                      {h.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Visual Interface Showcase (High-Resolution Screens & Mockups) ── */}
+      <section id="cs-screens" className="py-10 sm:py-14 border-t" style={{ background: 'var(--ivory)', borderColor: 'var(--border)' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
+                05 · Visual Showcase
+              </div>
+              <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold" style={{ color: '#111' }}>
+                Final UI Screens &amp; System Breakdown
+              </h2>
+            </div>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border transition-colors hover:bg-black/5"
+                style={{ background: '#fff', borderColor: 'var(--border-strong)', color: '#111' }}
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Interact with Live Build ↗
+              </a>
+            )}
+          </div>
+
           {project.slug === 'tapestory-admin' ? (
             <TapestoryVisualShowcase />
           ) : project.slug === 'shyam-jagat' ? (
@@ -944,156 +1125,33 @@ export function CaseStudyPage({
         </div>
       </section>
 
-      {/* ── Concise Case Study Summary Body ── */}
-      <section className="py-14 border-t" style={{ background: '#F3EEE6', borderColor: 'var(--border)' }}>
-        <div className="max-w-5xl mx-auto px-5 md:px-8 space-y-10">
-          {/* 01. Overview & 02. The Problem side-by-side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* ── 06. Outcome & What's Next ── */}
+      {(project.outcome || (project.whatsNext && project.whatsNext.length > 0)) && (
+        <section id="cs-outcome" className="py-10 sm:py-14 border-t" style={{ background: '#F3EEE6', borderColor: 'var(--border)' }}>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
             <div
-              className="p-6 rounded-2xl border"
-              style={{ background: '#fff', borderColor: 'var(--border)' }}
-            >
-              <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1.5" style={{ color: 'var(--orange)' }}>
-                01. Overview
-              </div>
-              <h2 className="font-serif text-xl font-bold mb-2.5" style={{ color: '#111' }}>
-                About the Project
-              </h2>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#4A4540' }}>
-                {project.overview}
-              </p>
-            </div>
-
-            <div
-              className="p-6 rounded-2xl border"
-              style={{ background: '#fff', borderColor: 'var(--border)' }}
-            >
-              <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1.5" style={{ color: 'var(--orange)' }}>
-                02. The Problem
-              </div>
-              <h2 className="font-serif text-xl font-bold mb-2.5" style={{ color: '#111' }}>
-                {project.problemHeading || 'The Challenge'}
-              </h2>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#4A4540' }}>
-                {project.problem}
-              </p>
-            </div>
-          </div>
-
-          {/* Design Challenge Callout */}
-          {project.designChallenge && (
-            <div
-              className="p-6 rounded-2xl border-l-4"
-              style={{ background: '#fff', borderColor: 'var(--orange)' }}
-            >
-              <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
-                Design Challenge
-              </div>
-              <p className="font-serif text-lg md:text-xl font-bold leading-snug" style={{ color: '#111' }}>
-                {project.designChallenge}
-              </p>
-            </div>
-          )}
-
-          {/* 03. Core Pillars / Solution */}
-          {project.strategyPillars && project.strategyPillars.length > 0 ? (
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <div>
-                  <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
-                    03. The Solution
-                  </div>
-                  <h2 className="font-serif text-2xl font-bold" style={{ color: '#111' }}>
-                    {project.strategyHeading || 'Core Product Pillars'}
-                  </h2>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {project.strategyPillars.map(pil => (
-                  <div
-                    key={pil.num}
-                    className="p-5 rounded-2xl border"
-                    style={{ background: '#1A1917', borderColor: 'rgba(255,255,255,0.08)', color: '#FAF8F3' }}
-                  >
-                    <div className="text-xs font-mono font-bold uppercase tracking-widest mb-1.5" style={{ color: 'var(--orange)' }}>
-                      {pil.num} — {pil.title}
-                    </div>
-                    <p className="text-sm leading-relaxed" style={{ color: '#D6D1C7' }}>
-                      {pil.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div
-              className="p-6 rounded-2xl border"
-              style={{ background: '#fff', borderColor: 'var(--border)' }}
-            >
-              <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1.5" style={{ color: 'var(--orange)' }}>
-                03. The Solution
-              </div>
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: '#2A2A2A' }}>
-                {project.solution}
-              </p>
-            </div>
-          )}
-
-          {/* 04. Key Features (4 Concise Cards) */}
-          <div className="space-y-4">
-            <div>
-              <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
-                04. Key Features
-              </div>
-              <h2 className="font-serif text-2xl font-bold" style={{ color: '#111' }}>
-                Key Design Highlights
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {project.highlights.map(h => (
-                <div
-                  key={h.title}
-                  className="p-5 rounded-2xl border"
-                  style={{ background: '#fff', borderColor: 'var(--border)' }}
-                >
-                  <h3 className="font-serif text-lg font-bold mb-1" style={{ color: '#111' }}>
-                    {h.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#5E5750' }}>
-                    {h.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 05. Outcome & What's Next */}
-          {(project.outcome || (project.whatsNext && project.whatsNext.length > 0)) && (
-            <div
-              className="p-6 rounded-2xl border space-y-5"
+              className="p-5 sm:p-7 rounded-2xl border space-y-6"
               style={{ background: '#fff', borderColor: 'var(--border)' }}
             >
               {project.outcome && (
                 <div>
-                  <div className="text-xs font-mono uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--orange)' }}>
-                    05. Outcome
+                  <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-1.5" style={{ color: 'var(--orange)' }}>
+                    06 · Outcome &amp; Impact
                   </div>
-                  <p className="text-sm md:text-base font-medium leading-relaxed" style={{ color: '#111' }}>
+                  <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: '#111' }}>
                     {project.outcome}
                   </p>
                 </div>
               )}
 
               {project.whatsNext && project.whatsNext.length > 0 && (
-                <div className="pt-4 border-t" style={{ borderColor: 'var(--border)' }}>
-                  <div className="text-xs font-mono uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--orange)' }}>
-                    What&apos;s Next?
+                <div className="pt-5 border-t" style={{ borderColor: 'var(--border)' }}>
+                  <div className="text-[11px] font-mono uppercase tracking-widest font-bold mb-3" style={{ color: 'var(--orange)' }}>
+                    Validation &amp; Next Iterations
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {project.whatsNext.map(item => (
-                      <div key={item.label} className="text-sm leading-relaxed" style={{ color: '#5E5750' }}>
+                      <div key={item.label} className="text-xs sm:text-sm leading-relaxed" style={{ color: '#5E5750' }}>
                         <strong className="font-semibold block mb-0.5" style={{ color: '#111' }}>
                           {item.label}
                         </strong>
@@ -1104,22 +1162,22 @@ export function CaseStudyPage({
                 </div>
               )}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       {/* ── Next / Previous Case Study Footer Navigation ── */}
-      <section className="py-12 border-t" style={{ background: 'var(--ivory)', borderColor: 'var(--border)' }}>
-        <div className="max-w-6xl mx-auto px-5 md:px-8">
-          <div className="flex flex-col sm:flex-row items-stretch justify-between gap-4">
+      <section className="py-10 sm:py-12 border-t" style={{ background: 'var(--ivory)', borderColor: 'var(--border)' }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <button
               type="button"
               onClick={() => onSelectProject(prevProj.slug)}
-              className="flex-1 p-6 rounded-2xl border text-left cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="p-5 sm:p-6 rounded-2xl border text-left cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md"
               style={{ background: '#fff', borderColor: 'var(--border)' }}
             >
-              <div className="text-xs uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>← Previous Project</div>
-              <div className="font-serif text-xl font-bold" style={{ color: '#111' }}>
+              <div className="text-[11px] font-mono uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>← Previous Project</div>
+              <div className="font-serif text-lg sm:text-xl font-bold" style={{ color: '#111' }}>
                 {prevProj.title}
               </div>
               <div className="text-xs mt-1" style={{ color: prevProj.accent }}>{prevProj.category}</div>
@@ -1128,11 +1186,11 @@ export function CaseStudyPage({
             <button
               type="button"
               onClick={() => onSelectProject(nextProj.slug)}
-              className="flex-1 p-6 rounded-2xl border text-right cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="p-5 sm:p-6 rounded-2xl border text-left sm:text-right cursor-pointer transition-all hover:-translate-y-0.5 hover:shadow-md"
               style={{ background: '#fff', borderColor: 'var(--border)' }}
             >
-              <div className="text-xs uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>Next Project →</div>
-              <div className="font-serif text-xl font-bold" style={{ color: '#111' }}>
+              <div className="text-[11px] font-mono uppercase tracking-widest mb-1" style={{ color: '#7A7068' }}>Next Project →</div>
+              <div className="font-serif text-lg sm:text-xl font-bold" style={{ color: '#111' }}>
                 {nextProj.title}
               </div>
               <div className="text-xs mt-1" style={{ color: nextProj.accent }}>{nextProj.category}</div>
