@@ -731,11 +731,12 @@ const navLinks = [
   { href: '#portfolio', label: 'Work' },
   { href: '#about',     label: 'About' },
   { href: '#process',   label: 'Process' },
-  { href: '#skills',    label: 'Skills & Tools' },
+  { href: '#skills',    label: 'Skills' },
+  { href: '#resume',    label: 'Resume' },
   { href: '#contact',   label: 'Contact' },
 ];
 
-function Navbar() {
+function Navbar({ onOpenResume }: { onOpenResume?: () => void }) {
   const scrolled = useScrolled();
   const active   = useActiveSection();
   const [open, setOpen] = useState(false);
@@ -808,7 +809,14 @@ function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={e => { e.preventDefault(); scrollTo(l.href.slice(1)); }}
+                onClick={e => {
+                  e.preventDefault();
+                  if (l.href === '#resume') {
+                    onOpenResume?.();
+                  } else {
+                    scrollTo(l.href.slice(1));
+                  }
+                }}
                 className={`nav-link ${active === l.href.slice(1) ? 'active' : ''}`}
               >
                 {l.label}
@@ -860,7 +868,15 @@ function Navbar() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={e => { e.preventDefault(); scrollTo(l.href.slice(1)); }}
+                  onClick={e => {
+                    e.preventDefault();
+                    setOpen(false);
+                    if (l.href === '#resume') {
+                      onOpenResume?.();
+                    } else {
+                      scrollTo(l.href.slice(1));
+                    }
+                  }}
                   className="mobile-nav-item py-3 px-4 text-sm font-medium rounded-lg flex items-center justify-between"
                   style={{
                     transitionDelay: open ? `${i * 30}ms` : '0ms',
@@ -896,7 +912,7 @@ function Navbar() {
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void }) {
+function Hero({ onOpenCaseStudy, onOpenResume }: { onOpenCaseStudy?: (slug: string) => void; onOpenResume?: () => void }) {
   const parallax = useParallax();
   const [loaded, setLoaded] = useState(false);
   const [activeProcessIdx, setActiveProcessIdx] = useState(0);
@@ -1109,7 +1125,7 @@ function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void })
 
           {/* Sub */}
           <p
-            className="text-base leading-relaxed mb-6 sm:mb-8 max-w-md"
+            className="text-base leading-relaxed mb-6 sm:mb-8 max-w-lg"
             style={{
               color: '#7A7068',
               fontFamily: 'Inter',
@@ -1118,12 +1134,12 @@ function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void })
               transition: 'opacity 0.8s ease 0.5s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s',
             }}
           >
-            I&apos;m a UI/UX designer with a frontend background. I design clean, simple web apps, mobile products, and dashboards.
+            UI/UX Designer with 4+ years across visual design, frontend development, and product design. I design user flows, clickable prototypes, and Figma systems that look sharp and build cleanly.
           </p>
 
           {/* Buttons */}
           <div
-            className="flex flex-wrap gap-3.5 sm:gap-4 mb-6 sm:mb-10"
+            className="flex flex-wrap items-center gap-3 sm:gap-3.5 mb-6 sm:mb-10"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? 'none' : 'translateY(16px)',
@@ -1142,10 +1158,24 @@ function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void })
             >
               View My Work <span className="arrow">→</span>
             </button>
+            <button
+              type="button"
+              onClick={onOpenResume}
+              className="flex items-center gap-2 px-5 py-3.5 font-semibold text-sm btn-arrow border transition-all duration-200 hover:bg-white hover:-translate-y-0.5 cursor-pointer"
+              style={{
+                borderColor: '#D6D0C6',
+                background: '#fff',
+                color: '#111',
+                borderRadius: 10,
+                boxShadow: '0 4px 14px -4px rgba(0,0,0,0.06)',
+              }}
+            >
+              View Resume <span className="arrow">↗</span>
+            </button>
             <a
               href="/Shubham-Sharma-Resume.pdf"
               download="Shubham-Sharma-Resume.pdf"
-              className="flex items-center gap-2.5 px-6 py-3.5 font-semibold text-sm btn-arrow border transition-all duration-200 hover:bg-white hover:-translate-y-0.5"
+              className="flex items-center gap-2 px-5 py-3.5 font-semibold text-sm btn-arrow border transition-all duration-200 hover:bg-white hover:-translate-y-0.5"
               style={{
                 borderColor: '#D6D0C6',
                 background: 'rgba(255,255,255,0.55)',
@@ -1153,7 +1183,7 @@ function Hero({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void })
                 borderRadius: 10,
               }}
             >
-              Download Resume <span className="arrow">↓</span>
+              Download PDF <span className="arrow">↓</span>
             </a>
           </div>
 
@@ -1555,7 +1585,7 @@ const overviewStats = [
     icon: <><path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" /></>,
   },
   {
-    target: 3, decimals: 0, suffix: '', label: 'Product\nTeams', color: '#2A6E6E',
+    target: 4, decimals: 0, suffix: '', label: 'Product\nTeams', color: '#2A6E6E',
     actionId: 'about',
     icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
   },
@@ -1567,10 +1597,10 @@ const overviewStats = [
 ];
 
 const career = [
-  { years: '2020–2021', short: 'Graphic\nDesign',  role: 'Graphic Designer · 2020–2021',           h: 34 },
-  { years: '2021–2024', short: 'Civil\nServices',  role: 'Civil Services Preparation · 2021–2024', h: 52 },
-  { years: '2024–2025', short: 'Frontend',         role: 'Frontend Developer, Emiza · 2024–2025',  h: 72 },
-  { years: '2025–Now',  short: 'UI/UX',            role: 'UI/UX Designer, Top Parent · 2025–present', h: 100, current: true },
+  { years: '2019–2021', short: 'Graphic\nDesign',  role: 'Graphic Designer · Multiple clients · 2019–2021',           h: 36 },
+  { years: '2024',      short: 'Pocket FM',        role: 'Frontend Developer Intern · Pocket FM · 2024',              h: 56 },
+  { years: '2024–2025', short: 'Emiza\nFrontend',  role: 'Frontend Developer · Emiza Supply Chain · 2024–2025',        h: 78 },
+  { years: '2025–Now',  short: 'Top Parent\nUI/UX', role: 'UI/UX Designer · Top Parent · 2025–present',                h: 100, current: true },
 ];
 
 function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: string) => void }) {
@@ -1899,7 +1929,7 @@ function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: strin
                 ref={barsRef as React.Ref<HTMLDivElement>}
                 className="mt-auto pt-8 relative z-10"
                 role="img"
-                aria-label="Career path from 2020 to present: Graphic Design, Civil Services, Frontend, UI/UX"
+                aria-label="Career path from 2019 to present: Graphic Design, Pocket FM Intern, Frontend Developer at Emiza, UI/UX Designer at Top Parent"
               >
                 {/* Dotted trend curve SVG above the bars */}
                 <svg
@@ -2131,22 +2161,22 @@ function PortfolioOverview({ onOpenCaseStudy }: { onOpenCaseStudy?: (slug: strin
               {
                 num: '01',
                 title: 'Research & UX',
-                items: ['User Research', 'User Flows', 'Information Architecture', 'Wireframing', 'Interactive Prototyping', 'Usability Testing', 'Heuristic Evaluation'],
+                items: ['User Research', 'User Flows', 'Information Architecture', 'Wireframing', 'Prototyping', 'Usability Testing', 'Heuristic Evaluation'],
               },
               {
                 num: '02',
-                title: 'UI & Product Systems',
-                items: ['Visual & Interaction Design', 'Design Systems & Tokens', 'Responsive Web & Mobile UI', 'Editorial Typography', 'Accessibility (WCAG)', 'Developer Handoff'],
+                title: 'UI & Product',
+                items: ['Visual & Interaction Design', 'Design Systems', 'Responsive Design', 'Typography', 'Accessibility', 'Developer Handoff', 'Design QA'],
               },
               {
                 num: '03',
-                title: 'Design & AI Tools',
-                items: ['Figma & FigJam', 'Adobe Illustrator', 'Adobe Photoshop', 'Sketch & Adobe XD', 'Notion & Canva', 'AI-Assisted UX (Claude & ChatGPT)'],
+                title: 'Tools & AI Workflows',
+                items: ['Figma', 'FigJam', 'Canva', 'AI Workflows (ChatGPT & Claude)'],
               },
               {
                 num: '04',
-                title: 'Frontend Fluency',
-                items: ['React 19', 'TypeScript & JavaScript', 'Tailwind CSS', 'shadcn/ui', 'HTML5 & CSS3', 'Git, GitHub & Vercel'],
+                title: 'Frontend Engineering',
+                items: ['React', 'TypeScript', 'JavaScript', 'HTML & CSS', 'Tailwind CSS', 'shadcn/ui'],
               },
             ].map(col => (
               <div
@@ -2610,36 +2640,36 @@ const designPrinciples = [
 
 const journeyMilestones = [
   {
-    period: '2020–2021',
-    role: 'Graphic Design',
-    tag: 'Visual Craft',
+    period: '2019–2021',
+    role: 'Graphic Designer',
+    tag: 'Multiple Clients',
     color: '#E8A33D',
-    summary: 'Brand identity, typography, and visual balance.',
+    summary: 'Brand identity, digital creatives, presentations, infographics, and visual hierarchy.',
   },
   {
-    period: '2021–2024',
-    role: 'Civil Services Prep',
-    tag: 'Systems Thinking',
+    period: '2024',
+    role: 'Frontend Developer Intern',
+    tag: 'Pocket FM',
     color: '#2A9D8F',
-    summary: 'Studying public systems, policy, and human behavior at scale.',
+    summary: 'Reusable React, TypeScript, and shadcn/ui components with consistent design standards.',
   },
   {
     period: '2024–2025',
     role: 'Frontend Developer',
-    tag: 'Frontend Code',
+    tag: 'Emiza Supply Chain',
     color: '#61DAFB',
-    summary: 'Building responsive React and Tailwind UI for production.',
+    summary: 'Warehouse management UI, billing, seller portal, and 50+ UI, API & pagination bug fixes.',
   },
   {
     period: '2025–Now',
     role: 'UI/UX Designer',
-    tag: 'Product Design',
+    tag: 'Top Parent',
     color: '#E8601C',
-    summary: 'End-to-end design for web apps, mobile products, and dashboards.',
+    summary: 'End-to-end user flows, wireframes, Figma design system, clickable prototypes, and dev handoff.',
   },
 ];
 
-function About() {
+function About({ onOpenResume }: { onOpenResume?: () => void } = {}) {
   return (
     <section id="about" className="py-24" style={{ background: 'var(--dark-bg)' }}>
       <div className="max-w-7xl mx-auto px-5 md:px-8">
@@ -2662,10 +2692,10 @@ function About() {
             <Reveal delay={200}>
               <div className="space-y-3.5 mb-7 text-sm leading-relaxed" style={{ color: '#A7A097', fontFamily: 'Inter' }}>
                 <p>
-                  I came into product design through a unique path: <strong className="text-white font-medium">Graphic Design</strong> gave me visual rigor, three years preparing for <strong className="text-white font-medium">Civil Services</strong> taught me how complex systems and human behavior work, and working as a <strong className="text-white font-medium">React Frontend Developer</strong> gave me an engineering mindset.
+                  I came into product design with a strong cross-functional background: <strong className="text-white font-medium">4+ years of overall experience</strong> across visual design, frontend development, and product design — including <strong className="text-white font-medium">1.5+ years in dedicated UI/UX roles</strong>.
                 </p>
                 <p>
-                  Because I&apos;ve worked across both design and frontend code, I don&apos;t design unrealistic mockups. I build clean, thoughtful interfaces that solve real problems and are straightforward for developers to ship.
+                  Starting in <strong className="text-white font-medium">Graphic Design</strong> gave me visual rigor and typography instincts; shipping production React and TypeScript interfaces at <strong className="text-white font-medium">Pocket FM</strong> and <strong className="text-white font-medium">Emiza</strong> gave me an engineering mindset and technical feasibility awareness; and today at <strong className="text-white font-medium">Top Parent</strong>, I build user flows, clickable prototypes, and Figma design systems that look sharp and build cleanly.
                 </p>
               </div>
             </Reveal>
@@ -2696,13 +2726,21 @@ function About() {
 
             <Reveal delay={400}>
               <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={onOpenResume}
+                  className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold border btn-arrow transition-colors hover:bg-white/10 cursor-pointer"
+                  style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#FAF8F3', borderRadius: 8 }}
+                >
+                  View Full Resume <span className="arrow">↗</span>
+                </button>
                 <a
                   href="/Shubham-Sharma-Resume.pdf"
                   download="Shubham-Sharma-Resume.pdf"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold border btn-arrow transition-colors hover:bg-white/10"
                   style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#FAF8F3', borderRadius: 8 }}
                 >
-                  Download Resume <span className="arrow">↓</span>
+                  Download PDF <span className="arrow">↓</span>
                 </a>
                 <a
                   href="#contact"
@@ -3907,6 +3945,375 @@ function Footer() {
   );
 }
 
+// ─── Interactive Resume Modal ──────────────────────────────────────────────────
+
+function ResumeModal({
+  open,
+  onClose,
+  onOpenCaseStudy,
+}: {
+  open: boolean;
+  onClose: () => void;
+  onOpenCaseStudy?: (slug: string) => void;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    const orig = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = orig;
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Shubham Sharma Resume"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5 md:p-8 overflow-y-auto"
+      style={{
+        background: 'rgba(17, 17, 17, 0.76)',
+        backdropFilter: 'blur(8px)',
+      }}
+      onClick={onClose}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        className="relative w-full max-w-4xl my-auto rounded-2xl md:rounded-3xl border overflow-hidden shadow-2xl transition-all duration-300 flex flex-col max-h-[92vh]"
+        style={{
+          background: '#FAF8F3',
+          borderColor: 'var(--border)',
+          boxShadow: '0 25px 60px -15px rgba(0,0,0,0.4)',
+        }}
+      >
+        {/* Modal Top Control Bar */}
+        <div
+          className="px-5 sm:px-7 py-3.5 border-b flex items-center justify-between gap-3 shrink-0"
+          style={{ background: '#fff', borderColor: 'var(--border)' }}
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: 'var(--orange)' }} />
+            <span className="font-serif font-bold text-sm sm:text-base" style={{ color: '#111' }}>
+              Shubham Sharma <span className="font-sans font-normal text-xs text-[#7A7068]">· Resume</span>
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="/Shubham-Sharma-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors hover:bg-black/5"
+              style={{ borderColor: 'var(--border)', color: '#111', background: '#fff' }}
+              title="Open raw PDF in new tab"
+            >
+              Open PDF ↗
+            </a>
+            <a
+              href="/Shubham-Sharma-Resume.pdf"
+              download="Shubham-Sharma-Resume.pdf"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all hover:opacity-95"
+              style={{ background: '#111', color: '#FAF8F3' }}
+              title="Download official PDF resume"
+            >
+              Download PDF ↓
+            </a>
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-semibold transition-colors hover:bg-black/10 cursor-pointer ml-1"
+              style={{ color: '#555' }}
+              aria-label="Close resume modal"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        {/* Printable & Scrollable Resume Sheet */}
+        <div className="p-6 sm:p-10 md:p-12 overflow-y-auto space-y-7 text-[#222]">
+          {/* Header */}
+          <div className="border-b pb-5" style={{ borderColor: '#E5DFD5' }}>
+            <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight" style={{ color: '#111' }}>
+              Shubham Sharma
+            </h1>
+            <div className="text-sm sm:text-base font-semibold mt-1" style={{ color: 'var(--orange)' }}>
+              UI/UX Designer · Gurugram, India
+            </div>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm mt-2 text-[#5E5750]">
+              <a href="tel:+917703827643" className="hover:text-black underline underline-offset-2">+91-7703827643</a>
+              <span>|</span>
+              <a href="mailto:iamshubham189@gmail.com" className="hover:text-black underline underline-offset-2">iamshubham189@gmail.com</a>
+              <span>|</span>
+              <a href="https://iamshubham189.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Website</a>
+              <span>|</span>
+              <a href={CONTACT_INFO.behance} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Behance</a>
+              <span>|</span>
+              <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">LinkedIn</a>
+            </div>
+          </div>
+
+          {/* Summary */}
+          <div>
+            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] mb-2 text-[#7A7068] border-b pb-1" style={{ borderColor: '#EBE5DB' }}>
+              Summary
+            </div>
+            <p className="text-xs sm:text-[13.5px] leading-relaxed text-[#3A3530]">
+              UI/UX Designer with 4+ years of overall experience across visual design, frontend development, and product design — including 1.5+ years in dedicated UI/UX roles. Having started in graphic design and shipped production React interfaces, I create user flows, prototypes, and Figma design systems that look sharp and build cleanly.
+            </p>
+          </div>
+
+          {/* Experience */}
+          <div>
+            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] mb-3 text-[#7A7068] border-b pb-1" style={{ borderColor: '#EBE5DB' }}>
+              Experience
+            </div>
+            <div className="space-y-5">
+              {/* Role 1 */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    UI/UX Designer <span className="font-normal text-[#5E5750]">· Top Parent</span>
+                  </div>
+                  <div className="text-xs font-mono text-[#7A7068]">
+                    May 2025 – Present · New Delhi
+                  </div>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-1 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Design web and mobile screens from early user flows and wireframes through to final UI and clickable Figma prototypes.</li>
+                  <li>Maintain and grow the product&apos;s Figma design system — shared components, variants, and styles — keeping screens consistent and speeding up handoff.</li>
+                  <li>Review existing product flows for usability issues and simplify journeys where users hesitate or drop off.</li>
+                  <li>Check technical feasibility with developers and product early, write clear specs with edge cases, and follow the build through QA so the live product matches the design.</li>
+                </ul>
+              </div>
+
+              {/* Role 2 */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Frontend Developer <span className="font-normal text-[#5E5750]">· Emiza Supply Chain Services</span>
+                  </div>
+                  <div className="text-xs font-mono text-[#7A7068]">
+                    Oct 2024 – Apr 2025 · Gurugram
+                  </div>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-1 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Built React and TypeScript interfaces for the warehouse management system, billing module, and seller portal used in daily operations.</li>
+                  <li>Created reusable UI components and data visualisations (tables, filters, and charts) for warehouse workflows.</li>
+                  <li>Fixed over 50 UI, API, and pagination bugs, working closely with stakeholders and backend teams to get features into production.</li>
+                </ul>
+              </div>
+
+              {/* Role 3 */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Frontend Developer Intern <span className="font-normal text-[#5E5750]">· Pocket FM</span>
+                  </div>
+                  <div className="text-xs font-mono text-[#7A7068]">
+                    Jul 2024 – Oct 2024 · Bengaluru
+                  </div>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-1 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Built reusable components with React, TypeScript, Tailwind CSS, and shadcn/ui, and converted older JavaScript components to TypeScript while cleaning up inconsistent UI.</li>
+                </ul>
+              </div>
+
+              {/* Role 4 */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Graphic Designer <span className="font-normal text-[#5E5750]">· Multiple clients</span>
+                  </div>
+                  <div className="text-xs font-mono text-[#7A7068]">
+                    Feb 2019 – Jul 2021 · Gurugram
+                  </div>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-1 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Created digital creatives, presentations, infographics, and motion graphics for client brands, building a strong base in typography, colour, and visual hierarchy.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Selected Projects */}
+          <div>
+            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] mb-3 text-[#7A7068] border-b pb-1" style={{ borderColor: '#EBE5DB' }}>
+              Selected Projects
+            </div>
+            <div className="space-y-4">
+              {/* Project 1 */}
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Brokrs House <span className="font-normal text-[#5E5750]">· Real-estate mobile app</span>
+                  </div>
+                  {onOpenCaseStudy && (
+                    <button
+                      type="button"
+                      onClick={() => { onClose(); onOpenCaseStudy('brokrs-house'); }}
+                      className="text-xs font-semibold hover:underline cursor-pointer"
+                      style={{ color: 'var(--orange)' }}
+                    >
+                      Case study ↗
+                    </button>
+                  )}
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Designed 22 mobile screens covering property search, discovery, live unit availability, 48-hour unit hold, and payout tracking.</li>
+                  <li>Mapped connected workflows for brokers, builders, and buyers while keeping cards, filters, and patterns consistent.</li>
+                </ul>
+              </div>
+
+              {/* Project 2 */}
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Tapestory Admin <span className="font-normal text-[#5E5750]">· Custom-clothing operations dashboard</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs font-semibold">
+                    {onOpenCaseStudy && (
+                      <button
+                        type="button"
+                        onClick={() => { onClose(); onOpenCaseStudy('tapestory-admin'); }}
+                        className="hover:underline cursor-pointer"
+                        style={{ color: 'var(--orange)' }}
+                      >
+                        Case study ↗
+                      </button>
+                    )}
+                    <a
+                      href="https://customer-side-tapestory-nswjqo303.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline text-emerald-700"
+                    >
+                      Live ↗
+                    </a>
+                  </div>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Designed and built a 19-screen web dashboard replacing spreadsheets for order review, body measurements, Kanban workshop tracking, and OTP-verified deliveries.</li>
+                  <li>Structured role-based permissions for 7 staff roles alongside clear tailor payout and earnings tables.</li>
+                </ul>
+              </div>
+
+              {/* Project 3 */}
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    LifeOS <span className="font-normal text-[#5E5750]">· Personal organizer mobile app</span>
+                  </div>
+                  {onOpenCaseStudy && (
+                    <button
+                      type="button"
+                      onClick={() => { onClose(); onOpenCaseStudy('lifeos'); }}
+                      className="text-xs font-semibold hover:underline cursor-pointer"
+                      style={{ color: 'var(--orange)' }}
+                    >
+                      Case study ↗
+                    </button>
+                  )}
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Designed a 30-screen organizer app bringing schedules, urgent reminders, quick notes, and long-term goals together across 8 life categories.</li>
+                  <li>Included voice and text note capture with a review-before-save screen and AI weekly plans users can accept, edit, or dismiss.</li>
+                </ul>
+              </div>
+
+              {/* Project 4 */}
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Shyam Jagat <span className="font-normal text-[#5E5750]">· Community &amp; temple discovery website</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs font-semibold">
+                    {onOpenCaseStudy && (
+                      <button
+                        type="button"
+                        onClick={() => { onClose(); onOpenCaseStudy('shyam-jagat'); }}
+                        className="hover:underline cursor-pointer"
+                        style={{ color: 'var(--orange)' }}
+                      >
+                        Case study ↗
+                      </button>
+                    )}
+                    <a
+                      href="https://shyamjagat.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline text-emerald-700"
+                    >
+                      Live ↗
+                    </a>
+                  </div>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Designed 8 responsive web pages for verified temple discovery, bhajan artist listings, guided UPI seva donations, and sign-ups across 6 community roles.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Skills */}
+          <div>
+            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] mb-3 text-[#7A7068] border-b pb-1" style={{ borderColor: '#EBE5DB' }}>
+              Skills &amp; Competencies
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-[13px]">
+              <div className="p-3.5 rounded-xl border bg-white" style={{ borderColor: '#E5DFD5' }}>
+                <div className="font-semibold text-[#111] mb-1">Research &amp; UX</div>
+                <p className="text-[#5E5750] leading-relaxed">
+                  User research, user flows, information architecture, wireframing, prototyping, usability testing, heuristic evaluation
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl border bg-white" style={{ borderColor: '#E5DFD5' }}>
+                <div className="font-semibold text-[#111] mb-1">UI &amp; Product</div>
+                <p className="text-[#5E5750] leading-relaxed">
+                  Visual &amp; interaction design, design systems, responsive design, typography, accessibility, developer handoff, design QA
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl border bg-white" style={{ borderColor: '#E5DFD5' }}>
+                <div className="font-semibold text-[#111] mb-1">Tools</div>
+                <p className="text-[#5E5750] leading-relaxed">
+                  Figma, FigJam, Canva, AI-assisted workflows with ChatGPT &amp; Claude
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl border bg-white" style={{ borderColor: '#E5DFD5' }}>
+                <div className="font-semibold text-[#111] mb-1">Frontend</div>
+                <p className="text-[#5E5750] leading-relaxed">
+                  React, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, shadcn/ui
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Education */}
+          <div>
+            <div className="text-[11px] font-mono font-bold uppercase tracking-[0.18em] mb-2 text-[#7A7068] border-b pb-1" style={{ borderColor: '#EBE5DB' }}>
+              Education
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-xs sm:text-[13.5px]">
+              <div>
+                <strong className="text-[#111]">B.Sc. Animation &amp; Visual Graphics</strong>
+                <span className="text-[#5E5750]"> · Amity University, Gurugram</span>
+              </div>
+              <div className="font-mono text-[#7A7068]">2017 – 2020</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 function parseCaseStudySlug(hash: string): string | null {
@@ -3918,20 +4325,40 @@ export default function App() {
   const [caseStudySlug, setCaseStudySlug] = useState<string | null>(() =>
     parseCaseStudySlug(window.location.hash)
   );
+  const [resumeOpen, setResumeOpen] = useState<boolean>(() =>
+    window.location.hash === '#resume' || window.location.hash === '#/resume'
+  );
 
   useEffect(() => {
     const onHashChange = () => {
-      setCaseStudySlug(parseCaseStudySlug(window.location.hash));
+      const hash = window.location.hash;
+      if (hash === '#resume' || hash === '#/resume') {
+        setResumeOpen(true);
+        setCaseStudySlug(null);
+      } else {
+        setCaseStudySlug(parseCaseStudySlug(hash));
+      }
     };
     window.addEventListener('hashchange', onHashChange);
 
     // Support direct anchor jumps on load
-    if (window.location.hash && !window.location.hash.startsWith('#/case-study/')) {
+    if (window.location.hash && !window.location.hash.startsWith('#/case-study/') && window.location.hash !== '#resume' && window.location.hash !== '#/resume') {
       const el = document.querySelector(window.location.hash);
       if (el) el.scrollIntoView({ block: 'start' });
     }
 
     return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  const openResume = useCallback(() => {
+    setResumeOpen(true);
+  }, []);
+
+  const closeResume = useCallback(() => {
+    setResumeOpen(false);
+    if (window.location.hash === '#resume' || window.location.hash === '#/resume') {
+      window.history.pushState(null, '', window.location.pathname);
+    }
   }, []);
 
   const openCaseStudy = useCallback((slug: string) => {
@@ -3967,22 +4394,32 @@ export default function App() {
     return (
       <div className="min-h-screen p-4 sm:p-8" style={{ background: 'var(--ivory)' }}>
         <FeaturedProjects onOpenCaseStudy={openCaseStudy} />
+        <ResumeModal
+          open={resumeOpen}
+          onClose={closeResume}
+          onOpenCaseStudy={openCaseStudy}
+        />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ background: 'var(--ivory)' }}>
-      <Navbar />
-      <Hero onOpenCaseStudy={openCaseStudy} />
+      <Navbar onOpenResume={openResume} />
+      <Hero onOpenCaseStudy={openCaseStudy} onOpenResume={openResume} />
       <FeaturedProjects onOpenCaseStudy={openCaseStudy} />
-      <About />
+      <About onOpenResume={openResume} />
       <Process />
       <PortfolioOverview onOpenCaseStudy={openCaseStudy} />
       <Expertise />
       <Blog />
       <Contact />
       <Footer />
+      <ResumeModal
+        open={resumeOpen}
+        onClose={closeResume}
+        onOpenCaseStudy={openCaseStudy}
+      />
     </div>
   );
 }
