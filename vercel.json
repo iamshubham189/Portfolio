@@ -8,7 +8,7 @@
       "headers": [
         {
           "key": "Content-Disposition",
-          "value": "attachment; filename=\"Shubham-Sharma-Resume.pdf\""
+          "value": "inline; filename=\"Shubham-Sharma-Resume.pdf\""
         }
       ]
     }

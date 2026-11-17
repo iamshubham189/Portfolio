@@ -32,3 +32,4 @@ pnpm-debug.log*
 # Local asset backups
 src/imports/backup_portrait/
 
+.env*
