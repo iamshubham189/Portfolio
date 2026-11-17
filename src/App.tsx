@@ -1173,7 +1173,7 @@ function Hero({ onOpenCaseStudy, onOpenResume }: { onOpenCaseStudy?: (slug: stri
               View Resume <span className="arrow">↗</span>
             </button>
             <a
-              href="/Shubham-Sharma-Resume.pdf"
+              href="/Shubham-Sharma-Resume.pdf?v=4"
               download="Shubham-Sharma-Resume.pdf"
               className="flex items-center gap-2 px-5 py-3.5 font-semibold text-sm btn-arrow border transition-all duration-200 hover:bg-white hover:-translate-y-0.5"
               style={{
@@ -2735,7 +2735,7 @@ function About({ onOpenResume }: { onOpenResume?: () => void } = {}) {
                   View Full Resume <span className="arrow">↗</span>
                 </button>
                 <a
-                  href="/Shubham-Sharma-Resume.pdf"
+                  href="/Shubham-Sharma-Resume.pdf?v=4"
                   download="Shubham-Sharma-Resume.pdf"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold border btn-arrow transition-colors hover:bg-white/10"
                   style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#FAF8F3', borderRadius: 8 }}
@@ -4007,7 +4007,7 @@ function ResumeModal({
 
           <div className="flex items-center gap-2">
             <a
-              href="/Shubham-Sharma-Resume.pdf"
+              href="/Shubham-Sharma-Resume.pdf?v=4"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors hover:bg-black/5"
@@ -4017,7 +4017,7 @@ function ResumeModal({
               Open PDF ↗
             </a>
             <a
-              href="/Shubham-Sharma-Resume.pdf"
+              href="/Shubham-Sharma-Resume.pdf?v=4"
               download="Shubham-Sharma-Resume.pdf"
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all hover:opacity-95"
               style={{ background: '#111', color: '#FAF8F3' }}
@@ -4052,11 +4052,11 @@ function ResumeModal({
               <span>|</span>
               <a href="mailto:iamshubham189@gmail.com" className="hover:text-black underline underline-offset-2">iamshubham189@gmail.com</a>
               <span>|</span>
-              <a href="https://iamshubham189.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Website</a>
+              <a href="https://iamshubham189.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">iamshubham189.vercel.app</a>
               <span>|</span>
-              <a href={CONTACT_INFO.behance} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Behance</a>
+              <a href={CONTACT_INFO.behance} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">behance.net/iamshubham5ed9</a>
               <span>|</span>
-              <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">LinkedIn</a>
+              <a href={CONTACT_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">linkedin.com/in/shubham-sharma-390648165</a>
             </div>
           </div>
 
@@ -4316,17 +4316,21 @@ function ResumeModal({
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
-function parseCaseStudySlug(hash: string): string | null {
+function parseCaseStudySlug(hash: string, pathname = window.location.pathname): string | null {
   const m = hash.match(/^#\/case-study\/([a-z0-9-]+)$/i);
-  return m ? m[1] : null;
+  if (m) return m[1];
+  const p = pathname.match(/^\/case-study\/([a-z0-9-]+)\/?$/i);
+  return p ? p[1] : null;
 }
 
 export default function App() {
   const [caseStudySlug, setCaseStudySlug] = useState<string | null>(() =>
-    parseCaseStudySlug(window.location.hash)
+    parseCaseStudySlug(window.location.hash, window.location.pathname)
   );
   const [resumeOpen, setResumeOpen] = useState<boolean>(() =>
-    window.location.hash === '#resume' || window.location.hash === '#/resume'
+    window.location.hash === '#resume' ||
+    window.location.hash === '#/resume' ||
+    /^\/resume\/?$/i.test(window.location.pathname)
   );
 
   useEffect(() => {
@@ -4336,10 +4340,11 @@ export default function App() {
         setResumeOpen(true);
         setCaseStudySlug(null);
       } else {
-        setCaseStudySlug(parseCaseStudySlug(hash));
+        setCaseStudySlug(parseCaseStudySlug(hash, window.location.pathname));
       }
     };
     window.addEventListener('hashchange', onHashChange);
+    window.addEventListener('popstate', onHashChange);
 
     // Support direct anchor jumps on load
     if (window.location.hash && !window.location.hash.startsWith('#/case-study/') && window.location.hash !== '#resume' && window.location.hash !== '#/resume') {
@@ -4347,7 +4352,10 @@ export default function App() {
       if (el) el.scrollIntoView({ block: 'start' });
     }
 
-    return () => window.removeEventListener('hashchange', onHashChange);
+    return () => {
+      window.removeEventListener('hashchange', onHashChange);
+      window.removeEventListener('popstate', onHashChange);
+    };
   }, []);
 
   const openResume = useCallback(() => {
@@ -4356,8 +4364,12 @@ export default function App() {
 
   const closeResume = useCallback(() => {
     setResumeOpen(false);
-    if (window.location.hash === '#resume' || window.location.hash === '#/resume') {
-      window.history.pushState(null, '', window.location.pathname);
+    if (
+      window.location.hash === '#resume' ||
+      window.location.hash === '#/resume' ||
+      /^\/resume\/?$/i.test(window.location.pathname)
+    ) {
+      window.history.pushState(null, '', '/');
     }
   }, []);
 
@@ -4367,7 +4379,7 @@ export default function App() {
   }, []);
 
   const closeCaseStudy = useCallback(() => {
-    window.history.pushState(null, '', '#portfolio');
+    window.history.pushState(null, '', '/#portfolio');
     setCaseStudySlug(null);
     requestAnimationFrame(() => {
       document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });

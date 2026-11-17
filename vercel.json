@@ -9,6 +9,10 @@
         {
           "key": "Content-Disposition",
           "value": "inline; filename=\"Shubham-Sharma-Resume.pdf\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
