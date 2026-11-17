@@ -4052,7 +4052,7 @@ function ResumeModal({
               <span>|</span>
               <a href="mailto:iamshubham189@gmail.com" className="hover:text-black underline underline-offset-2">iamshubham189@gmail.com</a>
               <span>|</span>
-              <a href="https://iamshubham189.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Website</a>
+              <a href="https://iamshubham189.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Website</a>
               <span>|</span>
               <a href={CONTACT_INFO.behance} target="_blank" rel="noopener noreferrer" className="hover:text-black underline underline-offset-2">Behance</a>
               <span>|</span>
