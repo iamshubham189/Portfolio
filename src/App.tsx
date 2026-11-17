@@ -4190,7 +4190,7 @@ function ResumeModal({
                       </button>
                     )}
                     <a
-                      href="https://customer-side-tapestory-nswjqo303.vercel.app"
+                      href="https://tapestory-azure.vercel.app/admin"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:underline text-emerald-700"
@@ -4246,7 +4246,7 @@ function ResumeModal({
                       </button>
                     )}
                     <a
-                      href="https://shyamjagat.com"
+                      href="https://ssj-three.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:underline text-emerald-700"
