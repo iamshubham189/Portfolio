@@ -101,13 +101,13 @@ function Reveal({ children, className = '', delay = 0, dir = 'up' }: {
 
 // ─── Work Focus Donut ─────────────────────────────────────────────────────────
 
-// Derived from the 9 projects listed in the Featured Projects section:
+// Derived from the 10 projects listed in the Featured Projects section:
 // - Web Platforms (4): Brokrs House, Shyam Jagat, ClickCard, Sahil Hair Expert
-// - Mobile Apps (2): LifeOS, The Brokrs
+// - Mobile Apps (3): Tapestory Mobile, LifeOS, The Brokrs
 // - Dashboards & Brand (3): Tapestory Admin Panel, Shyam Jagat Admin Panel, Logo Design
 const donutData = [
   { label: 'Web Platforms',      shortLabel: 'Web\nPlatforms',      value: 4, color: '#C85D2A' },
-  { label: 'Mobile Apps',        shortLabel: 'Mobile\nApps',        value: 2, color: '#2A6E6E' },
+  { label: 'Mobile Apps',        shortLabel: 'Mobile\nApps',        value: 3, color: '#2A6E6E' },
   { label: 'Dashboards & Brand', shortLabel: 'Dashboards\n& Brand', value: 3, color: '#E8A33D' },
 ];
 
@@ -310,7 +310,7 @@ const capabilities = [
     tagline: 'Clean iOS & Android interfaces',
     desc: 'Designing thumb-friendly mobile apps built around quick capture, daily habits, and easy navigation.',
     deliverables: ['iOS & Android UI', 'Micro-interactions', 'Multi-Role Flows', 'Gesture Navigation'],
-    applied: ['LifeOS', 'The Brokrs', 'Brokrs House'],
+    applied: ['Tapestory Mobile', 'LifeOS', 'The Brokrs', 'Brokrs House'],
     Visual: MobileVisual,
   },
   {
@@ -346,7 +346,7 @@ const capabilities = [
     tagline: 'Designed with React & CSS in mind',
     desc: 'Because I write React and Tailwind, I design realistic prototypes, loading states, and specs that developers can build smoothly.',
     deliverables: ['Interactive Prototypes', 'Empty & Error States', 'Developer Specs', 'UI Build Review'],
-    applied: ['Tapestory Admin Panel', 'LifeOS', 'ClickCard'],
+    applied: ['Tapestory Mobile', 'Tapestory Admin Panel', 'LifeOS', 'ClickCard'],
     Visual: PrototypeVisual,
   },
 ];
@@ -1173,7 +1173,7 @@ function Hero({ onOpenCaseStudy, onOpenResume }: { onOpenCaseStudy?: (slug: stri
               View Resume <span className="arrow">↗</span>
             </button>
             <a
-              href="/Shubham-Sharma-Resume.pdf?v=4"
+              href="/Shubham-Sharma-Resume.pdf?v=5"
               download="Shubham-Sharma-Resume.pdf"
               className="flex items-center gap-2 px-5 py-3.5 font-semibold text-sm btn-arrow border transition-all duration-200 hover:bg-white hover:-translate-y-0.5"
               style={{
@@ -1575,7 +1575,7 @@ function CountUp({ target, decimals = 0, suffix = '' }: { target: number; decima
 
 const overviewStats = [
   {
-    target: 9, decimals: 0, suffix: '', label: 'Projects\nDesigned', color: '#C85D2A',
+    target: 10, decimals: 0, suffix: '', label: 'Projects\nDesigned', color: '#C85D2A',
     actionId: 'portfolio',
     icon: <><path d="m12 2 10 5-10 5L2 7z" /><path d="m2 17 10 5 10-5" /><path d="m2 12 10 5 10-5" /></>,
   },
@@ -2240,7 +2240,7 @@ function matchesFilter(slug: string, filter: ProjectFilter): boolean {
     return ['tapestory-admin', 'shyam-jagat', 'clickcard', 'shyam-jagat-admin', 'sahil-hair-expert'].includes(slug);
   }
   if (filter === 'mobile') {
-    return ['lifeos', 'brokrs-house', 'the-brokrs'].includes(slug);
+    return ['tapestory-mobile', 'lifeos', 'brokrs-house', 'the-brokrs'].includes(slug);
   }
   if (filter === 'brand') {
     return ['logo-design', 'brokrs-house', 'clickcard'].includes(slug);
@@ -2254,13 +2254,13 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
   const filterTabs: { id: ProjectFilter; label: string; count: number }[] = [
     { id: 'all',    label: 'All Work',         count: projects.length },
     { id: 'web',    label: 'Web & Dashboards', count: 5 },
-    { id: 'mobile', label: 'Mobile Apps',      count: 3 },
+    { id: 'mobile', label: 'Mobile Apps',      count: 4 },
     { id: 'brand',  label: 'Brand & Identity', count: 3 },
   ];
 
   const visibleProjects = projects.filter(p => matchesFilter(p.slug, filter));
-  const flagship = filter === 'all' ? visibleProjects[0] : null;
-  const gridItems = filter === 'all' ? visibleProjects.slice(1) : visibleProjects;
+  const flagships = filter === 'all' ? visibleProjects.slice(0, 2) : [];
+  const gridItems = filter === 'all' ? visibleProjects.slice(2) : visibleProjects;
 
   return (
     <section
@@ -2325,9 +2325,10 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
           </div>
         </div>
 
-        {/* ── Flagship Project Card (#01 Tapestory Admin Panel when viewing All Work) ── */}
-        {flagship && (
+        {/* ── Flagship Project Cards (#01 Tapestory Mobile & #02 Tapestory Admin Panel when viewing All Work) ── */}
+        {flagships.map(flagship => (
           <article
+            key={flagship.slug}
             onClick={() => onOpenCaseStudy(flagship.slug)}
             className="group mb-7 sm:mb-10 rounded-2xl sm:rounded-3xl overflow-hidden border transition-all duration-300 hover:shadow-xl cursor-pointer grid grid-cols-1 lg:grid-cols-12"
             style={{
@@ -2466,7 +2467,7 @@ function FeaturedProjects({ onOpenCaseStudy }: { onOpenCaseStudy: (slug: string)
               </div>
             </div>
           </article>
-        )}
+        ))}
 
         {/* ── Consistent 2-Column Responsive Grid for All Projects ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
@@ -2735,7 +2736,7 @@ function About({ onOpenResume }: { onOpenResume?: () => void } = {}) {
                   View Full Resume <span className="arrow">↗</span>
                 </button>
                 <a
-                  href="/Shubham-Sharma-Resume.pdf?v=4"
+                  href="/Shubham-Sharma-Resume.pdf?v=5"
                   download="Shubham-Sharma-Resume.pdf"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold border btn-arrow transition-colors hover:bg-white/10"
                   style={{ borderColor: 'rgba(255,255,255,0.2)', color: '#FAF8F3', borderRadius: 8 }}
@@ -4007,7 +4008,7 @@ function ResumeModal({
 
           <div className="flex items-center gap-2">
             <a
-              href="/Shubham-Sharma-Resume.pdf?v=4"
+              href="/Shubham-Sharma-Resume.pdf?v=5"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors hover:bg-black/5"
@@ -4017,7 +4018,7 @@ function ResumeModal({
               Open PDF ↗
             </a>
             <a
-              href="/Shubham-Sharma-Resume.pdf?v=4"
+              href="/Shubham-Sharma-Resume.pdf?v=5"
               download="Shubham-Sharma-Resume.pdf"
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all hover:opacity-95"
               style={{ background: '#111', color: '#FAF8F3' }}
@@ -4149,30 +4150,39 @@ function ResumeModal({
               Selected Projects
             </div>
             <div className="space-y-4">
-              {/* Project 1 */}
+              {/* Project 1: Tapestory Mobile */}
               <div>
                 <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
                   <div className="font-semibold text-sm sm:text-base text-[#111]">
-                    Brokrs House <span className="font-normal text-[#5E5750]">· Real-estate mobile app</span>
+                    Tapestory Mobile <span className="font-normal text-[#5E5750]">· Made-to-measure fashion mobile app</span>
                   </div>
-                  {onOpenCaseStudy && (
-                    <button
-                      type="button"
-                      onClick={() => { onClose(); onOpenCaseStudy('brokrs-house'); }}
-                      className="text-xs font-semibold hover:underline cursor-pointer"
-                      style={{ color: 'var(--orange)' }}
+                  <div className="flex items-center gap-2.5 text-xs font-semibold">
+                    {onOpenCaseStudy && (
+                      <button
+                        type="button"
+                        onClick={() => { onClose(); onOpenCaseStudy('tapestory-mobile'); }}
+                        className="hover:underline cursor-pointer"
+                        style={{ color: 'var(--orange)' }}
+                      >
+                        Case study ↗
+                      </button>
+                    )}
+                    <a
+                      href="https://tapestory-mobile.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline text-emerald-700"
                     >
-                      Case study ↗
-                    </button>
-                  )}
+                      Live ↗
+                    </a>
+                  </div>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
-                  <li>Designed 22 mobile screens covering property search, discovery, live unit availability, 48-hour unit hold, and payout tracking.</li>
-                  <li>Mapped connected workflows for brokers, builders, and buyers while keeping cards, filters, and patterns consistent.</li>
+                  <li>Designed and built a 35+ screen mobile-first web app (Next.js, TypeScript, Tailwind CSS, Three.js) to compare tailors, customize garments in 5 steps, preview on a 360° 3D avatar, and book free home measurements.</li>
                 </ul>
               </div>
 
-              {/* Project 2 */}
+              {/* Project 2: Tapestory Admin */}
               <div>
                 <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
                   <div className="font-semibold text-sm sm:text-base text-[#111]">
@@ -4200,12 +4210,33 @@ function ResumeModal({
                   </div>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
-                  <li>Designed and built a 19-screen web dashboard replacing spreadsheets for order review, body measurements, Kanban workshop tracking, and OTP-verified deliveries.</li>
-                  <li>Structured role-based permissions for 7 staff roles alongside clear tailor payout and earnings tables.</li>
+                  <li>Designed and built a 19-screen web dashboard replacing spreadsheets for order review, body measurements, Kanban workshop tracking, and OTP-verified deliveries across 7 staff roles.</li>
                 </ul>
               </div>
 
-              {/* Project 3 */}
+              {/* Project 3: Brokrs House */}
+              <div>
+                <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
+                  <div className="font-semibold text-sm sm:text-base text-[#111]">
+                    Brokrs House <span className="font-normal text-[#5E5750]">· Real-estate mobile app</span>
+                  </div>
+                  {onOpenCaseStudy && (
+                    <button
+                      type="button"
+                      onClick={() => { onClose(); onOpenCaseStudy('brokrs-house'); }}
+                      className="text-xs font-semibold hover:underline cursor-pointer"
+                      style={{ color: 'var(--orange)' }}
+                    >
+                      Case study ↗
+                    </button>
+                  )}
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
+                  <li>Designed 22 mobile screens covering property search, discovery, live unit availability, 48-hour unit hold, and payout tracking across brokers, builders, and buyers.</li>
+                </ul>
+              </div>
+
+              {/* Project 4: LifeOS */}
               <div>
                 <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
                   <div className="font-semibold text-sm sm:text-base text-[#111]">
@@ -4223,12 +4254,11 @@ function ResumeModal({
                   )}
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[13px] leading-relaxed text-[#4A4540]">
-                  <li>Designed a 30-screen organizer app bringing schedules, urgent reminders, quick notes, and long-term goals together across 8 life categories.</li>
-                  <li>Included voice and text note capture with a review-before-save screen and AI weekly plans users can accept, edit, or dismiss.</li>
+                  <li>Designed a 30-screen organizer app bringing schedules, urgent reminders, voice/text note capture, and reviewable AI weekly plans together across 8 life categories.</li>
                 </ul>
               </div>
 
-              {/* Project 4 */}
+              {/* Project 5: Shyam Jagat */}
               <div>
                 <div className="flex flex-wrap items-baseline justify-between gap-1 mb-1">
                   <div className="font-semibold text-sm sm:text-base text-[#111]">

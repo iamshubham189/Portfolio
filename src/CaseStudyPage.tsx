@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import tapestoryMobileImg from '@/imports/project_tapestory_mobile.jpg';
 import tapestoryImg from '@/imports/project_tapestory.jpg';
 import clickCardImg from '@/imports/project_clickcard.jpg';
 import brokrsHouseImg from '@/imports/project_brokrshouse.jpg';
@@ -47,8 +48,110 @@ export interface ProjectCaseStudy {
 
 export const PROJECTS_DATA: ProjectCaseStudy[] = [
   {
-    slug: 'tapestory-admin',
+    slug: 'tapestory-mobile',
     num: '01',
+    title: 'Tapestory Mobile',
+    subtitle: 'A mobile-first made-to-measure fashion marketplace to compare tailors, customize garments in 5 steps, preview in 3D, and book free home measurements.',
+    projectType: 'Made-to-Measure Customer App · Product Design & Frontend · Live Mobile Web App',
+    category: 'Custom Clothing Marketplace · Customer Mobile App',
+    desc: 'A mobile-first custom tailoring marketplace where customers compare independent tailors, customize fabric and fit in 5 steps, preview looks on a 3D avatar, and book free doorstep measurement visits.',
+    tags: ['Mobile-First App', '5-Step Customization', '3D Virtual Try-On', 'Home Visit Flow', 'Next.js & TypeScript'],
+    img: tapestoryMobileImg,
+    accent: '#B69A68',
+    stageBg: '#13231D',
+    liveUrl: 'https://tapestory-mobile.vercel.app',
+    role: 'Product Designer & Frontend Developer',
+    platform: 'Mobile-First Web App (PWA) · iOS, Android & Desktop',
+    tools: ['Figma', 'Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Three.js (R3F)'],
+    snapshot: [
+      { label: 'Platform Scope', value: '35+ Mobile Screens — Explore, Compare Tailors, 5-Step Studio, 3D Look, Home Visit & Orders' },
+      { label: 'Core Navigation', value: '4-Tab Bottom Bar — Home, My Fits (3D Avatar & Measurements), Wishlist & Profile' },
+      { label: 'Main Journey', value: 'Compare Tailors → 5-Step Studio → Saved Profile / Manual / Free Home Visit → Order Tracking' },
+      { label: 'Live Product', value: 'Interactive mobile web app at tapestory-mobile.vercel.app' },
+    ],
+    projectHighlights: [
+      {
+        label: 'User Flows',
+        value: '7 Flows',
+        desc: 'Guest discovery, compare tailors, 5-step customization studio, 3D virtual try-on, measurement guides, free home visit & design approval, and order tracking.',
+      },
+      {
+        label: 'Screens Designed',
+        value: '35+ Screens',
+        desc: '35+ responsive mobile screens covering discovery, filter/sort sheets, tailor storefronts, customization studio, 3D look builder, home visit booking, and checkout.',
+      },
+      {
+        label: 'Pain Points Identified',
+        value: '4 Problems',
+        desc: 'Unclear tailor pricing for the same style, anxiety over self-measuring at home, inability to visualize custom fabrics before stitching, and surprise alteration costs.',
+      },
+      {
+        label: 'UX Improvements',
+        value: '5 Improvements',
+        desc: 'Side-by-side Compare Tailors sheet, live price estimator across 5 studio steps, 360° 3D Look Studio, illustrated measurement guide + free home visit, and post-visit design approval.',
+      },
+      {
+        label: 'Design Coverage',
+        value: '6 IA Pillars',
+        desc: 'Structured across Discover, Product & Tailor Storefronts, Customize & 3D Studio, Measurements & Home Visit, Cart & Checkout, and Orders & Account.',
+      },
+    ],
+    overview:
+      'Tapestory Mobile is the customer-facing mobile application of the Tapestory made-to-measure marketplace. Customers browse designs, compare independent tailors offering the same style, customize fabric and garment details in five guided steps, preview outfits on a 360° 3D mannequin, and provide measurements manually or through a free doorstep tailor visit.',
+    problemHeading: 'Ordering custom-stitched clothing online feels risky without fit certainty.',
+    problem:
+      'Customers hesitate to order custom tailoring online because they cannot compare tailor quality and delivery times for a style, worry about measuring themselves incorrectly at home, and fear price surprises if design details change during consultation.',
+    designChallenge:
+      'How might we design a mobile-first custom tailoring experience that gives customers total confidence in their tailor choice, garment visualization, body measurements, and final price?',
+    strategyHeading: 'Compare Tailors · 5-Step Studio & 3D Look · Risk-Free Measurements',
+    strategyPillars: [
+      {
+        num: '01',
+        title: 'Transparent Tailor Comparison',
+        desc: 'Let shoppers compare multiple verified tailors for the same base design by price, rating, experience, and delivery timeline before customizing.',
+      },
+      {
+        num: '02',
+        title: '5-Step Studio & 360° 3D Preview',
+        desc: 'Break garment customization into five clear steps (Design, Fabric, Style, Fit, Measure) with a live running price and a 360° 3D Look Studio.',
+      },
+      {
+        num: '03',
+        title: 'Guided Measurements & Free Home Visit',
+        desc: 'Support saved measurement profiles, step-by-step illustrated self-measurement guides (in/cm), or a ₹0 doorstep expert visit with transparent post-visit design approval.',
+      },
+    ],
+    solution:
+      'A 35+ screen mobile-first web app uniting tailor comparison, a 5-step customization studio, 360° 3D virtual try-on, and doorstep measurement visits.',
+    highlights: [
+      {
+        title: 'Compare Tailors & Storefronts',
+        desc: 'Side-by-side comparison of tailors offering a design with ratings, price, delivery days, and portfolio reviews.',
+      },
+      {
+        title: '5-Step Customization Studio',
+        desc: 'Guided fabric, collar, sleeve, button, and fit selection with real-time price updates and draft saving.',
+      },
+      {
+        title: '360° 3D Look Studio',
+        desc: 'Interactive 3D avatar to mix, match, rotate, and inspect saved jackets, trousers, and shirts before ordering.',
+      },
+      {
+        title: 'Home Visit & Design Approval',
+        desc: 'Book a free doorstep measurement visit and approve, edit, or decline the tailor\'s updated design proposal.',
+      },
+    ],
+    outcome:
+      'A live, mobile-first web application (tapestory-mobile.vercel.app) built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, and Three.js that pairs seamlessly with the Tapestory Admin Panel.',
+    whatsNext: [
+      { label: 'Camera AI Body Scan', text: 'Add a guided 2-photo smartphone silhouette scan to estimate body measurements automatically.' },
+      { label: 'Supabase & Razorpay Live Sync', text: 'Connect the customer app directly to live Supabase order tables and Razorpay UPI checkout.' },
+      { label: 'Fabric Swatch Sample Box', text: 'Let customers order a physical touch-and-feel fabric swatch kit before finalizing high-value bespoke suits.' },
+    ],
+  },
+  {
+    slug: 'tapestory-admin',
+    num: '02',
     title: 'Tapestory Admin Panel',
     subtitle: 'A central dashboard for staff to manage custom tailoring orders, workshop progress, and deliveries.',
     projectType: 'Marketplace Admin Dashboard · Product Design & Frontend · Live Web App',
@@ -150,7 +253,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'lifeos',
-    num: '02',
+    num: '03',
     title: 'LifeOS',
     subtitle: 'A calmer way to organize your daily life.',
     category: 'Personal Organizer App · Mobile UI/UX Concept',
@@ -251,7 +354,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'brokrs-house',
-    num: '03',
+    num: '04',
     title: 'Brokrs House',
     subtitle: 'A connected workspace for real estate brokers.',
     category: 'Real Estate Platform · Mobile Product Design',
@@ -352,7 +455,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'shyam-jagat',
-    num: '04',
+    num: '05',
     title: 'Shyam Jagat',
     subtitle: 'Connecting devotion, temples, and seva in one simple place.',
     category: 'Community & Devotion Website · UI/UX Design',
@@ -453,7 +556,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'the-brokrs',
-    num: '05',
+    num: '06',
     title: 'The Brokrs',
     subtitle: 'Investments, everyday services, and rewards in one connected app.',
     category: 'Multi-Service Investment App · Mobile UI/UX Design',
@@ -553,7 +656,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'clickcard',
-    num: '06',
+    num: '07',
     title: 'ClickCard',
     subtitle: 'One single link for your entire digital identity.',
     category: 'Digital Business Card · Web Product Design',
@@ -654,7 +757,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'shyam-jagat-admin',
-    num: '07',
+    num: '08',
     title: 'Shyam Jagat Admin Panel',
     subtitle: 'A clear operations dashboard for managing the community.',
     category: 'Community Admin Portal · Dashboard UI/UX Design',
@@ -754,7 +857,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'sahil-hair-expert',
-    num: '08',
+    num: '09',
     title: 'Sahil Hair Expert',
     subtitle: 'A smooth 3-step online booking desk for a luxury salon.',
     category: 'Salon Booking Website · Live Web Product',
@@ -856,7 +959,7 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
   },
   {
     slug: 'logo-design',
-    num: '09',
+    num: '10',
     title: 'Logo Design',
     subtitle: 'Strategic logo concepts and brand identity systems.',
     category: 'Brand Identity & Logo Design Collection',
@@ -956,6 +1059,174 @@ export const PROJECTS_DATA: ProjectCaseStudy[] = [
     ],
   },
 ];
+
+export function TapestoryMobileVisualShowcase() {
+  const fullBoards = [
+    {
+      tag: '01 / END-TO-END CUSTOMER JOURNEY',
+      title: 'Home, Product Details, Compare Tailors, 5-Step Customization Studio, 3D Try-On & Order Tracking',
+      route: '/ · /products/[id] · /products/compare/[styleId] · /customization/[id] · /avatar · /orders',
+      src: '/case-studies/strips/tm_showcase.png',
+      alt: 'Tapestory Mobile — 8-Screen Custom Tailoring App Showcase',
+    },
+    {
+      tag: '02 / INFORMATION ARCHITECTURE SITEMAP',
+      title: '6-Pillar Customer Experience Sitemap Across Discover, Product, Customize, Checkout, Orders & Account',
+      route: 'Sitemap v1.0 · Mobile-First Web App / PWA',
+      src: '/case-studies/strips/tm_ia_sitemap.png',
+      alt: 'Tapestory Mobile — Customer Experience Information Architecture Sitemap',
+    },
+    {
+      tag: '03 / 4-TAB MOBILE NAVIGATION ARCHITECTURE',
+      title: 'Focused Bottom Navigation: Home (Discover), My Fits (3D Avatar & Measurements), Wishlist & Profile',
+      route: '/ · /my-fits · /wishlist · /account',
+      src: '/case-studies/strips/tm_navigation.png',
+      alt: 'Tapestory Mobile — 4-Tab Navigation & Feature Breakdown',
+    },
+    {
+      tag: '04 / DISCOVERY, FILTER SHEETS & FREE HOME VISIT',
+      title: 'Explore Styles Grid, Multi-Facet Filter & Sort Bottom Sheets, and ₹0 Doorstep Measurement Booking',
+      route: '/explore · /measurements/home-visit',
+      src: '/case-studies/strips/tm_discovery.png',
+      alt: 'Tapestory Mobile — Discovery, Filter & Sort Bottom Sheets, and Free Home Visit Booking',
+    },
+    {
+      tag: '05 / 10-STEP HOME VISIT & UPDATED DESIGN APPROVAL FLOW',
+      title: 'Complete Journey from Doorstep Measurement Booking to Approving the Tailor’s Updated Design Proposal',
+      route: '/measurements · /orders/[id]/home-visit · /orders/[id]/proposal',
+      src: '/case-studies/strips/tm_home_visit.png',
+      alt: 'Tapestory Mobile — 10-Screen Home Visit & Design Change Approval Flow',
+    },
+    {
+      tag: '06 / PROGRESSIVE GUEST-TO-AUTH & OTP CHECKOUT JOURNEY',
+      title: 'Browse as Guest, Prompt Sign-In Only When Customizing or Checking Out via Phone OTP or Email',
+      route: '/login · /verify-otp · /account/setup · /cart',
+      src: '/case-studies/strips/tm_auth_journey.png',
+      alt: 'Tapestory Mobile — 11-Screen Progressive Authentication & Checkout Journey',
+    },
+  ];
+
+  return (
+    <div
+      className="rounded-3xl overflow-hidden border shadow-xl"
+      style={{ background: '#F5F0E7', borderColor: 'var(--border)' }}
+    >
+      <div className="px-6 sm:px-10 md:px-14 py-10 sm:py-14 space-y-12" style={{ background: '#F5F0E7' }}>
+        {fullBoards.slice(0, 4).map(b => (
+          <div key={b.tag} className="space-y-4">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <div className="text-[11px] font-mono font-bold uppercase tracking-widest" style={{ color: '#172B24' }}>
+                  {b.tag}
+                </div>
+                <h4 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mt-0.5" style={{ color: '#29251F' }}>
+                  {b.title}
+                </h4>
+              </div>
+              <span
+                className="text-[11px] font-mono px-2.5 py-1 rounded border"
+                style={{ background: '#EFE8DC', borderColor: '#D6CCBC', color: '#4A433B' }}
+              >
+                {b.route}
+              </span>
+            </div>
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#13231D' }}
+            >
+              <img
+                src={b.src}
+                alt={b.alt}
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="eager"
+              />
+            </div>
+          </div>
+        ))}
+
+        {/* Side-by-Side 3D Look Studio & Illustrated Measurement Guide */}
+        <div className="space-y-4 pt-2">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <div className="text-[11px] font-mono font-bold uppercase tracking-widest" style={{ color: '#172B24' }}>
+                04B / 360° 3D LOOK STUDIO &amp; ILLUSTRATED MEASUREMENT GUIDE
+              </div>
+              <h4 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mt-0.5" style={{ color: '#29251F' }}>
+                Interactive 3D Virtual Try-On Avatar &amp; Step-by-Step Upper-Body Measurement Guide
+              </h4>
+            </div>
+            <span
+              className="text-[11px] font-mono px-2.5 py-1 rounded border"
+              style={{ background: '#EFE8DC', borderColor: '#D6CCBC', color: '#4A433B' }}
+            >
+              /avatar · /measurements
+            </span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#EFE8DC' }}
+            >
+              <img
+                src="/case-studies/strips/tm_3d_studio.png"
+                alt="Tapestory Mobile — My 3D Look Studio & 360° Avatar Preview"
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="lazy"
+              />
+            </div>
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#EFE8DC' }}
+            >
+              <img
+                src="/case-studies/strips/tm_measurement_guide.png"
+                alt="Tapestory Mobile — Upper Body Measurements & Chest Measurement Guide Bottom Sheet"
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        {fullBoards.slice(4).map(b => (
+          <div key={b.tag} className="space-y-4">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <div className="text-[11px] font-mono font-bold uppercase tracking-widest" style={{ color: '#172B24' }}>
+                  {b.tag}
+                </div>
+                <h4 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mt-0.5" style={{ color: '#29251F' }}>
+                  {b.title}
+                </h4>
+              </div>
+              <span
+                className="text-[11px] font-mono px-2.5 py-1 rounded border"
+                style={{ background: '#EFE8DC', borderColor: '#D6CCBC', color: '#4A433B' }}
+              >
+                {b.route}
+              </span>
+            </div>
+            <div
+              className="rounded-2xl overflow-hidden border shadow-md"
+              style={{ borderColor: 'rgba(41,37,31,0.12)', background: '#13231D' }}
+            >
+              <img
+                src={b.src}
+                alt={b.alt}
+                className="w-full h-auto block m-0 p-0 select-none"
+                decoding="sync"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function TapestoryVisualShowcase() {
   const swatches = [
@@ -1841,7 +2112,9 @@ export function CaseStudyPage({
             )}
           </div>
 
-          {project.slug === 'tapestory-admin' ? (
+          {project.slug === 'tapestory-mobile' ? (
+            <TapestoryMobileVisualShowcase />
+          ) : project.slug === 'tapestory-admin' ? (
             <TapestoryVisualShowcase />
           ) : project.slug === 'shyam-jagat' ? (
             <ShyamJagatVisualShowcase />
